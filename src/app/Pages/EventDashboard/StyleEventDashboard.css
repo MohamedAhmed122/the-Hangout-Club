@@ -1,0 +1,13 @@
+.event-dashboard{
+    display: flex;
+    padding: 10px;
+}
+.sidebar-left{
+    flex: 0.3;
+}
+.sidebar-right{
+    flex: 0.3;
+}
+.main{
+    flex: 0.4;
+}
