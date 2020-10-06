@@ -10,7 +10,7 @@ export default function Sidebar() {
                 <img src='https://i.pinimg.com/originals/80/1e/70/801e70a79f7a71b1602969bc31cf99cd.jpg' alt=''/>
                 <h3>Mohamed Youssef</h3>
             </div>
-             <SidebarRow icon='plus circle' title='Create Event' />
+             <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
              <SidebarRow icon='filter' title='Filter Events'/>
              <SidebarRow icon='user' title='My Profile'/>
              <SidebarRow icon='rocketchat' title='Join Community' />

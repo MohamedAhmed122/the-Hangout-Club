@@ -1,0 +1,10 @@
+.event-form{
+    background-color: #eaeaea; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.form-main{
+   width: 80%;
+    margin-top: 6rem;
+}
