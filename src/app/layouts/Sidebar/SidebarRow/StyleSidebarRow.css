@@ -1,0 +1,20 @@
+.sidebar_row{
+    display: flex;    
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+.sidebar_row .ui.header {
+    background-color: #eff2f5; 
+    z-index: 1;
+    box-shadow: none;
+    padding: 10px;
+    border-radius: 20px;
+    
+}
+.sidebar_row .ui.header:hover{
+    background-color: lightgray;
+
+} 

@@ -1,9 +1,11 @@
-.header{
+.nav{
     display: flex;
     padding: 15px 20px;
     justify-content: space-between;
     position: sticky;
-    background-color: white;
+   
+    background: linear-gradient(90deg, rgba(78,144,141,1) 0%, rgba(0,181,173,1) 50%, rgba(105,237,231,1) 100%);
+
     z-index:100;
     top:0;
     box-shadow: 0px 5px 8px -9px rgba(0,0, 0, 0.75);
@@ -32,9 +34,9 @@
 }
 
 .header-left img{
-    height: 50px;
-    width: 50px;
-    border-radius: 25px;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -52,10 +54,4 @@
     border-radius: 10px;
   
     background-color: #efefef;
-}
-.link:hover{
-}
-.current{
-    color:turquoise;
-    
 }
