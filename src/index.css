@@ -2,9 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
   
 }
-html, body{
-  background-color: #eff2f5; 
+body,html{
   font-family: 'Cabin', sans-serif;
+  
 }

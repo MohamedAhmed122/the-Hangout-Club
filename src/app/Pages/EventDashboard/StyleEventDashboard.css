@@ -1,6 +1,7 @@
 .event-dashboard{
     display: flex;
     padding: 10px;
+    height: 100vh;
 }
 .sidebar-left{
     flex: 0.3;
