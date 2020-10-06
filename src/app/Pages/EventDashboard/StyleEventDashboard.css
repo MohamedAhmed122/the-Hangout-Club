@@ -2,13 +2,14 @@
     display: flex;
     padding: 10px;
     height: 100vh;
+    margin-top: 3.5rem;
 }
 .sidebar-left{
-    flex: 0.3;
+    flex: 0.25;
 }
 .sidebar-right{
-    flex: 0.3;
+    flex: 0.25;
 }
 .main{
-    flex: 0.4;
+    flex: 0.5;
 }

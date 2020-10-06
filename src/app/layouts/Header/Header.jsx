@@ -1,29 +1,35 @@
-import React from 'react'
-import {  Search } from 'semantic-ui-react'
-import './StyleHeader.css'
 
-export default function Navbar() {
-    return (
-     <div className='header nav'>
-         <div className='header-right'>
-             <img src='https://de-production.imgix.net/colors/browser/de5754.jpg?fit=fill&bg=ffffff&fm=jpeg&auto=format&lossless=1' alt='' />
-             <Search placeholder='Search Events'/>
-         </div>
-         <div className='header-middle'>
-             <button className='link current' >
-                 Home
-            </button>
-            <button className='link current' >
-                 Events
-            </button>
-            <button className='link current' >
-                 Community
-            </button>
-         </div>
-         <div className='header-left'>
-            <img src='https://c.files.bbci.co.uk/6FF7/production/_103536682_gettyimages-973397370.jpg' alt='' />
-            <div>Mohamed Youssef</div>
-         </div>
-     </div>
-    )
-}
+import React from "react";
+import { Menu, Button, MenuItem, Container } from "semantic-ui-react";
+import './StyleHeader.css'
+const Navbar = () => (
+    <div className='main'>
+        <Menu inverted fixed="top">
+            <Container>
+            <MenuItem header>
+                {/* <img
+                alt="logo"
+                style={{ marginRight: "0.7em" }}
+                src={"assets/logo.png"}
+                /> */}
+                the Hangout Club
+            </MenuItem>
+            <MenuItem name="Events" />
+            <MenuItem name="Community" />
+            {/* <MenuItem>
+                <Button positive inverted content="Create Event" />
+            </MenuItem> */}
+            <MenuItem position="right">
+                <Button basic inverted content="Login" />
+                <Button
+                basic
+                inverted
+                content="Register"
+                style={{ marginLeft: "0.6em" }}
+                />
+            </MenuItem>
+            </Container>
+        </Menu>
+    </div>
+);
+export default Navbar;

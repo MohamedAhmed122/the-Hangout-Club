@@ -1,0 +1,17 @@
+.sidebar_header{
+    display: flex;
+    margin-left: 25px;
+    margin-top: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.sidebar_header h3{ 
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.sidebar_header img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
