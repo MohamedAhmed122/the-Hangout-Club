@@ -1,0 +1,75 @@
+
+.wrapper{
+    background: white ;
+    border-radius: 10px;
+    width: 90%;
+    height: auto;
+    max-width: 50vw;
+    box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.75); 
+    margin-top: 40px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.background{
+    background-position: 0 50%;
+    background-size: 100% auto;
+    height: 195px;
+    width: 100%;
+    border-radius: 8px 8px 16px 16px;
+}
+
+.user-image{
+    display: inline-block;
+    border-radius: 12px;
+    margin: -40px 20px 10px 8px;
+    max-width: 100%;
+    padding: 1px;
+    vertical-align: bottom;
+    overflow: hidden;
+}
+.img-profile{
+    float: right;
+    border: 3px solid white;
+    border-radius: 12px;
+    color: white;
+    height: 122px;
+    object-fit: cover;
+    width: 132px;
+}
+.user_detail{
+    margin: 15px;
+}
+.user_detail h6{
+    font-weight:500 ;
+    color: royalblue;
+    font-size: large;
+}
+.user_detail span{
+    font-weight:300 ;
+    color: black;
+    font-size: large;
+}
+.title{
+    font-size: large;
+}
+
+.attendees{
+    margin: 20px 0px;
+    display: flex;
+    padding: 5px;
+    border-top: 2px solid #f4f4f4;
+    border-bottom: 2px solid #f4f4f4;
+}
+.attendees img{
+    float: left;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    padding: 5px;
+    display: inline-block;
+}
+.description{
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}

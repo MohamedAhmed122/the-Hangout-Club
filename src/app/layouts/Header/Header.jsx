@@ -3,7 +3,7 @@ import React from "react";
 import { Menu, Button, MenuItem, Container } from "semantic-ui-react";
 import './StyleHeader.css'
 const Navbar = () => (
-    <div className='main'>
+    <nav className='main'>
         <Menu inverted fixed="top">
             <Container>
             <MenuItem header>
@@ -16,9 +16,9 @@ const Navbar = () => (
             </MenuItem>
             <MenuItem name="Events" />
             <MenuItem name="Community" />
-            {/* <MenuItem>
+            <MenuItem>
                 <Button positive inverted content="Create Event" />
-            </MenuItem> */}
+            </MenuItem>
             <MenuItem position="right">
                 <Button basic inverted content="Login" />
                 <Button
@@ -30,6 +30,6 @@ const Navbar = () => (
             </MenuItem>
             </Container>
         </Menu>
-    </div>
+    </nav>
 );
 export default Navbar;
