@@ -1,19 +1,26 @@
-import React, { useState } from 'react'
-import EventList from '../../Components/Events/EventList/EventList/EventList'
-import Sidebar from '../../layouts/Sidebar/Sidebar'
-import EventData from '../../API/API'
-import './StyleEventDashboard.css'
+import React from 'react'
+
 import Calendar from '../../Components/Calender/Calender'
 
-export default function EventDashboard() {
-    const [events , setEvent] = useState(EventData)
+import './StyleEventDashboard.css'
+
+import EventList from '../../Components/Events/EventList/EventList/EventList'
+import Sidebar from '../../layouts/Sidebar/Sidebar'
+
+
+export default function EventDashboard({events,setEvent }) {
+  
+    const handleDelete =(eventId)=>{
+        setEvent(events.filter(event =>event.id !== eventId))
+    }
+
     return (
         <div className='event-dashboard'>
             <div className='sidebar-left'>
-              <Sidebar />
+              <Sidebar/>
             </div>
             <div className='main'>
-                <EventList events={events}/>
+                <EventList handleDelete={handleDelete} events={events}/>
             </div>
             <div className='sidebar-right'>
                 <Calendar />

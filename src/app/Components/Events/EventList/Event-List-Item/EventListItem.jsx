@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 import './StyleEventListItem.css'
 
-export default function EventListItem({event}) {
+export default function EventListItem({event , handleDelete}) {
     return (
         <div className='wrapper'>
             <div className='background'
@@ -19,15 +19,15 @@ export default function EventListItem({event}) {
                 </div>
             </div>
             <div className='attendees'>
-                   <img alt='' src={event.hostPhotoURL} />
-                  
+                   <img alt={event.hostPhotoURL} src={event.hostPhotoURL} />
             </div>
             <div className='description'>
                 <div className='description-text'>
                     <p>{event.description}</p>
                 </div>
                 <div className='btn-group'>
-                <Button color="teal" floated="right" content="view" />
+                    <Button color="teal" floated="right" content="view" />
+                    <Button color="red" floated="right" content="Delete" onClick={()=>handleDelete(event.id)} />
                 </div>
             </div>
         </div>
