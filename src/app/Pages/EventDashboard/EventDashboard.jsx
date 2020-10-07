@@ -3,6 +3,7 @@ import EventList from '../../Components/Events/EventList/EventList/EventList'
 import Sidebar from '../../layouts/Sidebar/Sidebar'
 import EventData from '../../API/API'
 import './StyleEventDashboard.css'
+import Calendar from '../../Components/Calender/Calender'
 
 export default function EventDashboard() {
     const [events , setEvent] = useState(EventData)
@@ -15,7 +16,7 @@ export default function EventDashboard() {
                 <EventList events={events}/>
             </div>
             <div className='sidebar-right'>
-                <h1>hello I am sidebar Left</h1>
+                <Calendar />
             </div>
         </div>
     )

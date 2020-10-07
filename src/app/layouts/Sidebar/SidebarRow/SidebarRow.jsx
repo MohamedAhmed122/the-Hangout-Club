@@ -6,12 +6,18 @@ import './StyleSidebarRow.css'
 export default function SidebarRow({ icon,title, link}) {
     return (
         <div className='sidebar_row'>
-            <Link exact to={link}>
+           {link? <Link className='option' exact='true' to={link}>
                 <Header as='h3'>
                     <Icon  name = {icon} size='large' color='teal'  />
                     <Header.Content>{title}</Header.Content>
                 </Header>
             </Link>
+            :
+            <Header as='h3'>
+                    <Icon  name = {icon} size='large' color='teal'  />
+                    <Header.Content>{title}</Header.Content>
+            </Header>
+        }
         </div>
     )
 }

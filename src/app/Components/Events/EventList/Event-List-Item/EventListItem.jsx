@@ -7,7 +7,7 @@ export default function EventListItem({event}) {
     return (
         <div className='wrapper'>
             <div className='background'
-            style={{backgroundImage: 'url("https://about.twitter.com/content/dam/about-twitter/company/brand-resources/en_us/OTB_Company_Blue.png.img.fullhd.medium.png")'}}> </div>
+            style={{backgroundImage: 'url(https://www.ltteps.org/wp-content/uploads/2019/06/travel-editor-favorite-products.jpg)'}}> </div>
             <div style={{display: 'flex'}}>
                 <div className='user-image'>
                     <img className='img-profile' src={event.hostPhotoURL} alt='' />

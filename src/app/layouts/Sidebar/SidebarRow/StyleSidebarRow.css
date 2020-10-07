@@ -10,9 +10,14 @@
     /* background-color: #eff2f5;  */
     z-index: 1;
     box-shadow: none;
-    padding: 10px;
+    padding: 12px;
     border-radius: 20px;
+    width: 100%;
+    margin: 0px;
     
+}
+.option{
+    width: 100%;
 }
 .sidebar_row .ui.header:hover{
     background-color: lightgray;

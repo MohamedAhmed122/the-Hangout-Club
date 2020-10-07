@@ -8,3 +8,6 @@
    width: 80%;
     margin-top: 6rem;
 }
+.form-main .ui.segment{
+    box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.75); 
+}

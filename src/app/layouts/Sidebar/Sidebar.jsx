@@ -5,7 +5,7 @@ import './StyleSidebar.css'
 
 export default function Sidebar() {
     return (
-        <div>
+        <div className='sidebar_main'>
             <div className='sidebar_header'>
                 <img src='https://i.pinimg.com/originals/80/1e/70/801e70a79f7a71b1602969bc31cf99cd.jpg' alt=''/>
                 <h3>Mohamed Youssef</h3>
