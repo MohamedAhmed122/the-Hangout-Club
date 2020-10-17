@@ -25,7 +25,7 @@ const EventReducer = (state =initialState , {type, payload}) =>{
         case DELETE_EVENT:
             return{
                 ...state,
-                event: [...state.events.filter(event => event.id !== payload.id)]
+                events: [...state.events.filter((event) => event.id !== payload)],
             }
         default:{
             return state;
@@ -35,4 +35,4 @@ const EventReducer = (state =initialState , {type, payload}) =>{
 
 
 
-export default EventReducer;
+export default EventReducer

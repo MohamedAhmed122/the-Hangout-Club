@@ -1,9 +1,20 @@
 import cuid from 'cuid'
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import React, { useState, } from 'react'
+import { useHistory, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { createEvent , updateEvent } from '../../../redux/event/eventAction'
+
 import { Button, Form, Header, Segment } from 'semantic-ui-react'
 import './StyleEventForm.css'
-export default function EventForm({handleCreateEvent, selectedEvent ,handleUpdateEvent,setFormOpen}) {
+
+
+export default function EventForm() {
+    
+    const {eventId} = useParams()
+    const selectedEvent = useSelector((state) =>
+    state.event.events.find((e) => e.id === eventId)
+  );
 
     const initialValues = selectedEvent??  {
         title: '',
@@ -13,13 +24,14 @@ export default function EventForm({handleCreateEvent, selectedEvent ,handleUpdat
         venue: '',
         date: '',
       };
+    const dispatch = useDispatch()
     const history = useHistory()
     const [values, setValues] = useState(initialValues)
 
     const handleSubmit =()=>{
         selectedEvent
-      ? handleUpdateEvent({ ...selectedEvent, ...values })
-            :handleCreateEvent({
+      ? dispatch(updateEvent({ ...selectedEvent, ...values }))
+            :dispatch(createEvent({
             ...values,
             id : cuid(),
             hostedBy: 'Mohamed',
@@ -31,7 +43,7 @@ export default function EventForm({handleCreateEvent, selectedEvent ,handleUpdat
                   photoURL: 'https://randomuser.me/api/portraits/men/67.jpg'
               },
             ]
-        })
+        }))
         history.push('/event')
     }
 

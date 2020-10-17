@@ -1,11 +1,17 @@
 
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
 import { useHistory } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
+
+import { deleteEvent } from '../../../../redux/event/eventAction'
+
 import './StyleEventListItem.css'
 
-export default function EventListItem({event , handleDelete, handleSelected}) {
+export default function EventListItem({event }) {
     const history = useHistory()
+    const dispatch = useDispatch()
     return (
         <div className='wrapper'>
             <div className='background'
@@ -34,7 +40,7 @@ export default function EventListItem({event , handleDelete, handleSelected}) {
                         content="view" 
                         onClick={() => history.push(`/event/${event.id}`)}
                      />
-                    <Button color="red" floated="right" content="Delete" onClick={()=>handleDelete(event.id)} />
+                    <Button color="red" floated="right" content="Delete" onClick={()=> dispatch(deleteEvent(event.id))} />
                 </div>
             </div>
         </div>
