@@ -1,0 +1,15 @@
+.sign_in{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.sign_in img{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.sign_in p{
+    color: lightgray;
+    font-size: medium;
+}
