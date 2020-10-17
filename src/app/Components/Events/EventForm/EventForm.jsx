@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { Button, Form, Header, Segment } from 'semantic-ui-react'
 import './StyleEventForm.css'
-export default function EventForm({handleCreateEvent}) {
+export default function EventForm({handleCreateEvent, selectedEvent ,handleUpdateEvent,setFormOpen}) {
 
-    const initialValues =  {
+    const initialValues = selectedEvent??  {
         title: '',
         category: '',
         description: '',
@@ -17,7 +17,9 @@ export default function EventForm({handleCreateEvent}) {
     const [values, setValues] = useState(initialValues)
 
     const handleSubmit =()=>{
-        handleCreateEvent({
+        selectedEvent
+      ? handleUpdateEvent({ ...selectedEvent, ...values })
+            :handleCreateEvent({
             ...values,
             id : cuid(),
             hostedBy: 'Mohamed',
@@ -30,6 +32,7 @@ export default function EventForm({handleCreateEvent}) {
               },
             ]
         })
+        setFormOpen(false);
         history.push('/')
     }
 

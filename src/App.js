@@ -8,16 +8,25 @@ import EventForm from './app/Components/Events/EventForm/EventForm';
 import Navbar from './app/layouts/Header/Header';
 import EventDashboard from './app/Pages/EventDashboard/EventDashboard';
 import EventData from './app/API/API'
+import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
 
 
 
 function App() {
-  const [events , setEvent] = useState(EventData)
- 
-  const handleCreateEvent =(event)=>{
 
-      setEvent([...events,event])
-  }
+  const [events , setEvent] = useState(EventData)
+  const [selectedEvent, setSelectedEvent] = useState(null);
+ 
+  const handleCreateEvent =(event)=> setEvent([...events,event])
+  const handleSelected = (event) =>  setSelectedEvent(event);
+
+  const handleUpdateEvent = (updateEvent) => {
+    setEvent(
+      events.map((event) => (event.id === updateEvent.id ? updateEvent : event))
+    );
+    setSelectedEvent(null);
+  };
+ 
   return (
     <div className="App">
       <Navbar />
@@ -26,11 +35,22 @@ function App() {
             <EventDashboard 
               events={events}
               setEvent={setEvent}
+              handleSelected={handleSelected}
             />
           </Route>
           <Route exact path='/createEvent' >
-            <EventForm handleCreateEvent={handleCreateEvent}/>
+            <EventForm 
+              handleCreateEvent={handleCreateEvent}
+              selectedEvent={selectedEvent}
+              handleUpdateEvent={handleUpdateEvent}
+              key={selectedEvent ? selectedEvent.id : null}
+            />
           </Route>
+          <Route 
+            exact 
+            path='/event/:id'
+            component={EventDetailedPage}
+          />
       </Switch>
     </div>
   );
