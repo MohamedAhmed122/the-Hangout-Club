@@ -32,7 +32,6 @@ export default function EventForm({handleCreateEvent, selectedEvent ,handleUpdat
               },
             ]
         })
-        setFormOpen(false);
         history.push('/')
     }
 

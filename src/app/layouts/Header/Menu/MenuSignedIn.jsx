@@ -1,5 +1,4 @@
 import React from 'react'
-import { Header, Image, } from 'semantic-ui-react'
 import './StyleMenu.css'
 
 export default function MenuSignedIn() {

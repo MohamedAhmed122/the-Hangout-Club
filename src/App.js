@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import cuid from 'cuid';
 
 import './App.css';
 
@@ -9,10 +8,13 @@ import Navbar from './app/layouts/Header/Header';
 import EventDashboard from './app/Pages/EventDashboard/EventDashboard';
 import EventData from './app/API/API'
 import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
+import HomePage from './app/Pages/HomePage/HomePage';
 
 
 
 function App() {
+
+  // const { key } = useLocation();
 
   const [events , setEvent] = useState(EventData)
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -29,29 +31,33 @@ function App() {
  
   return (
     <div className="App">
-      <Navbar />
-      <Switch>
-          <Route exact path='/'>
-            <EventDashboard 
-              events={events}
-              setEvent={setEvent}
-              handleSelected={handleSelected}
-            />
-          </Route>
-          <Route exact path='/createEvent' >
-            <EventForm 
-              handleCreateEvent={handleCreateEvent}
-              selectedEvent={selectedEvent}
-              handleUpdateEvent={handleUpdateEvent}
-              key={selectedEvent ? selectedEvent.id : null}
-            />
-          </Route>
-          <Route 
-            exact 
-            path='/event/:id'
-            component={EventDetailedPage}
-          />
-      </Switch>
+      <Route exact path='/' component={HomePage} />
+      <Route
+        path={"/(.+)"}
+        render={() => (
+          <Fragment>
+            <Navbar />
+              <Switch>
+                  <Route exact path="/event"  >
+                      <EventDashboard 
+                        events={events}
+                        setEvent={setEvent}
+                        handleSelected={handleSelected}
+                      />
+                  </Route >
+                  <Route exact path='/createEvent' >
+                      <EventForm 
+                        handleCreateEvent={handleCreateEvent}
+                        selectedEvent={selectedEvent}
+                        handleUpdateEvent={handleUpdateEvent}
+                        key={selectedEvent ? selectedEvent.id : null}
+                      />
+                  </Route>
+                  <Route path="/event/:id" component={EventDetailedPage} />
+              </Switch>
+          </Fragment>
+        )}
+      />
     </div>
   );
 }
