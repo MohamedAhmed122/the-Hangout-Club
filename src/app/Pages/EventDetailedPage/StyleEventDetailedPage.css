@@ -1,0 +1,12 @@
+.event_detail_page{
+    display: flex;
+    margin-top: 6rem;
+}
+.event_detail_page .main{
+
+    flex: 0.5;
+}
+.event_detail_page .sidebar{
+
+    flex: 0. 35;
+}

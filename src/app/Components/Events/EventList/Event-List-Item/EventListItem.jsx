@@ -1,9 +1,11 @@
 
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import './StyleEventListItem.css'
 
 export default function EventListItem({event , handleDelete, handleSelected}) {
+    const history = useHistory()
     return (
         <div className='wrapper'>
             <div className='background'
@@ -30,7 +32,7 @@ export default function EventListItem({event , handleDelete, handleSelected}) {
                         color="teal" 
                         floated="right"
                         content="view" 
-                        onClick={() => handleSelected(event)}
+                        onClick={() => history.push(`/event/${event.id}`)}
                      />
                     <Button color="red" floated="right" content="Delete" onClick={()=>handleDelete(event.id)} />
                 </div>
