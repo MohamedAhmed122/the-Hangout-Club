@@ -3,7 +3,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useHistory } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
+import {format} from 'date-fns'
 
 import { deleteEvent } from '../../../../redux/event/eventAction'
 
@@ -22,7 +23,7 @@ export default function EventListItem({event }) {
                 </div>
                 <div className='user_detail'>
                     <h6><span>hosted by </span>{event.hostedBy}</h6>
-                    <p style={{marginTop:10}}>{event.date}</p>
+                    <p style={{marginTop:10}}><Icon name="clock" /> {format(event.date, 'MMMM d, yyyy h:mm a')}</p>
                     <p className='title'>{event.title}</p>
                 </div>
             </div>

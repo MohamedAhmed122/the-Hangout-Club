@@ -6,10 +6,11 @@
     height: auto;
     max-width: 50vw;
     box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.4); 
-    margin-top: 40px;
+    margin-bottom: 4rem;
     overflow: hidden;
     cursor: pointer;
     transition: all 1s ease-in;
+    
  
 }
 .wrapper:hover{
