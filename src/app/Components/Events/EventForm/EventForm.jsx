@@ -32,7 +32,7 @@ export default function EventForm({handleCreateEvent, selectedEvent ,handleUpdat
               },
             ]
         })
-        history.push('/')
+        history.push('/event')
     }
 
     const  handleInputChange =(e)=> {
