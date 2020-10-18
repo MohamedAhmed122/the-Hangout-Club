@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 
 import './App.css';
+import ModalManger from './app/Common/Modal/ModalManger';
 
 import EventForm from './app/Components/Events/EventForm/EventForm';
 import Navbar from './app/layouts/Header/Header';
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div className="App">
+      <ModalManger />
       <Route exact path='/' component={HomePage} />
       <Route
         path={"/(.+)"}
