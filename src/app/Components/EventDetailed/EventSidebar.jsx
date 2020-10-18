@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Segment, Item } from "semantic-ui-react";
 
 const EventSidebar = () => (

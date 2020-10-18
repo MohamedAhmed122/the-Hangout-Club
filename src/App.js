@@ -25,9 +25,11 @@ function App() {
             <Navbar />
               <Switch>
                   <Route exact path="/event"  component ={EventDashboard} />
-                  <Route exact path='/createEvent' >
-                      <EventForm  key={key}/>
-                  </Route>
+                  <Route
+                  path={["/createEvent", "/manage/:id"]}
+                  component={EventForm}
+                  key={key}
+                />
                   <Route path="/event/:id" component={EventDetailedPage} />
               </Switch>
           </Fragment>

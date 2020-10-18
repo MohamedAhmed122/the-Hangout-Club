@@ -20,7 +20,7 @@ export default function EventHeader({events}) {
                 <Button>Cancel My Place</Button>
                 <Button color="teal">JOIN THIS EVENT</Button>
 
-                <Button color="orange" floated="right" as={Link} >
+                <Button color="orange" floated="right" as={Link} to={`/manage/${events.id}`}>
                 Manage Event
                 </Button>
             </Segment>

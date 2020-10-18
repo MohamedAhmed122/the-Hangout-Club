@@ -1,10 +1,10 @@
 import cuid from 'cuid'
 import React from 'react'
-import { Link, useHistory, useParams, withRouter } from 'react-router-dom';
+import { Link, useHistory, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-import { Button, FormSelect, Header, Segment } from 'semantic-ui-react'
+import { Button,Header, Segment } from 'semantic-ui-react'
 import './StyleEventForm.css'
 
 import { createEvent , updateEvent } from '../../../redux/event/eventAction'
@@ -14,11 +14,11 @@ import { Formik ,Form } from 'formik';
 import FormInput from '../../Form/FormInput'
 import FormArea from '../../Form/FormArea';
 import FormDate from '../../Form/FormDate';
+import FormSelect from '../../Form/FormSelect';
 
 const EventForm =({match}) => {
     
-    const {eventId} = useParams()
-    console.log(eventId);
+
     const selectedEvent = useSelector((state) =>
     state.event.events.find((e) => e.id === match.params.id)
   );
@@ -61,6 +61,7 @@ const EventForm =({match}) => {
                   hostPhotoURL: "/assets/user.png",
                 })
               );
+        // console.log(values)
           history.push("/event");
         }}
         initialValues={initialValues}
