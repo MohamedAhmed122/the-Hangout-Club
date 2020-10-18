@@ -1,0 +1,14 @@
+.div{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100vh;
+}
+
+.div div{ 
+    background-color: black;
+    height: 70px;
+    width: 100px;
+    bottom: 10px;
+    
+}

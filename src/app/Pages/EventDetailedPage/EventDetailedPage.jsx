@@ -12,7 +12,7 @@ export default function EventDetailedPage() {
             <div className='main'>
                 <EventHeader />
                 <EventInfo />
-                <EventChat />
+        
             </div>
             <div className='sidebar'>
                 <EventSidebar />

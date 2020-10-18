@@ -2,7 +2,7 @@
     display: flex;
     padding: 10px;
     height: 100vh;
-    margin-top: 3.7rem;
+    margin-top: 4rem;
  
 }
 .sidebar-left{
@@ -13,4 +13,5 @@
 }
 .main{
     flex: 0.5;
+    margin-top: 3rem;
 }

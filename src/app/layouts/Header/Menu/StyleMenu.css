@@ -4,12 +4,12 @@
     cursor: pointer;
 }
 .sign_in img{
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
     margin-right: 10px;
 }
 .sign_in p{
-    color: lightgray;
+    color: white;
     font-size: medium;
 }

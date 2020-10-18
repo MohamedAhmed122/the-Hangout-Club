@@ -9,10 +9,12 @@ import {store} from './app/redux/store'
 import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 import * as serviceWorker from './serviceWorker';
+import ScrollToTop from './app/Common/ScrollToTop/ScrollToTop';
 
 ReactDOM.render(
    <Provider store={store}>
       <BrowserRouter>
+      <ScrollToTop />
          <App />
       </BrowserRouter>
    </Provider>
