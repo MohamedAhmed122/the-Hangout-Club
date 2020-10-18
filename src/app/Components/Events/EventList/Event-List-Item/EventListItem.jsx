@@ -16,7 +16,7 @@ export default function EventListItem({event }) {
     return (
         <div className='wrapper'>
             <div className='background'
-            style={{backgroundImage: 'url(https://www.ltteps.org/wp-content/uploads/2019/06/travel-editor-favorite-products.jpg)'}}> </div>
+            style={{backgroundImage: `url(/assets/categoryImages/${event.category}.jpg)`}}> </div>
             <div style={{display: 'flex'}}>
                 <div className='user-image'>
                     <img className='img-profile' src={event.hostPhotoURL} alt='' />

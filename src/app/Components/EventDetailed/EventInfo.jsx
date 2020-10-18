@@ -4,7 +4,7 @@ import { Segment, Grid, Icon, Button } from "semantic-ui-react";
 import {format} from 'date-fns'
 
 
-const EventInfo = ({ event: { description, date, venue } }) => (
+const EventInfo = ({ events: { description, date, venue } }) => (
   <Segment.Group>
     <Segment attached="top">
       <Grid>
@@ -12,7 +12,7 @@ const EventInfo = ({ event: { description, date, venue } }) => (
           <Icon size="large" color="teal" name="info" />
         </Grid.Column>
         <Grid.Column width={15}>
-          <p> {description}</p>
+          <p>{description}</p>
         </Grid.Column>
       </Grid>
     </Segment>
@@ -32,7 +32,7 @@ const EventInfo = ({ event: { description, date, venue } }) => (
           <Icon name="marker" size="large" color="teal" />
         </Grid.Column>
         <Grid.Column width={11}>
-          <span> {venue}</span>
+          <span> {venue.address}</span>
         </Grid.Column>
         <Grid.Column width={4}>
           <Button color="teal" size="tiny" content="Show Map" />

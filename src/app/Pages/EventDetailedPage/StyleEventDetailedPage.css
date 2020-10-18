@@ -1,13 +1,15 @@
 .event_detail_page{
     display: flex;
-   
     background-color: #eaeaea;
+    overflow: hidden;
 }
 .event_detail_page .main{
     margin-top: 6rem;
     flex: 0.6;
+    overflow: hidden;
 }
 .event_detail_page .sidebar{
     margin-top: 6rem;
     flex: 0. 35;
+    overflow: hidden;
 }

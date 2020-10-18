@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Comment, Form, Button, Header, Segment } from "semantic-ui-react";
 
-const EventChatt = () => (
+const EventChat = () => (
   <Fragment>
     <Segment
       textAlign="center"
@@ -87,4 +87,4 @@ const EventChatt = () => (
     </Segment>
   </Fragment>
 );
-export default EventChatt;
+export default EventChat;
