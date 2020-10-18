@@ -1,12 +1,13 @@
 .event_detail_page{
     display: flex;
-    margin-top: 6rem;
+   
+    background-color: #eaeaea;
 }
 .event_detail_page .main{
-
-    flex: 0.5;
+    margin-top: 6rem;
+    flex: 0.6;
 }
 .event_detail_page .sidebar{
-
+    margin-top: 6rem;
     flex: 0. 35;
 }

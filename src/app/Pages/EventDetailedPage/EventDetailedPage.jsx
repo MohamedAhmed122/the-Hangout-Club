@@ -8,7 +8,7 @@ import './StyleEventDetailedPage.css'
 export default function EventDetailedPage() {
     return (
         <div className='event_detail_page'>
-            <div style={{flex: '0.16'}}/>
+            <div style={{flex: '0.1'}}/>
             <div className='main'>
                 <EventHeader />
                 <EventInfo />

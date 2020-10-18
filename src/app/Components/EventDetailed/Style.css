@@ -1,14 +1,35 @@
-.div{
+.event_header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30rem;
+    width: 100%;
+    border-radius: 10px;
+ 
+}
+.event_header .container{
+    height: 100%;
+    width: 100%;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     justify-content: flex-end;
-    height: 100vh;
 }
 
-.div div{ 
-    background-color: black;
-    height: 70px;
-    width: 100px;
-    bottom: 10px;
-    
+.const{
+    color: white;
+    margin-left: 20px;
+}
+.event_header .container .title{
+    font-size: 29px;
+    margin: 0 0  0 20px;
+}
+.event_header .container .host{ 
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+.event_header .container date{ 
+
+    font-size: 15px;}
+.event_header .container span{ 
+    color: royalblue;
 }
