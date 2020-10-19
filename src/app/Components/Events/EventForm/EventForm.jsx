@@ -31,7 +31,7 @@ const EventForm =({match}) => {
         venue: '',
         date: '',
       };
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() 
     const history = useHistory()
  
 
