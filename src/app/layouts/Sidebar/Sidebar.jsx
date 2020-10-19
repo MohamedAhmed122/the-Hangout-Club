@@ -1,13 +1,31 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import SidebarRow from './SidebarRow/SidebarRow'
 import './StyleSidebar.css'
 
+import { signInUser, signOutUser } from '../../redux/Auth/AuthAction'
+import { useHistory } from 'react-router-dom'
+import { openModal } from '../../redux/Modal/ModalAction'
+
 export default function Sidebar() {
+    const history = useHistory()
+    const dispatch = useDispatch()
+    const { isAuthenticated } = useSelector(state => state.auth)
+
+    const handleSignOut = () =>{
+        if (isAuthenticated){
+            dispatch(signOutUser())
+            history.push('/')
+        } else {
+            dispatch(openModal({modalType: 'LoginForm'}))
+        }
+       
+    }
     return (
         <div className='sidebar_main'>
             <div className='sidebar_header'>
-                <img src='https://i.pinimg.com/originals/80/1e/70/801e70a79f7a71b1602969bc31cf99cd.jpg' alt=''/>
+                <img src='/assets/user1.png' alt=''/>
                 <h3>Mohamed Youssef</h3>
             </div>
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
@@ -16,7 +34,11 @@ export default function Sidebar() {
              <SidebarRow icon='rocketchat' title='Join Community' />
              <SidebarRow icon='users' title='My Friends'/>
              <SidebarRow icon='cogs' title='settings'/>
-             <SidebarRow icon='sign out alternate' title='Sign out'/>
+             <SidebarRow 
+             onClick={()=>handleSignOut()} 
+             icon='sign out alternate' 
+             title={isAuthenticated?'Sign out': 'Sign In'}
+             />
             
         </div>
     )

@@ -1,5 +1,6 @@
 
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Menu, Button, MenuItem, Container } from "semantic-ui-react";
 import MenuSignedIn from "./Menu/MenuSignedIn";
@@ -7,7 +8,7 @@ import SignedOutMenu from "./Menu/MenuSignedOut";
 import './StyleHeader.css'
 const Navbar = () => {
 
-    const [auth, setAuth] = useState(false);
+    const { isAuthenticated } = useSelector(state => state.auth)
 
     return(
     <nav className='main'>
@@ -28,7 +29,7 @@ const Navbar = () => {
             </MenuItem>
             <MenuItem position="right">
                {
-                   auth? <MenuSignedIn /> : <SignedOutMenu setAuth={setAuth}/>
+                   isAuthenticated? <MenuSignedIn /> : <SignedOutMenu setAuth={isAuthenticated}/>
                }
             </MenuItem>
             </Container>
