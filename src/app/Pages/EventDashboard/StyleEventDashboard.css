@@ -6,12 +6,12 @@
  
 }
 .sidebar-left{
-    flex: 0.3;
+    flex: 0.25;
 }
 .sidebar-right{
     flex: 0.25;
 }
 .main{
-    flex: 0.5;
+    flex: 0.55;
     margin-top: 3rem;
 }

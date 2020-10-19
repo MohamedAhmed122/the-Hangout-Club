@@ -59,83 +59,81 @@ const EventForm =({match}) => {
     return (
         <div className='event-form'>
             <div className='form-main'>
-            <Segment clearing>
-      <Formik
-        onSubmit={(values) => {
-          selectedEvent
-            ? dispatch(updateEvent({ ...selectedEvent, ...values }))
-            : dispatch(
-                createEvent({
-                  ...values,
-                  id: cuid(),
-                  hostedBy: "Bob",
-                  attendees: [],
-                  hostPhotoURL: "/assets/user.png",
-                })
-              );
-        // console.log(values)
-          history.push("/event");
-        }}
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-      >
-        {({ isSubmitting, dirty, isValid, values }) => (
-          <Form className="ui form" autoComplete="off">
-            <Header content="Event Details" color="teal" sub />
-            <FormInput name="title" placeholder="Event Title" />
-            <FormSelect
-              name="category"
-              placeholder="Category"
-              options={categoryData}
-            />
-            <FormArea
-              name="description"
-              placeholder="Event Description"
-              rows={3}
-            />
-            <Header content="Event Location" color="teal" sub />
-            <FormPlace name="city" placeholder="City" />
-            <FormPlace 
-              autoComplete="of"
-              name="venue"
-              disabled={!values.city.latLng}
-              placeholder="Venue"
-              options={{
-                location: new google.maps.LatLng(values.city.latLng),
-                radius: 1000,
-                types: ["establishment"],
-              }}
-            />
-            <FormDate
-              name="date"
-              placeholderText="Event Date"
-              timeFormat="HH:mm"
-              showTimeSelect
-              timeCaption="time"
-              dateFormat="MMMM d, yyyy h:m a"
-            />
-            <Button
-              type="submit"
-              floated="right"
-              loading={isSubmitting}
-              disabled={!isValid || isSubmitting || !dirty}
-              positive
-              content="Submit"
-            />
-            <Button
-              as={Link}
-              disabled={isSubmitting}
-              to="/event"
-              type="submit"
-              floated="right"
-              content="Cancel"
-            />
-          </Form>
-        )}
-      </Formik>
-    </Segment>
-
-
+              <Segment clearing>
+                <Formik
+                  onSubmit={(values) => {
+                    selectedEvent
+                      ? dispatch(updateEvent({ ...selectedEvent, ...values }))
+                      : dispatch(
+                          createEvent({
+                            ...values,
+                            id: cuid(),
+                            hostedBy: "Bob",
+                            attendees: [],
+                            hostPhotoURL: "/assets/user.png",
+                          })
+                        );
+                  // console.log(values)
+                    history.push("/event");
+                  }}
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                >
+                  {({ isSubmitting, dirty, isValid, values }) => (
+                    <Form className="ui form" autoComplete="off">
+                      <Header content="Event Details" color="teal" sub />
+                      <FormInput name="title" placeholder="Event Title" />
+                      <FormSelect
+                        name="category"
+                        placeholder="Category"
+                        options={categoryData}
+                      />
+                      <FormArea
+                        name="description"
+                        placeholder="Event Description"
+                        rows={3}
+                      />
+                      <Header content="Event Location" color="teal" sub />
+                      <FormPlace name="city" placeholder="City" />
+                      <FormPlace 
+                        autoComplete="of"
+                        name="venue"
+                        disabled={!values.city.latLng}
+                        placeholder="Venue"
+                        options={{
+                          location: new google.maps.LatLng(values.city.latLng),
+                          radius: 1000,
+                          types: ["establishment"],
+                        }}
+                      />
+                      <FormDate
+                        name="date"
+                        placeholderText="Event Date"
+                        timeFormat="HH:mm"
+                        showTimeSelect
+                        timeCaption="time"
+                        dateFormat="MMMM d, yyyy h:m a"
+                      />
+                      <Button
+                        type="submit"
+                        floated="right"
+                        loading={isSubmitting}
+                        disabled={!isValid || isSubmitting || !dirty}
+                        positive
+                        content="Submit"
+                      />
+                      <Button
+                        as={Link}
+                        disabled={isSubmitting}
+                        to="/event"
+                        type="submit"
+                        floated="right"
+                        content="Cancel"
+                      />
+                    </Form>
+                  )}
+                </Formik>
+              </Segment>
             </div>
         </div>
     )
