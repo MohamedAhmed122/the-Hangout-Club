@@ -1,14 +1,16 @@
 
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Menu, Button, MenuItem, Container } from "semantic-ui-react";
+import { openCalender } from "../../redux/calender/calenderReducer";
 import MenuSignedIn from "./Menu/MenuSignedIn";
 import SignedOutMenu from "./Menu/MenuSignedOut";
 import './StyleHeader.css'
 const Navbar = () => {
-
+    
     const { isAuthenticated } = useSelector(state => state.auth)
+    const dispatch = useDispatch()
 
     return(
     <nav className='main'>
@@ -25,7 +27,7 @@ const Navbar = () => {
             <MenuItem as={NavLink} exact to ='/event' name="Events" />
             <MenuItem  as={NavLink} exact to ='/community' name="Community" />
             <MenuItem>
-                <Button positive inverted content="Create Event" />
+                <Button onClick={()=> dispatch(openCalender())} positive inverted  content="Select Event" />
             </MenuItem>
             <MenuItem position="right">
                {

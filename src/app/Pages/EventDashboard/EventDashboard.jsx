@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 export default function EventDashboard() {
   
   const { events } = useSelector(state => state.event) 
+  const { isOpen } = useSelector(state => state.calender)
 
     return (
         <div className='event-dashboard'>
@@ -19,7 +20,11 @@ export default function EventDashboard() {
             <div className='main'>
                 <EventList  events={events}/>
             </div>
-            <div className='sidebar-right'><Calendar /></div>
+            <div className='sidebar-right'>
+                {
+                    isOpen && <Calendar />
+                }
+            </div>
         </div>
     )
 }

@@ -15,6 +15,7 @@ import HomePage from './app/Pages/HomePage/HomePage';
 function App() {
 
   const { key } = useLocation();
+ 
 
   return (
     <div className="App">

@@ -6,10 +6,13 @@ import modalReducer from './Modal/ModalReducer'
 
 import authReducer from './Auth/AuthReducer'
 
+import calenderReducer from './calender/calenderReducer'
+
 const rootReducer = combineReducers({
     event : eventReducer,
     modals: modalReducer,
-    auth: authReducer
+    auth: authReducer,
+    calender: calenderReducer
 });
 
 export default rootReducer;

@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-function MyApp() {
+import { Header } from 'semantic-ui-react';
+
+import './StyleCalender.css'
+
+function Calender() {
+ 
   const [value, onChange] = useState(new Date());
 
   return (
-    <div style={{marginTop: '7rem', marginRight: '2rem'}}>
+    <div className='calender_main'>
+      <Header minWidth={798}  icon="calendar" attached color="teal" content="Select date" />
       <Calendar
         onChange={onChange}
         value={value}
@@ -14,6 +20,6 @@ function MyApp() {
     </div>
   );
 }
-export default MyApp
+export default Calender
 
 
