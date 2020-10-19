@@ -9,7 +9,7 @@ import Navbar from './app/layouts/Header/Header';
 import EventDashboard from './app/Pages/EventDashboard/EventDashboard';
 import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
 import HomePage from './app/Pages/HomePage/HomePage';
-
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <ModalManger />
+      <ToastContainer position='bottom-right' />
       <Route exact path='/' component={HomePage} />
       <Route
         path={"/(.+)"}
