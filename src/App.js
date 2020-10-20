@@ -10,6 +10,7 @@ import EventDashboard from './app/Pages/EventDashboard/EventDashboard';
 import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
 import HomePage from './app/Pages/HomePage/HomePage';
 import { ToastContainer } from 'react-toastify';
+import PlaceholderLoading from './app/Common/Placeholder/Placeholder';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                   key={key}
                 />
                   <Route path="/event/:id" component={EventDetailedPage} />
+                  <Route path='/community' component={PlaceholderLoading} />
               </Switch>
           </Fragment>
         )}
