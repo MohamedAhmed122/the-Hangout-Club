@@ -1,5 +1,26 @@
-import { CREATE_EVENT, UPDATE_EVENT, DELETE_EVENT } from  "./eventType";
+import { 
+    CREATE_EVENT, 
+    UPDATE_EVENT,
+     DELETE_EVENT,
+    FETCH_EVENTS 
+} from  "./eventType";
 
+import fetchSampleData from '../../API/delayAPI'
+import {asyncActionError, asyncActionFinish, asyncActionStart } from '../Async/AsyncAction'
+
+
+export const loadEvents = () =>{
+    return(async (dispatch) =>{
+        dispatch(asyncActionStart())
+        try {
+            const event = await fetchSampleData();
+            dispatch({type: FETCH_EVENTS, payload: event});
+            dispatch(asyncActionFinish())
+        } catch (error) {
+            dispatch(asyncActionError(error))
+        }
+    })
+}
 
 export const createEvent =(event)=>({
     type: CREATE_EVENT,
