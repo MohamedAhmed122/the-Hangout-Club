@@ -12,7 +12,12 @@ function Calender() {
 
   return (
     <div className='calender_main'>
-      <Header minWidth={798}  icon="calendar" attached color="teal" content="Select date" />
+      <Header 
+      style={{backgroundColor: ''}}
+      icon="calendar" 
+      attached 
+      color="teal" 
+      content="Select date" />
       <Calendar
         onChange={onChange}
         value={value}

@@ -5,13 +5,32 @@
     margin-top: 4rem;
  
 }
-.sidebar-left{
+.event-dashboard .sidebar-left{
     flex: 0.25;
 }
-.sidebar-right{
+.event-dashboard .sidebar-right{
     flex: 0.25;
 }
-.main{
+.event-dashboard .main{
     flex: 0.55;
     margin-top: 3rem;
+}
+
+
+.event-dashboard2{
+    display: flex;
+    padding: 10px;
+    /* height: 100vh; */
+    margin-top: 4rem;
+    overflow: hidden;
+}
+.event-dashboard2 .main{
+    flex: 0.7;
+    margin-top: 3rem;
+}
+.event-dashboard2 .sidebar-left{
+    flex: 0.22;
+}
+.event-dashboard2 .sidebar-right{
+    flex: 0;
 }

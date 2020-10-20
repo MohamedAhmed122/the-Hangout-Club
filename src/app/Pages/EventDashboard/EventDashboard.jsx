@@ -18,7 +18,7 @@ export default function EventDashboard() {
 
   if (loading) return <PlaceholderLoading />
     return (
-        <div className='event-dashboard'>
+        <div className={isOpen ?'event-dashboard' : 'event-dashboard2'}>
             <div className='sidebar-left'><Sidebar/></div>
             <div className='main'>
                 <EventList  events={events}/>

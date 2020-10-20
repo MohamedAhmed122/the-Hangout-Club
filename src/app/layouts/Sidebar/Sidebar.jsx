@@ -35,7 +35,7 @@ export default function Sidebar() {
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
              <SidebarRow icon='filter' title='Filter Events'/>
              <SidebarRow icon='user' title='My Profile'/>
-             <SidebarRow icon='rocketchat' title='Join Community' />
+             <SidebarRow icon='rocketchat' title='Join Community' link='/community'/>
              <SidebarRow icon='users' title='My Friends'/>
              <SidebarRow icon='cogs' title='settings'/>
              <SidebarRow 

@@ -2,7 +2,11 @@
     margin-top: 6rem;
     margin-right: 2rem;
 }
+.calender_main ui.teal.attached.header{
+    background-color: #eaeaea;
+}
 .calender_main .react-calendar{
+    /* background-color: #eaeaea; */
     width: 100%;
     border: none;
     box-shadow: 0 1px 2px 0 rgba(34,36,38, .15 );
