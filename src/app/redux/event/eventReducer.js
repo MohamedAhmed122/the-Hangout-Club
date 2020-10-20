@@ -1,10 +1,9 @@
 import { CREATE_EVENT, UPDATE_EVENT, DELETE_EVENT, FETCH_EVENTS } from  "./eventType";
 
-import EventsData from '../../API/API'
 
 
 const initialState = {
-    events : EventsData
+    events : []
 }
 
 const EventReducer = (state =initialState , {type, payload}) =>{
