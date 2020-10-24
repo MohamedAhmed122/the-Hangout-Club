@@ -10,9 +10,8 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 import * as serviceWorker from './serviceWorker';
 import ScrollToTop from './app/Common/ScrollToTop/ScrollToTop';
-import { loadEvents } from './app/redux/event/eventAction';
 
-store.dispatch(loadEvents());
+
 
 ReactDOM.render(
    <Provider store={store}>

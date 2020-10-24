@@ -21,6 +21,10 @@ export const loadEvents = () =>{
         }
     })
 }
+export const listenToEvents = event =>({
+    type: FETCH_EVENTS,
+    payload: event
+}) 
 
 export const createEvent =(event)=>({
     type: CREATE_EVENT,
@@ -31,6 +35,7 @@ export const updateEvent =(event) =>({
     type: UPDATE_EVENT,
     payload: event
 })
+
 export const deleteEvent = (event) =>({
     type: DELETE_EVENT,
     payload: event

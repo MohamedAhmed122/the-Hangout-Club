@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "cuid": "^2.1.8",
     "date-fns": "^2.16.1",
+    "firebase": "^7.24.0",
     "formik": "^2.2.0",
     "google-map-react": "^2.1.8",
     "react": "^16.13.1",
