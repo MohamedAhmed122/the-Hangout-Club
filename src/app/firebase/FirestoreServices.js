@@ -23,3 +23,6 @@ export const dataFromSnapshot = Snapshot =>{
 export const listenToEventsFromFirestore = () =>{
    return db.collection('events');
 } 
+export const listenToEventFromFirestore = eventId =>{
+    return db.collection('events').doc(eventId)
+ } 

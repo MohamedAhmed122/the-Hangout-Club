@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 import Calendar from '../../Components/Calender/Calender'
 
@@ -23,7 +23,7 @@ export default function EventDashboard() {
     UseFirestoreCollection({
         query: listenToEventsFromFirestore,
         data: event => dispatch(listenToEvents(event)),
-        deps: dispatch
+        deps: [dispatch]
     })
 
   if (loading) return <PlaceholderLoading />
