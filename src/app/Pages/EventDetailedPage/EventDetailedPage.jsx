@@ -9,10 +9,11 @@ import { listenToEventFromFirestore } from '../../firebase/FirestoreServices'
 import UseFirestoreDoc from '../../Hooks/useFirestoreDoc'
 import { listenToEvents } from '../../redux/event/eventAction'
 import './StyleEventDetailedPage.css'
+import Error from '../../Common/404/Error'
 
 export default function EventDetailedPage({match}) {
 
-    const { loading } = useSelector(state => state.async)
+    const { loading ,error } = useSelector(state => state.async)
     const dispatch = useDispatch()
    
     const events = useSelector(state => state.event.events.find(event =>
@@ -22,10 +23,11 @@ export default function EventDetailedPage({match}) {
     UseFirestoreDoc({
         query: ()=>listenToEventFromFirestore(match.params.id),
         data: event => dispatch(listenToEvents([event])),
-        deps:[match.params.id]
+        deps:[match.params.id, dispatch]
     })
     
-    if (loading || !events) return <Loading >Loading Event .....</Loading>
+    if (loading || (!events && !error)) return <Loading >Loading Event .....</Loading>
+    if (error) return <Error />
     return (
         <div className='event_detail_page'>
             <div style={{flex: '0.15'}}/>

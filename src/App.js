@@ -11,6 +11,7 @@ import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
 import HomePage from './app/Pages/HomePage/HomePage';
 import { ToastContainer } from 'react-toastify';
 import CommunityPage from './app/Pages/CommunityPage/CommunityPage';
+import Error from './app/Common/404/Error';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                 />
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path='/community' component={CommunityPage} />
+                  <Route path='/error' component={Error} />
               </Switch>
           </Fragment>
         )}
