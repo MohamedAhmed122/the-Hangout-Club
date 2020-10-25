@@ -1,22 +1,34 @@
 
 import React from 'react'
-import { useDispatch } from 'react-redux'
 
 import { useHistory } from 'react-router-dom'
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Label } from 'semantic-ui-react'
 import {format} from 'date-fns'
 
-import { deleteEvent } from '../../../../redux/event/eventAction'
+
 
 import './StyleEventListItem.css'
+import { deleteEventFromFirestore } from '../../../../firebase/FirestoreServices'
 
 export default function EventListItem({event }) {
     const history = useHistory()
-    const dispatch = useDispatch()
     return (
         <div className='wrapper'>
             <div className='background'
-            style={{backgroundImage: `url(/assets/categoryImages/${event.category}.jpg)`}}> </div>
+            style={{backgroundImage: `url(/assets/categoryImages/${event.category}.jpg)`}}> 
+           {event.isCanceled ? <Label
+            ribbon='right'
+            style={{top: '50px'}}
+            color='red'
+            content='This Event has been Deactivated '
+            />:
+            <Label
+            ribbon='right'
+            style={{top: '50px',  }}
+            color='teal'
+            content={`${event.category.toUpperCase()} EVENT `} />
+            }
+            </div>
             <div style={{display: 'flex'}}>
                 <div className='user-image'>
                     <img className='img-profile' src={event.hostPhotoURL} alt='' />
@@ -41,7 +53,7 @@ export default function EventListItem({event }) {
                         content="view" 
                         onClick={() => history.push(`/event/${event.id}`)}
                      />
-                    <Button color="red" floated="right" content="Delete" onClick={()=> dispatch(deleteEvent(event.id))} />
+                    <Button color="red" floated="right" content="Delete" onClick={()=> deleteEventFromFirestore(event)} />
                 </div>
             </div>
         </div>

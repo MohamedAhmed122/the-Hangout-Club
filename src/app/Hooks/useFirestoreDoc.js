@@ -5,10 +5,11 @@ import {asyncActionError, asyncActionFinish, asyncActionStart } from '../redux/A
 
 
 
-const UseFirestoreDoc =({query, data, deps}) =>{
+const UseFirestoreDoc =({query, data, deps, shouldExecute =true}) =>{
     const dispatch = useDispatch();
    
     useEffect(()=>{
+        if (!shouldExecute) return;
         dispatch(asyncActionStart())
         const unsubscribe = query().onSnapshot(
             snapshot=>{

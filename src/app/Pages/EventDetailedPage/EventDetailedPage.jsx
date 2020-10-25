@@ -19,7 +19,7 @@ export default function EventDetailedPage({match}) {
     const events = useSelector(state => state.event.events.find(event =>
         event.id === match.params.id
     ))
-
+ 
     UseFirestoreDoc({
         query: ()=>listenToEventFromFirestore(match.params.id),
         data: event => dispatch(listenToEvents([event])),

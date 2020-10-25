@@ -3,12 +3,9 @@ import cuid from 'cuid'
 import React from 'react'
 import { Link, useHistory, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
-
 import { Button,Header, Segment } from 'semantic-ui-react'
 import './StyleEventForm.css'
-
-import { createEvent , updateEvent } from '../../../redux/event/eventAction'
+import { createEvent , listenToEvents, updateEvent } from '../../../redux/event/eventAction'
 import { categoryData } from '../../../API/categoryOption'
 import * as Yup from 'yup'
 import { Formik ,Form } from 'formik';
@@ -17,10 +14,17 @@ import FormArea from '../../Form/FormArea';
 import FormDate from '../../Form/FormDate';
 import FormSelect from '../../Form/FormSelect';
 import FormPlace from '../../Form/FormPlaces';
+import Error from '../../../Common/404/Error';
+import Loading from '../../../Common/Loading/Loading'
+import {addEventToFirestore, cancelEvent, listenToEventFromFirestore, updateEventToFirestore} from '../../../firebase/FirestoreServices'
+import UseFirestoreDoc from '../../../Hooks/useFirestoreDoc'
+import { toast } from 'react-toastify';
 
 const EventForm =({match}) => {
-    
-
+     const { loading ,error } = useSelector(state => state.async)
+     const dispatch = useDispatch() 
+     const history = useHistory()
+   
     const selectedEvent = useSelector((state) =>
     state.event.events.find((e) => e.id === match.params.id)
   );
@@ -39,9 +43,11 @@ const EventForm =({match}) => {
     },
     date: "",
   };
-    const dispatch = useDispatch() 
-    const history = useHistory()
- 
+   
+    const handleCancel =()=>{
+      cancelEvent(selectedEvent)
+      history.push('/event')
+    }
 
     const validationSchema = Yup.object({
       title: Yup.string().required("You must provide a title"),
@@ -56,23 +62,32 @@ const EventForm =({match}) => {
       date: Yup.string().required(),
       });
 
+
+      UseFirestoreDoc({
+        shouldExecute: !!match.params.id,
+        query: ()=>listenToEventFromFirestore(match.params.id),
+        data: event => dispatch(listenToEvents([event])),
+        deps:[match.params.id, dispatch],
+        
+    })
+    if (loading) return <Loading >Loading Event .....</Loading>
+    if (error) return <Error/>
     return (
         <div className='event-form'>
             <div className='form-main'>
               <Segment clearing>
                 <Formik
-                  onSubmit={(values) => {
-                    selectedEvent
-                      ? dispatch(updateEvent({ ...selectedEvent, ...values }))
-                      : dispatch(
-                          createEvent({
-                            ...values,
-                            id: cuid(),
-                            hostedBy: "Bob",
-                            attendees: [],
-                            hostPhotoURL: "/assets/user.png",
-                          })
-                        );
+                  onSubmit={async(values , {setSubmitting}) => {
+                    try {
+                      selectedEvent? 
+                      await updateEventToFirestore(values):
+                      await addEventToFirestore(values)
+                      setSubmitting(false)
+                    } catch (error) {
+                      toast.error(error.message)
+                      setSubmitting(false)
+                    }
+                    
                   // console.log(values)
                     history.push("/event");
                   }}
@@ -113,6 +128,13 @@ const EventForm =({match}) => {
                         showTimeSelect
                         timeCaption="time"
                         dateFormat="MMMM d, yyyy h:m a"
+                      />
+                      <Button
+                        type="button"
+                        floated="left"
+                        color={selectedEvent.isCanceled ? 'green': 'red'}
+                        onClick={() => handleCancel() }
+                        content={selectedEvent.isCanceled ? 'Reactivate Event': 'Cancel Event'}
                       />
                       <Button
                         type="submit"
