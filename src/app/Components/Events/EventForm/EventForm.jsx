@@ -1,11 +1,10 @@
 /* global google */
-import cuid from 'cuid'
 import React from 'react'
 import { Link, useHistory, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button,Header, Segment } from 'semantic-ui-react'
 import './StyleEventForm.css'
-import { createEvent , listenToEvents, updateEvent } from '../../../redux/event/eventAction'
+import {  listenToEvents } from '../../../redux/event/eventAction'
 import { categoryData } from '../../../API/categoryOption'
 import * as Yup from 'yup'
 import { Formik ,Form } from 'formik';
@@ -45,8 +44,11 @@ const EventForm =({match}) => {
   };
    
     const handleCancel =()=>{
-      cancelEvent(selectedEvent)
-      history.push('/event')
+      if (selectedEvent){
+        cancelEvent(selectedEvent)
+        history.push('/event')
+      } else return;
+     
     }
 
     const validationSchema = Yup.object({
@@ -132,9 +134,9 @@ const EventForm =({match}) => {
                       <Button
                         type="button"
                         floated="left"
-                        color={selectedEvent.isCanceled ? 'green': 'red'}
+                        color={selectedEvent?.isCanceled ? 'green': 'red'}
                         onClick={() => handleCancel() }
-                        content={selectedEvent.isCanceled ? 'Reactivate Event': 'Cancel Event'}
+                        content={selectedEvent?.isCanceled ? 'Reactivate Event': 'Cancel Event'}
                       />
                       <Button
                         type="submit"
