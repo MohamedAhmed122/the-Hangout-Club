@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Button, Segment } from 'semantic-ui-react'
 import './Style.error.css'
 
-export default function Error() {
+export default function ErrorComponent() {
 
     return (
         <Segment placeholder style={{marginTop:50}}>
