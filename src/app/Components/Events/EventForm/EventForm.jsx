@@ -85,6 +85,7 @@ const EventForm =({match}) => {
                       await updateEventToFirestore(values):
                       await addEventToFirestore(values)
                       setSubmitting(false)
+                      toast.success('Success, You have Create new Event')
                     } catch (error) {
                       toast.error(error.message)
                       setSubmitting(false)
@@ -133,6 +134,7 @@ const EventForm =({match}) => {
                       />
                       <Button
                         type="button"
+                     
                         floated="left"
                         color={selectedEvent?.isCanceled ? 'green': 'red'}
                         onClick={() => handleCancel() }

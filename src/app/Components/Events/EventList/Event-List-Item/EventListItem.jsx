@@ -18,13 +18,13 @@ export default function EventListItem({event }) {
             style={{backgroundImage: `url(/assets/categoryImages/${event.category}.jpg)`}}> 
            {event.isCanceled ? <Label
             ribbon='right'
-            style={{top: '50px'}}
+            style={{top: '50px', paddingRight:40 ,}}
             color='red'
-            content='This Event has been Deactivated '
+            content='This Event has been Canceled '
             />:
             <Label
             ribbon='right'
-            style={{top: '50px',  }}
+            style={{top: '50px', paddingRight:40}}
             color='teal'
             content={`${event.category.toUpperCase()} EVENT `} />
             }
