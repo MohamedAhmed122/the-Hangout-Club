@@ -4,14 +4,14 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
-import {store} from './app/redux/store'
+import {Store} from './app/redux/store'
 
 import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 import * as serviceWorker from './serviceWorker';
 import ScrollToTop from './app/Common/ScrollToTop/ScrollToTop';
 
-
+const store = Store();
 
 ReactDOM.render(
    <Provider store={store}>

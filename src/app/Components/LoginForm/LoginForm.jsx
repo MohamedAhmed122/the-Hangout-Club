@@ -1,11 +1,13 @@
 import { Form, Formik } from 'formik'
 import React from 'react'
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import { Button } from 'semantic-ui-react';
 import * as Yup from 'yup';
 import ModalWrapper from '../../Common/Modal/ModalWrapper'
 import FromInput from '../../Components/Form/FormInput'
-import { signInUser } from '../../redux/Auth/AuthAction';
+import { signInWithEmail } from '../../firebase/firebaseService';
 import { closeModal } from '../../redux/Modal/ModalAction';
 
 export default function LoginForm() {
@@ -19,10 +21,16 @@ export default function LoginForm() {
                     password: Yup.string().required()
                 })}
                 // to turn the loading off you  need to add setSubmitting 
-                onSubmit={(values, {setSubmitting})=>{
-                    dispatch(signInUser(values));
-                    setSubmitting(false)
-                    dispatch(closeModal())
+                onSubmit={async(values, {setSubmitting})=>{
+                    try {
+                        await signInWithEmail(values);
+                        setSubmitting(false)
+                        dispatch(closeModal())
+                    } catch (error) {
+                        setSubmitting(false)
+                        toast.error('Oops, something Went Wrong')
+                    }
+                    
                 }}
             >
                 {({isSubmitting , dirty, isValid})=>(

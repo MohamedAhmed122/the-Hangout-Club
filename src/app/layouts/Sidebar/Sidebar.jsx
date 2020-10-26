@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import SidebarRow from './SidebarRow/SidebarRow'
 import './StyleSidebar.css'
 
-import { signOutUser } from '../../redux/Auth/AuthAction'
+import { signOutUser } from '../../firebase/firebaseService'
 import { useHistory } from 'react-router-dom'
 import { openModal } from '../../redux/Modal/ModalAction'
-
+ 
 export default function Sidebar() {
     const history = useHistory()
     const dispatch = useDispatch()
@@ -15,7 +15,7 @@ export default function Sidebar() {
 
     const handleSignOut = () =>{
         if (isAuthenticated){
-            dispatch(signOutUser())
+            signOutUser();
             history.push('/')
         } else {
             dispatch(openModal({modalType: 'LoginForm'}))
@@ -24,8 +24,7 @@ export default function Sidebar() {
     }
     return (
         <div className='sidebar_main'>
-            {
-                isAuthenticated &&
+            { isAuthenticated &&
                 <div className='sidebar_header'>
                     <img src='/assets/user1.png' alt=''/>
                     <h3>Mohamed Youssef</h3>
