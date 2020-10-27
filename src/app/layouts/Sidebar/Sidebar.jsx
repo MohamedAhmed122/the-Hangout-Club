@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 export default function Sidebar() {
     const history = useHistory()
     const dispatch = useDispatch()
-    const { isAuthenticated } = useSelector(state => state.auth)
+    const { isAuthenticated, currentUser } = useSelector(state => state.auth)
 
     const handleSignOut = async() =>{
         if (isAuthenticated){
@@ -32,8 +32,8 @@ export default function Sidebar() {
         <div className='sidebar_main'>
             {isAuthenticated &&
                 <div className='sidebar_header'>
-                    <img src='/assets/user1.png' alt=''/>
-                    <h3>Mohamed Youssef</h3>
+                    <img src={currentUser.photoURl} alt=''/>
+                    <h3>{currentUser.displayName}</h3>
                 </div>
             }
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />

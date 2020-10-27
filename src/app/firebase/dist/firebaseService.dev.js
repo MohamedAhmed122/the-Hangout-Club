@@ -7,6 +7,8 @@ exports.RegisterInFirebase = exports.signOutUser = exports.signInWithEmail = voi
 
 var _firebase = _interopRequireDefault(require("./firebase.config"));
 
+var _FirestoreServices = require("./FirestoreServices");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var auth = _firebase["default"].auth(); // const dispatch = useDispatch()
@@ -42,19 +44,23 @@ var RegisterInFirebase = function RegisterInFirebase(cred) {
           }));
 
         case 6:
+          _context.next = 8;
+          return regeneratorRuntime.awrap((0, _FirestoreServices.setUserProfileData)(response.user));
+
+        case 8:
           return _context.abrupt("return", _context.sent);
 
-        case 9:
-          _context.prev = 9;
+        case 11:
+          _context.prev = 11;
           _context.t0 = _context["catch"](0);
           throw _context.t0;
 
-        case 12:
+        case 14:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 9]]);
+  }, null, null, [[0, 11]]);
 };
 
 exports.RegisterInFirebase = RegisterInFirebase;

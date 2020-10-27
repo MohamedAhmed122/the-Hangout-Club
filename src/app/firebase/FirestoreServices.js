@@ -52,3 +52,11 @@ export const cancelEvent = event =>{
         isCanceled: !event.isCanceled
     })
 }
+
+export const setUserProfileData = user =>{
+    db.collection('users').doc(user.uid).set({
+        displayName: user.displayName,
+        email: user.email,
+        createdAt : firebase.firestore.FieldValue.serverTimestamp()
+    })
+}
