@@ -26,7 +26,11 @@ export default function Sidebar() {
         } else {
             dispatch(openModal({modalType: 'LoginForm'}))
         }
-       
+    }
+    const handleSettings = () =>{
+        if(isAuthenticated){
+            history.push(`/settings/${currentUser.uid}`)
+        }else return;
     }
     return (
         <div className='sidebar_main'>
@@ -41,7 +45,7 @@ export default function Sidebar() {
              <SidebarRow icon='user' title='My Profile'/>
              <SidebarRow icon='rocketchat' title='Join Community' link='/community'/>
              <SidebarRow icon='users' title='My Friends'/>
-             <SidebarRow icon='cogs' title='settings'/>
+             <SidebarRow icon='cogs' title='settings' onClick={()=>handleSettings()}/>
              <SidebarRow 
              onClick={()=>handleSignOut()} 
              icon='sign out alternate' 

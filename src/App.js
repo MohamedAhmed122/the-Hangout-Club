@@ -12,6 +12,7 @@ import HomePage from './app/Pages/HomePage/HomePage';
 import { ToastContainer } from 'react-toastify';
 import CommunityPage from './app/Pages/CommunityPage/CommunityPage';
 import Error from './app/Common/404/Error';
+import SettingsPage from './app/Pages/SettingsPage/SettingsPage';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path='/community' component={CommunityPage} />
                   <Route path='/error' component={Error} />
+                  <Route path='/settings/:id' component={SettingsPage} />
               </Switch>
           </Fragment>
         )}
