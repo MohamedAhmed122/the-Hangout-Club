@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import firebase from './firebase.config'
 import { setUserProfileData } from './FirestoreServices';
 const auth = firebase.auth()
@@ -18,5 +19,25 @@ export const RegisterInFirebase = async cred =>{
         return await setUserProfileData(response.user)
     } catch (error) {
         throw error;
+    }
+}
+
+export const SocialLogin = async selectedProvider =>{
+    let provider;
+
+    if (selectedProvider === 'facebook'){
+        provider = new firebase.auth.FacebookAuthProvider()
+    }
+    if (selectedProvider === 'google'){
+        provider = new firebase.auth.GoogleAuthProvider();
+    }
+    try {
+        const result = await auth.signInWithPopup(provider);
+        console.log(result);
+        if(result.additionalUserInfo.isNewUser){
+            setUserProfileData(result.user);
+        }
+    } catch (error) {
+        toast.error('Oops, Something Went Wrong With Social Logins')
     }
 }

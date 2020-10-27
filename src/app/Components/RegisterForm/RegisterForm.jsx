@@ -1,9 +1,8 @@
 import { Form, Formik } from 'formik'
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-
-import { Button, Label } from 'semantic-ui-react';
+import SocialLogins from '../SocialLogins/SocialLogins'
+import { Button, Divider, Label } from 'semantic-ui-react';
 import * as Yup from 'yup';
 import ModalWrapper from '../../Common/Modal/ModalWrapper'
 import FromInput from '../../Components/Form/FormInput'
@@ -54,6 +53,8 @@ export default function RegisterForm() {
                 )}
 
             </Formik>
+            <Divider horizontal>Or</Divider>
+            <SocialLogins />
         </ModalWrapper>
     )
 }

@@ -31,7 +31,9 @@ var AuthReducer = function AuthReducer() {
         isAuthenticated: true,
         currentUser: {
           email: payload.email,
-          photoURl: '/assets/user.png',
+          photoURl: payload.photoURl,
+          uid: payload.uid,
+          providerId: payload.providerData[0].providerId,
           displayName: payload.displayName
         }
       });
