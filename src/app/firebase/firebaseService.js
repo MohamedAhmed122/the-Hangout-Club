@@ -7,3 +7,14 @@ export const signInWithEmail =  (user) =>
 
 
 export const signOutUser = () => auth.signOut();
+
+export const RegisterInFirebase = async cred =>{
+    try {
+        const response = await auth.createUserWithEmailAndPassword(cred.email, cred.password);
+        return await response.user.updateProfile({
+            displayName: cred.displayName
+        })
+    } catch (error) {
+        throw error;
+    }
+}

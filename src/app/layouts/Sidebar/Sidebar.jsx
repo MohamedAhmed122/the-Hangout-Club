@@ -7,16 +7,22 @@ import './StyleSidebar.css'
 import { signOutUser } from '../../firebase/firebaseService'
 import { useHistory } from 'react-router-dom'
 import { openModal } from '../../redux/Modal/ModalAction'
+import { toast } from 'react-toastify'
  
 export default function Sidebar() {
     const history = useHistory()
     const dispatch = useDispatch()
     const { isAuthenticated } = useSelector(state => state.auth)
 
-    const handleSignOut = () =>{
+    const handleSignOut = async() =>{
         if (isAuthenticated){
-            signOutUser();
-            history.push('/')
+            try {
+                await signOutUser();
+                history.push('/')
+            } catch (error) {
+                toast.error(`Oops, ${error.message} `)
+            }
+            
         } else {
             dispatch(openModal({modalType: 'LoginForm'}))
         }
@@ -24,13 +30,12 @@ export default function Sidebar() {
     }
     return (
         <div className='sidebar_main'>
-            { isAuthenticated &&
+            {isAuthenticated &&
                 <div className='sidebar_header'>
                     <img src='/assets/user1.png' alt=''/>
                     <h3>Mohamed Youssef</h3>
                 </div>
             }
-           
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
              <SidebarRow icon='filter' title='Filter Events'/>
              <SidebarRow icon='user' title='My Profile'/>

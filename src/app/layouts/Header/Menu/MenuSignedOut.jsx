@@ -2,12 +2,23 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "semantic-ui-react";
 import { openModal } from "../../../redux/Modal/ModalAction";
-const SignedOutMenu = ({ setAuth }) =>{ 
+const SignedOutMenu = () =>{ 
     const dispatch = useDispatch()
     return(
         <>
-            <Button onClick={() => dispatch(openModal({modalType: 'LoginForm'}))} basic inverted content="Login" />
-            <Button basic inverted content="Register" style={{ marginLeft: "0.6em" }} />
+            <Button 
+            onClick={() => dispatch(openModal({modalType: 'LoginForm'}))} 
+            basic 
+            inverted 
+            content="Login" 
+            />
+            <Button
+            onClick={() => dispatch(openModal({modalType: 'RegisterForm'}))}
+            basic 
+            inverted
+            content="Register" 
+            style={{ marginLeft: "0.6em" }} 
+            />
         </>
 )}
 export default SignedOutMenu;
