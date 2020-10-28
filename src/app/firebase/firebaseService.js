@@ -40,4 +40,10 @@ export const SocialLogin = async selectedProvider =>{
     } catch (error) {
         toast.error('Oops, Something Went Wrong With Social Logins')
     }
+} 
+
+export const updatePassword = password =>{
+
+    const user = firebase.auth().currentUser;
+    return user.updatePassword(password);
 }

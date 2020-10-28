@@ -1,43 +1,56 @@
 import React from 'react'
-import { Button, Header } from 'semantic-ui-react'
+import { Button, Label, } from 'semantic-ui-react'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import FormInput from '../Form/FormPlaces'
+import FormInput from '../Form/FormInput'
+import {updatePassword } from '../../firebase/firebaseService'
+import { toast } from 'react-toastify'
 export default function SettingEmail() {
     return (
         <div>
-        <Header 
-        content='Account Settings' 
-        color='teal' 
-        size='large' 
-        />
+      
         
         <div>
             <p>Please, Use this Form To Change Your Password</p>
             <Formik
-                initialValues={{newPassword1: '', newPassword2: ''}}
+                initialValues={{password: '', coPassword: ''}}
                 validationSchema={Yup.object({
-                    newPassword1: Yup.string().required('Password is required'),
-                    newPassword2: Yup.string().oneOf(
-                    [Yup.ref('newPassword1'), null],
-                    'Passwords do not match'
-                    ),
+                    password: Yup.string().required('Password is required'),
+                    coPassword: Yup.string()
+                        .oneOf([Yup.ref('password'), null], 'Passwords must match')
                 })}        
-                onSubmit={(values)=>{
-                    console.log(values)
+                onSubmit={async(values,{setSubmitting, setErrors,resetForm})=>{
+                    try {
+                        await updatePassword(values.password)
+                        setSubmitting(false)
+                        toast.success('Success, You just Updated Your Password')
+                        resetForm()
+                    } catch (error) {
+                        setErrors({auth: error.message})
+                        setSubmitting(false)
+                        toast.error('Oops, something Went Wrong')
+                    }
                 }}
             >
-                {({isSubmitting, dirty,isValid })=>(
+                {({isSubmitting , dirty, isValid, errors })=>(
                     <Form className='ui form'>
-                        <FormInput name='newPassword1' placeholder='New Password' />
-                        <FormInput name='newPassword1' placeholder='Confirm Password' />
+                        <FormInput 
+                        name='password'
+                        placeholder='New Password' 
+                        // type='password'
+                        />
+                        <FormInput 
+                        name='coPassword'
+                        // type='password'
+                        placeholder='Confirm Password' />
+                        {errors.auth&& <Label style={{marginTop: '10px'}} content={errors.auth} color='red' basic />}
                         <Button 
-                        content='Update Password'
-                        positive
-                        size='large'
                         disabled={!isValid || !dirty || isSubmitting} 
                         type='submit' 
                         loading={isSubmitting}
+                        positive
+                        content='Update Password' 
+                        size='large'
                         style={{marginBottom:15, display: 'block'}}
                         />
                     </Form>

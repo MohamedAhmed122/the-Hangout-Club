@@ -15,10 +15,10 @@ import Error from './app/Common/404/Error';
 import SettingsPage from './app/Pages/SettingsPage/SettingsPage';
 
 
+
 function App() {
 
   const { key } = useLocation();
- 
 
   return (
     <div className="App">

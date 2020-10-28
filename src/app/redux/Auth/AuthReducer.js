@@ -1,7 +1,7 @@
 import {SIGN_IN_USER ,SIGN_OUT_USER} from './AuthType'
 
 
-const initialState = {
+const initialState = { 
     isAuthenticated: false,
     currentUser: null
 }
