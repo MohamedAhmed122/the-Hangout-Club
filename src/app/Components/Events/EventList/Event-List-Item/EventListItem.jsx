@@ -9,13 +9,16 @@ import {format} from 'date-fns'
 
 import './StyleEventListItem.css'
 import { deleteEventFromFirestore } from '../../../../firebase/FirestoreServices'
+import { handleColor } from '../../../../Common/utils/utils'
 
 export default function EventListItem({event }) {
     const history = useHistory()
     return (
         <div className='wrapper'>
             <div className='background'
-            style={{backgroundImage: `url(/assets/categoryImages/${event.category}.jpg)`}}> 
+            style=
+            {{backgroundImage: `linear-gradient( rgba(0, 01, 0, 0.6), rgba(0, 0, 0, 0.6) )
+            ,url(/assets/categoryImages/${event.category}.jpg)`}}> 
            {event.isCanceled ? <Label
             ribbon='right'
             style={{top: '50px', paddingRight:40 ,}}
@@ -25,7 +28,7 @@ export default function EventListItem({event }) {
             <Label
             ribbon='right'
             style={{top: '50px', paddingRight:40}}
-            color='teal'
+            color={handleColor(event.category)}
             content={`${event.category.toUpperCase()} EVENT `} />
             }
             </div>

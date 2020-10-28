@@ -27,25 +27,31 @@ export default function Sidebar() {
             dispatch(openModal({modalType: 'LoginForm'}))
         }
     }
-    const handleSettings = () =>{
+    const handleRouting = (router) =>{
         if(isAuthenticated){
-            history.push(`/settings/${currentUser.uid}`)
+            if(router === 'setting'){
+                history.push(`/settings/${currentUser.uid}`)
+            }
+            if(router === 'profile'){
+                history.push(`/profile/${currentUser.uid}`)
+            }
+           
         }else return;
     }
     return (
         <div className='sidebar_main'>
             {isAuthenticated &&
                 <div className='sidebar_header'>
-                    <img src={currentUser.photoURl} alt=''/>
-                    <h3>{currentUser.displayName}</h3>
+                    <img src={currentUser.photoURl||'/assets/user.png'}alt=' ' />
+                    <h3>{currentUser.displayName ||currentUser.email }</h3>
                 </div>
             }
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
              <SidebarRow icon='filter' title='Filter Events'/>
-             <SidebarRow icon='user' title='My Profile'/>
+             <SidebarRow icon='user' title='My Profile' onClick={()=> handleRouting('profile')}/>
              <SidebarRow icon='rocketchat' title='Join Community' link='/community'/>
              <SidebarRow icon='users' title='My Friends'/>
-             <SidebarRow icon='cogs' title='settings' onClick={()=>handleSettings()}/>
+             <SidebarRow icon='cogs' title='settings' onClick={()=> handleRouting('setting')}/>
              <SidebarRow 
              onClick={()=>handleSignOut()} 
              icon='sign out alternate' 

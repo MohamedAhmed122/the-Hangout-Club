@@ -3,12 +3,13 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { Button, Label } from 'semantic-ui-react';
+import { Button, Divider, Label } from 'semantic-ui-react';
 import * as Yup from 'yup';
 import ModalWrapper from '../../Common/Modal/ModalWrapper'
 import FromInput from '../../Components/Form/FormInput'
 import { signInWithEmail } from '../../firebase/firebaseService';
 import { closeModal } from '../../redux/Modal/ModalAction';
+import SocialLogins from '../SocialLogins/SocialLogins'
 
 export default function LoginForm() {
     const dispatch = useDispatch()
@@ -52,6 +53,8 @@ export default function LoginForm() {
                 )}
 
             </Formik>
+            <Divider horizontal>Or</Divider>
+            <SocialLogins />
         </ModalWrapper>
     )
 }

@@ -7,7 +7,7 @@ export default function MenuSignedIn() {
     return (
         <div className='sign_in'>     
             <img src={currentUser.photoURl||'/assets/user.png'}alt=' ' />
-            <p>{currentUser.displayName}</p>
+            <p>{currentUser.displayName || currentUser.email}</p>
         </div>
     )
 }

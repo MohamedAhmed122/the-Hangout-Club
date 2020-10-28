@@ -37,11 +37,11 @@ export default function SettingEmail() {
                         <FormInput 
                         name='password'
                         placeholder='New Password' 
-                        // type='password'
+                        type='password'
                         />
                         <FormInput 
                         name='coPassword'
-                        // type='password'
+                        type='password'
                         placeholder='Confirm Password' />
                         {errors.auth&& <Label style={{marginTop: '10px'}} content={errors.auth} color='red' basic />}
                         <Button 

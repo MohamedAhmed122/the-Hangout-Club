@@ -22,6 +22,7 @@ export default function SettingsPage() {
         <div className='settings_style'>
             <Segment style={{width: '90vw', marginTop: '10rem'}}>
                 <Header 
+                style={{marginTop: 20}}
                 content='Account Settings' 
                 color='teal' 
                 size='large' 

@@ -5,4 +5,5 @@ export const categoryData = [
     {key: 'food', text: 'Food', value: 'food'},
     {key: 'music', text: 'Music', value: 'music'},
     {key: 'travel', text: 'Travel', value: 'travel'},
+    {key: 'education', text: 'Education', value: 'education'},
 ];
