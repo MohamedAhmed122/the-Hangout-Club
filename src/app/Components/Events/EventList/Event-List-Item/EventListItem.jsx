@@ -17,7 +17,7 @@ export default function EventListItem({event }) {
         <div className='wrapper'>
             <div className='background'
             style=
-            {{backgroundImage: `linear-gradient( rgba(0, 01, 0, 0.6), rgba(0, 0, 0, 0.6) )
+            {{backgroundImage: `linear-gradient( rgba(0, 01, 0, 0.4), rgba(0, 0, 0, 0.4) )
             ,url(/assets/categoryImages/${event.category}.jpg)`}}> 
            {event.isCanceled ? <Label
             ribbon='right'
