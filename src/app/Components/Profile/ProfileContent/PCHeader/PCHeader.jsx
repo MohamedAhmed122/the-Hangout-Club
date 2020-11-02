@@ -9,10 +9,10 @@ export default function PCHeader() {
                 style={{backgroundImage: `url(${img})`}}>
                     <div className='header_info'>
                         <img src={tyalor} alt='' />
-                        <h1>Tyalor Swift</h1>
+                      
                     </div>
             </div>
-            <Segment style={{marginTop: '13rem', marginBottom: '3rem'}}>
+            <Segment style={{marginTop: '7rem', marginBottom: '3rem'}}>
             <div className='person_info'>
                
                     <h3>
@@ -62,6 +62,6 @@ export default function PCHeader() {
         
     )
 }
-const img= 'https://i.pinimg.com/originals/65/af/bc/65afbcedcc45273a23fd140fe07923b6.jpg'
+const img= 'https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 const tyalor ='https://www.rollingstone.com/wp-content/uploads/2019/08/taylor-swift-ultimate-album-sheff.jpg'
 
