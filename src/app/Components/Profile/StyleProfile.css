@@ -3,9 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 7rem;
+  
+    background-color: #eaeaea;
 }
 .tab{
+    margin-top: 7rem;
     width: 70%;
 }
 
