@@ -1,14 +1,18 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Icon, Segment } from 'semantic-ui-react'
 import './PCHeader.css'
 
 export default function PCHeader() {
+
+    const { currentUserProfile } = useSelector(state => state.profile)
+
     return (
         <div className='PC_header_main'>
             <div className='wrapper_header'
                 style={{backgroundImage: `url(${tel})`}}>
                     <div className='header_info'>
-                        <img src={tyalor} alt='' />
+                        <img src={currentUserProfile.photoURL || tyalor} alt='' />
                       
                     </div>
             </div>
@@ -17,7 +21,7 @@ export default function PCHeader() {
                
                     <h3>
                         <Icon name='user' color='teal' />
-                        Tyalor Swift
+                       { currentUserProfile.displayName}
                     </h3>
                     <h3>
                         <Icon name='birthday cake' color='teal' />

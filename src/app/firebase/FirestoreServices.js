@@ -60,3 +60,7 @@ export const setUserProfileData = user =>{
         createdAt : firebase.firestore.FieldValue.serverTimestamp()
     })
 }
+
+export const getUserProfile = userId =>{
+    return db.collection('users').doc(userId)
+}

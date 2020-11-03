@@ -7,7 +7,7 @@ import './StyleProfile.css'
 export default function ProfileHeader() {
     const [, setActiveTab] = useState(0)
     const panes = [
-      { menuItem: "Profile ", render: () =><ProfileContent />},
+      { menuItem: "Profile ", render: () =><ProfileContent  />},
       { menuItem: "Profile Settings", render: () =><ProfileSettings />},
       
     ];
