@@ -64,3 +64,19 @@ export const setUserProfileData = user =>{
 export const getUserProfile = userId =>{
     return db.collection('users').doc(userId)
 }
+
+
+export const updateProfile = async (value) => {
+    const user = firebase.auth().currentUser;
+    try {
+        if (user.displayName !== value.displayName){
+            await user.updateProfile({
+                displayName: value.displayName,
+            });
+        }
+     
+      return await db.collection("users").doc(user.uid).update(value);
+    } catch (error) {
+      throw error;
+    }
+  };

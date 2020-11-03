@@ -13,9 +13,9 @@ export default function ProfilePhoto() {
                
                 {
                     images.map(img=>(
-                        <Fragment>
+                        <Fragment key={img.id}  >
                             <div className='photo_top'>
-                                <img key={img.id} src={img.img} alt='ii' />
+                                <img src={img.img} alt='ii' />
                                 {/* <div className='btn_group'>
                                     <button className='photo_btn delete'>
                                         <Icon name='trash' 
