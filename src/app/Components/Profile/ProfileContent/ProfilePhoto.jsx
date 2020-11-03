@@ -5,13 +5,18 @@ import './StyleProfilePhoto.css'
 export default function ProfilePhoto() {
     return (
         <Segment>
+             {/* <h3>
+                <Icon name='camera' color='teal' />
+                My Gallery
+            </h3> */}
             <div className='profile_photo'>
+               
                 {
                     images.map(img=>(
                         <Fragment>
                             <div className='photo_top'>
                                 <img key={img.id} src={img.img} alt='ii' />
-                                <div className='btn_group'>
+                                {/* <div className='btn_group'>
                                     <button className='photo_btn delete'>
                                         <Icon name='trash' 
                                         size='large' style ={{color: 'white'}} />
@@ -20,7 +25,7 @@ export default function ProfilePhoto() {
                                         <Icon name='check'
                                         size='large' style ={{color: 'white'}} />
                                     </button>
-                                </div>
+                                </div> */}
                             </div>      
                             
                         </Fragment>

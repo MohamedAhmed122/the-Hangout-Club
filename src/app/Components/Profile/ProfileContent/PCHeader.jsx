@@ -6,7 +6,7 @@ export default function PCHeader() {
     return (
         <div className='PC_header_main'>
             <div className='wrapper_header'
-                style={{backgroundImage: `url(${img})`}}>
+                style={{backgroundImage: `url(${tel})`}}>
                     <div className='header_info'>
                         <img src={tyalor} alt='' />
                       
@@ -64,4 +64,4 @@ export default function PCHeader() {
 }
 const img= 'https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
 const tyalor ='https://www.rollingstone.com/wp-content/uploads/2019/08/taylor-swift-ultimate-album-sheff.jpg'
-
+const tel='https://hips.hearstapps.com/esq.h-cdn.co/assets/cm/15/06/54d447c3b4e79_-_esq110114esq_a014-share-swift.jpg'
