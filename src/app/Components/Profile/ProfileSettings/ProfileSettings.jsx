@@ -1,10 +1,13 @@
 import React from 'react'
 import SettingsInfo from './SettingsInfo'
 
-export default function ProfileSettings() {
+export default function ProfileSettings({isCurrent}) {
     return (
         <div>
-            <SettingsInfo />
+            {
+                isCurrent ?  <SettingsInfo /> : null
+            }
+           
         </div>
     )
 }

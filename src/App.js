@@ -23,9 +23,8 @@ function App() {
 
   const { key } = useLocation();
   const {initialized} = useSelector(state => state.async)
-  const {currentUserProfile} = useSelector(state => state.profile)
 
-  if (!initialized || !currentUserProfile) return <Loading/>
+  if ( !initialized) return <Loading/>
   return (
     <div className="App">
       <ModalManger />

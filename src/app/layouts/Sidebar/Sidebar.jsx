@@ -12,8 +12,8 @@ import { toast } from 'react-toastify'
 export default function Sidebar() {
     const history = useHistory()
     const dispatch = useDispatch()
-    const { isAuthenticated } = useSelector(state => state.auth)
-    const { currentUserProfile } = useSelector(state => state.profile)
+    const { isAuthenticated, currentUser } = useSelector(state => state.auth)
+    // const { currentUserProfile } = useSelector(state => state.profile)
 
     const handleSignOut = async() =>{
         if (isAuthenticated){
@@ -31,10 +31,10 @@ export default function Sidebar() {
     const handleRouting = (router) =>{
         if(isAuthenticated){
             if(router === 'setting'){
-                history.push(`/settings/${currentUserProfile.id}`)
+                history.push(`/settings/${currentUser.uid}`)
             }
             if(router === 'profile'){
-                history.push(`/profile/${currentUserProfile.id}`)
+                history.push(`/profile/${currentUser.uid}`)
             }
            
         }else return;
@@ -44,7 +44,7 @@ export default function Sidebar() {
             {isAuthenticated &&
                 <div className='sidebar_header'>
                     <img src={'/assets/user.png'}alt=' ' />
-                    <h3>{currentUserProfile.displayName ||currentUserProfile.email }</h3>
+                    <h3>{currentUser.displayName ||currentUser.email }</h3>
                 </div>
             }
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />

@@ -12,7 +12,7 @@ import FormSelect  from '../../Form/FormSelect'
 import { categoryData } from '../../../API/categoryOption'
 
 export default function SettingsInfo() {
-    const { currentUserProfile } = useSelector(state => state.profile)
+    const { selectedUserProfile } = useSelector(state => state.profile)
     return (
         <div>
             <Segment clearing style={{marginTop: '4rem', marginBottom: '4rem'}}>
@@ -24,12 +24,12 @@ export default function SettingsInfo() {
                     />
                     <Formik
                         initialValues={{
-                            bio: currentUserProfile.bio || '',
-                            originallyFrom: currentUserProfile.from || '', 
-                            liveAt:  currentUserProfile.liveAt || '',
-                            bornAt: currentUserProfile.bornAt || '',
-                            displayName: currentUserProfile.displayName || '',
-                            interests:currentUserProfile.interests || null,
+                            bio: selectedUserProfile.bio || '',
+                            originallyFrom: selectedUserProfile.from || '', 
+                            liveAt:  selectedUserProfile.liveAt || '',
+                            bornAt: selectedUserProfile.bornAt || '',
+                            displayName: selectedUserProfile.displayName || '',
+                            interests:selectedUserProfile.interests || null,
                         }}
                         validationSchema={Yup.object({
                             displayName: Yup.string().required()

@@ -21,12 +21,12 @@ export const verifyAuth = () =>{
         return auth.onAuthStateChanged(user =>{
           if (user){
             dispatch(signInUser(user))
-            dispatch({type: APP_LOADED}) 
             const profileRef = getUserProfile(user.uid)
             profileRef.onSnapshot(snapShot =>{
               dispatch(ListenToUserProfile(dataFromSnapshot(snapShot)))
+              dispatch({type: APP_LOADED})
             })
-            dispatch({type: APP_LOADED})
+           
           }else{
             dispatch(signOutUser())
             dispatch({type: APP_LOADED})

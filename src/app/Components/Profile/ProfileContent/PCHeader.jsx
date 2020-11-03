@@ -6,8 +6,8 @@ import './PCHeader.css'
 
 export default function PCHeader() {
 
-    const { currentUserProfile } = useSelector(state => state.profile)
-    const { displayName, bornAt  ,liveAt,bio, photoURL, interests } = currentUserProfile;
+    const { selectedUserProfile } = useSelector(state => state.profile)
+    const { displayName, bornAt  ,liveAt,bio, photoURL, interests } = selectedUserProfile;
     return (
         <div className='PC_header_main'>
             <div className='wrapper_header'

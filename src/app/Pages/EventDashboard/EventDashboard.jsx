@@ -18,7 +18,7 @@ export default function EventDashboard() {
   const dispatch = useDispatch()
   const { events } = useSelector(state => state.event) 
   const { isOpen } = useSelector(state => state.calender)
-  const { loading,error } = useSelector(state => state.async)
+  const { loading } = useSelector(state => state.async)
   const { currentUserProfile } = useSelector(state => state.profile)
   
 
@@ -28,7 +28,7 @@ export default function EventDashboard() {
         deps: [dispatch]
     })
     console.log(currentUserProfile);
-    if ((loading && !currentUserProfile) || (!currentUserProfile && !error))
+    if (loading )
      return <PlaceholderLoading />
  
     return (

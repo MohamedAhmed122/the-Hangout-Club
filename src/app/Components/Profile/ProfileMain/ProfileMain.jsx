@@ -4,11 +4,11 @@ import ProfileContent from '../ProfileContent/ProfileContent'
 import ProfileSettings from '../ProfileSettings/ProfileSettings';
 import './StyleProfile.css'
 
-export default function ProfileHeader() {
+export default function ProfileHeader({isCurrentUser}) {
     const [, setActiveTab] = useState(0)
     const panes = [
       { menuItem: "Profile ", render: () =><ProfileContent  />},
-      { menuItem: "Profile Settings", render: () =><ProfileSettings />},
+      { menuItem: "Profile Settings", render: () =><ProfileSettings isCurrent={isCurrentUser} />},
       
     ];
   
