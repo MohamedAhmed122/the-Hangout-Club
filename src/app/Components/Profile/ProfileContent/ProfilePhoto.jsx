@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import {  Icon, Segment } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import './StyleProfilePhoto.css'
 
 export default function ProfilePhoto() {

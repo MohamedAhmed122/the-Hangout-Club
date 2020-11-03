@@ -10,12 +10,15 @@ import asyncReducer from './Async/AsyncReducer'
 
 import calenderReducer from './calender/calenderReducer'
 
+import ProfileReducer from './Profile/ProfileReducer'
+
 const rootReducer = combineReducers({
     event : eventReducer,
     modals: modalReducer,
     auth: authReducer,
     async: asyncReducer,
-    calender: calenderReducer
+    calender: calenderReducer,
+    profile:ProfileReducer
 });
 
 export default rootReducer;
