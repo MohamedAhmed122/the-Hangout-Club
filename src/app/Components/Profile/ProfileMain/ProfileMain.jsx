@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Tab } from 'semantic-ui-react';
-import ProfileContent from './ProfileContent/ProfileContent';
-import ProfileSettings from './ProfileSettings/ProfileSettings';
+import ProfileContent from '../ProfileContent/ProfileContent'
+import ProfileSettings from '../ProfileSettings/ProfileSettings';
 import './StyleProfile.css'
 
 export default function ProfileHeader() {

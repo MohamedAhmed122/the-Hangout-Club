@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Button, Icon, Segment } from 'semantic-ui-react'
+import {  Icon, Segment } from 'semantic-ui-react'
 import './StyleProfilePhoto.css'
 
 export default function ProfilePhoto() {
@@ -16,7 +16,7 @@ export default function ProfilePhoto() {
                                         <Icon name='trash' 
                                         size='large' style ={{color: 'white'}} />
                                     </button>
-                                    <button className='main photo_btn'>
+                                    <button className='main-btn photo_btn'>
                                         <Icon name='check'
                                         size='large' style ={{color: 'white'}} />
                                     </button>
