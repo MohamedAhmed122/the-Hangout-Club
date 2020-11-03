@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux'
 import './StyleMenu.css'
 
 export default function MenuSignedIn() {
-    const { currentUser } = useSelector(state => state.auth)
+    const { currentUserProfile } = useSelector(state => state.profile)
     return (
         <div className='sign_in'>     
-            <img src={currentUser.photoURl||'/assets/user.png'}alt=' ' />
-            <p>{currentUser.displayName || currentUser.email}</p>
+            <img src={'/assets/user.png'}alt=' ' />
+            <p>{currentUserProfile.displayName || currentUserProfile.email}</p>
         </div>
     )
 }

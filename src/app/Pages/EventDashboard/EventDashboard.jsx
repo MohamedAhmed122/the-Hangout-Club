@@ -18,15 +18,19 @@ export default function EventDashboard() {
   const dispatch = useDispatch()
   const { events } = useSelector(state => state.event) 
   const { isOpen } = useSelector(state => state.calender)
-  const { loading } = useSelector(state => state.async)
+  const { loading,error } = useSelector(state => state.async)
+  const { currentUserProfile } = useSelector(state => state.profile)
+  
 
     UseFirestoreCollection({
         query: listenToEventsFromFirestore,
         data: event => dispatch(listenToEvents(event)),
         deps: [dispatch]
     })
-
-  if (loading) return <PlaceholderLoading />
+    console.log(currentUserProfile);
+    if ((loading && !currentUserProfile) || (!currentUserProfile && !error))
+     return <PlaceholderLoading />
+ 
     return (
         <div className={isOpen ?'event-dashboard' : 'event-dashboard2'}>
             <div className='sidebar-left'><Sidebar/></div>

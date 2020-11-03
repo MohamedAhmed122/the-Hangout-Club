@@ -21,7 +21,7 @@ export default function PCHeader() {
                 <div className='person_info'>
                    {displayName && <HeaderRow name='user'>About {displayName}</HeaderRow>}
                     {bornAt && <HeaderRow name='birthday cake'> I am {bornAt } years old</HeaderRow>}
-                    {liveAt.address &&
+                    {liveAt?.address &&
                         <HeaderRow name='location arrow'> I Live in {liveAt.address }</HeaderRow>
                     }
                     {bio && <HeaderRow name='info'> Bio : {bio }</HeaderRow>}

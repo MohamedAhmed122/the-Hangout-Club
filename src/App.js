@@ -14,13 +14,18 @@ import CommunityPage from './app/Pages/CommunityPage/CommunityPage';
 import Error from './app/Common/404/Error';
 import SettingsPage from './app/Pages/SettingsPage/SettingsPage';
 import ProfilePage from './app/Pages/ProfilePage/ProfilePage';
+import { useSelector } from 'react-redux';
+import Loading from './app/Common/Loading/Loading';
 
 
 
 function App() {
 
   const { key } = useLocation();
+  const {initialized} = useSelector(state => state.async)
+  const {currentUserProfile} = useSelector(state => state.profile)
 
+  if (!initialized || !currentUserProfile) return <Loading/>
   return (
     <div className="App">
       <ModalManger />
