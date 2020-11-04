@@ -107,3 +107,7 @@ export const updateProfile = async (value) => {
       throw error;
     }
   };
+
+  export const getUserPhotos= userId =>{
+      return db.collection('users').doc(userId).collection('photos') 
+  }
