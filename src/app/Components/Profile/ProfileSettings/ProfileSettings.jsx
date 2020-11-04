@@ -1,11 +1,16 @@
-import React from 'react'
-import SettingsInfo from './SettingsInfo'
+import React, { Fragment } from 'react'
+import UploadPhoto from './PhotoSetting/UploadPhoto'
+import SettingsInfo from './SettingsForm'
 
 export default function ProfileSettings({isCurrent}) {
     return (
         <div>
             {
-                isCurrent ?  <SettingsInfo /> : null
+                isCurrent && 
+                <Fragment>
+                    <SettingsInfo /> 
+                    <UploadPhoto />
+                </Fragment>
             }
            
         </div>

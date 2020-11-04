@@ -11,7 +11,7 @@ import { updateProfile } from '../../../firebase/FirestoreServices'
 import FormSelect  from '../../Form/FormSelect'
 import { categoryData } from '../../../API/categoryOption'
 
-export default function SettingsInfo() {
+export default function SettingsForm() {
     const { selectedUserProfile } = useSelector(state => state.profile)
     return (
         <div>
@@ -19,7 +19,7 @@ export default function SettingsInfo() {
                 <Header 
                     style={{marginTop: 20}}
                     content='Tell us more about you' 
-                    color='green' 
+                    color='teal' 
                     size='large' 
                     />
                     <Formik

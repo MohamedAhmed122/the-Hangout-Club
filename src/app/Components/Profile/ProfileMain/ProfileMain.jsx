@@ -8,7 +8,7 @@ export default function ProfileHeader({isCurrentUser}) {
     const [, setActiveTab] = useState(0)
     const panes = [
       { menuItem: "Profile ", render: () =><ProfileContent  />},
-      { menuItem: "Profile Settings", render: () =><ProfileSettings isCurrent={isCurrentUser} />},
+      { menuItem:  "Profile Settings" , render: () =>isCurrentUser ? <ProfileSettings isCurrent={isCurrentUser} />: null},
       
     ];
   
@@ -21,6 +21,7 @@ export default function ProfileHeader({isCurrentUser}) {
                 menuPosition="right"
                 panes={panes}
                 onTabChange={(e,data)=>setActiveTab(data.activeIndex)}
+                activeIndex={1}
                 />
             </div>
         </div>
