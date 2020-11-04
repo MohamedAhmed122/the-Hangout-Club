@@ -80,3 +80,30 @@ export const updateProfile = async (value) => {
       throw error;
     }
   };
+
+
+
+  export const updateUserProfilePhoto = async (downloadURL, fileName) => {
+    const user = firebase.auth().currentUser;
+    const userDocRef = db.collection("users").doc(user.uid);
+    try {
+      //we get the data from the userDoc
+      const userDoc = await userDocRef.get();
+      if (!userDoc.data().photoURL) {
+        await db.collection("users").doc(user.uid).update({
+          photoURL: downloadURL,
+        });
+        // to update the user auth
+         await user.updateProfile({
+          photoURL: downloadURL,
+        });
+      }
+      //add the photos to the the user's photo collection inside their doc
+      return await db.collection("users").doc(user.uid).collection("photos").add({
+        name: fileName,
+        url: downloadURL,
+      });
+    } catch (error) {
+      throw error;
+    }
+  };

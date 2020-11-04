@@ -11,6 +11,10 @@ export default function ProfileHeader({isCurrentUser}) {
       { menuItem:  "Profile Settings" , render: () =>isCurrentUser ? <ProfileSettings isCurrent={isCurrentUser} />: null},
       
     ];
+    const panes2 = [
+        { menuItem: "Profile ", render: () =><ProfileContent  />},
+      
+      ];
   
     return (
         <div className='tab_main'>
@@ -19,9 +23,9 @@ export default function ProfileHeader({isCurrentUser}) {
                 className='tabs'
                 menu={{ fluid: false, vertical: false }}
                 menuPosition="right"
-                panes={panes}
+                panes={isCurrentUser ?panes : panes2}
                 onTabChange={(e,data)=>setActiveTab(data.activeIndex)}
-                activeIndex={1}
+                // activeIndex={1}
                 />
             </div>
         </div>

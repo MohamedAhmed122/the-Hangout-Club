@@ -6,7 +6,7 @@ export default function MenuSignedIn() {
 const { currentUser } = useSelector(state => state.auth)
     return (
         <div className='sign_in'>     
-            <img src={'/assets/user.png'}alt=' ' />
+            <img src={currentUser.photoURL || '/assets/user.png'}alt=' ' />
             <p>{currentUser.displayName || currentUser.email}</p>
         </div>
     )

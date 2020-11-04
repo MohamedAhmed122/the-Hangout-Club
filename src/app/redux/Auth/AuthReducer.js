@@ -14,7 +14,7 @@ const AuthReducer = (state = initialState , {type, payload}) =>{
                 isAuthenticated: true,
                 currentUser:{
                     email: payload.email,
-                    photoURl: payload.photoURl,
+                    photoURL: payload.photoURL,
                     uid: payload.uid,
                     providerId: payload.providerData[0].providerId,
                     displayName: payload.displayName 

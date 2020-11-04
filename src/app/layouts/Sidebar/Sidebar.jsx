@@ -43,7 +43,7 @@ export default function Sidebar() {
         <div className='sidebar_main'>
             {isAuthenticated &&
                 <div className='sidebar_header'>
-                    <img src={'/assets/user.png'}alt=' ' />
+                    <img src={currentUser.photoURL ||'/assets/user.png'}alt=' ' />
                     <h3>{currentUser.displayName ||currentUser.email }</h3>
                 </div>
             }

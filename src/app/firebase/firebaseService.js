@@ -47,3 +47,11 @@ export const updatePassword = password =>{
     const user = firebase.auth().currentUser;
     return user.updatePassword(password);
 }
+
+
+export const uploadToFirebaseStorage =(file,fileName)=>{
+    const user = firebase.auth().currentUser;
+    const storageRef = firebase.storage().ref();
+    return storageRef.child(`${user.uid}/user_images/${fileName}`).put(file)
+}
+
