@@ -43,6 +43,7 @@
 .person_interest{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     margin: 0.5rem;
 }
 .person_interest div{

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setPhotoToMain = exports.getUserPhotos = exports.updateUserProfilePhoto = exports.updateProfile = exports.getUserProfile = exports.setUserProfileData = exports.cancelEvent = exports.deleteEventFromFirestore = exports.updateEventToFirestore = exports.addEventToFirestore = exports.listenToEventFromFirestore = exports.listenToEventsFromFirestore = exports.dataFromSnapshot = void 0;
+exports.deletePhotoFromCollection = exports.setPhotoToMain = exports.getUserPhotos = exports.updateUserProfilePhoto = exports.updateProfile = exports.getUserProfile = exports.setUserProfileData = exports.cancelEvent = exports.deleteEventFromFirestore = exports.updateEventToFirestore = exports.addEventToFirestore = exports.listenToEventFromFirestore = exports.listenToEventsFromFirestore = exports.dataFromSnapshot = void 0;
 
 var _cuid = _interopRequireDefault(require("cuid"));
 
@@ -239,3 +239,11 @@ var setPhotoToMain = function setPhotoToMain(photo) {
 };
 
 exports.setPhotoToMain = setPhotoToMain;
+
+var deletePhotoFromCollection = function deletePhotoFromCollection(photoId) {
+  var userUid = _firebase["default"].auth().currentUser.uid;
+
+  return db.collection("users").doc(userUid).collection("photos").doc(photoId)["delete"]();
+};
+
+exports.deletePhotoFromCollection = deletePhotoFromCollection;

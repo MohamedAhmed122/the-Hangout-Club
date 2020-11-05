@@ -1,3 +1,9 @@
+.setting_upload_photo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
 .photo_settings{
     display: flex;
     justify-content: space-around;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.uploadToFirebaseStorage = exports.updatePassword = exports.SocialLogin = exports.RegisterInFirebase = exports.signOutUser = exports.signInWithEmail = void 0;
+exports.deleteFromFirbaseStorage = exports.uploadToFirebaseStorage = exports.updatePassword = exports.SocialLogin = exports.RegisterInFirebase = exports.signOutUser = exports.signInWithEmail = void 0;
 
 var _reactToastify = require("react-toastify");
 
@@ -129,3 +129,13 @@ var uploadToFirebaseStorage = function uploadToFirebaseStorage(file, fileName) {
 };
 
 exports.uploadToFirebaseStorage = uploadToFirebaseStorage;
+
+var deleteFromFirbaseStorage = function deleteFromFirbaseStorage(fileName) {
+  var userUid = _firebase["default"].auth().currentUser.uid;
+
+  var storageRef = _firebase["default"].storage().ref();
+
+  return storageRef.child("".concat(userUid, "/user_images/").concat(fileName))["delete"]();
+};
+
+exports.deleteFromFirbaseStorage = deleteFromFirbaseStorage;

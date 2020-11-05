@@ -36,7 +36,7 @@ export default function PCHeader() {
                     {
                         interests?.map(interest =>(
                             <div key={interest}>
-                                <Icon name='heart' color='teal' />
+                                <Icon name='heart' color='teal' style={{margin: '10px 5px'}} />
                                 {interest}
                             </div>
                         ))

@@ -49,14 +49,16 @@ export default function UploadPhoto() {
     
     return (
         <Segment style={{marginTop: '2rem', marginBottom: '5rem'}}> 
-            {/* <div style={{display: 'block'}}>
+        <div className='setting_upload_photo'>
+            <div>
                 <Header 
                 floated="left" 
                 icon="photo" 
-                color='teal' 
+               
                 content="Add some photos to your gallery" 
+                style={{marginBottom: 30}}
                 />
-            </div> */}
+            </div>
            
             <div className='photo_settings' >
                 <div className='photo_settings_left'>
@@ -112,6 +114,8 @@ export default function UploadPhoto() {
                     )}
                 </div>
             </div>
+        </div>
+           
         </Segment>
      
     )
