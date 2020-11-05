@@ -111,3 +111,19 @@ export const updateProfile = async (value) => {
   export const getUserPhotos= userId =>{
       return db.collection('users').doc(userId).collection('photos') 
   }
+
+  export const setPhotoToMain = async photo =>{
+    try {
+        const user = firebase.auth().currentUser;
+        await db.collection('users').doc(user.uid).update({
+            photoURL: photo.url
+        })
+
+        return await user.updateProfile({
+            photoURL: photo.url
+        })
+
+    } catch (error) {
+        throw error
+    }
+  }

@@ -11,9 +11,9 @@ export default function PCHeader() {
     return (
         <div className='PC_header_main'>
             <div className='wrapper_header'
-                style={{backgroundImage: `url(${tel})`}}>
+                style={{backgroundImage: `url(${background})`}}>
                     <div className='header_info'>
-                        <img src={ photoURL || tyalor} alt='' />
+                        <img src={ photoURL || '/assets/user.png'} alt='' />
                       
                     </div>
             </div>
@@ -49,5 +49,6 @@ export default function PCHeader() {
     )
 }
 
-const tyalor ='https://www.rollingstone.com/wp-content/uploads/2019/08/taylor-swift-ultimate-album-sheff.jpg'
-const tel='https://hips.hearstapps.com/esq.h-cdn.co/assets/cm/15/06/54d447c3b4e79_-_esq110114esq_a014-share-swift.jpg'
+
+
+const background ='https://dso7hsslwo1ge.cloudfront.net/images/sources/000/015/131/fullbox/HR_analytics_banner.jpg?1522051784'

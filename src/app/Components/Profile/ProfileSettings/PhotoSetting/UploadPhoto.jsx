@@ -103,7 +103,7 @@ export default function UploadPhoto() {
                                 />
                                 <Button 
                                 loading={loading} 
-                                onClick={()=>handleUploadImage()}  
+                                onClick={()=>handleCancelCrop()}  
                                 style={{ width: 100 }} 
                                 icon='close' 
                                 />

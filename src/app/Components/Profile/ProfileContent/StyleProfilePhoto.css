@@ -27,15 +27,15 @@
     align-items: center;
     justify-content: center;
 }
-.photo_btn{
+.btn_group .photo_btn{
     height: 50px;
     width: 50px;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     border-radius: 25px;
     border: none;
-    box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.4); 
+    box-shadow: 0px 5px 17px -7px rgba(8, 5, 5, 0.4); 
     outline-width: 0;
     cursor: pointer;
     margin-bottom: 40px;
@@ -45,7 +45,7 @@
     background-color: #D32F2F;
 
 }
-.main-btn{
+.btn_group .main-btn{
     background-color: #4CAF50;
     margin-left: 20px;
    
