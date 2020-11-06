@@ -1,4 +1,3 @@
-import cuid from 'cuid';
 import firebase from './firebase.config';
 
 const db = firebase.firestore()
@@ -29,15 +28,18 @@ export const listenToEventFromFirestore = eventId =>{
 }
 
 export const addEventToFirestore = event =>{
+    const user = firebase.auth().currentUser;
     return db.collection('events').add({
         ...event,
-        hostedBy: 'Sasha',
-        hostPhotoURL: 'https://randomuser.me/api/portraits/women/21.jpg',
+        hostUid:  user.uid,
+        hostedBy: user.displayName,
+        hostPhotoURL: user.photoURL || null,
         attendees:firebase.firestore.FieldValue.arrayUnion({
-            id:cuid(),
-            displayName: 'Sasha',
-            photoURL:'https://randomuser.me/api/portraits/women/21.jpg'
-        })
+            id: user.uid,
+            displayName: user.displayName,
+            photoURL:  user.photoURL || null,
+        }),
+        attendeeId:firebase.firestore.FieldValue.arrayUnion(user.uid)
     })
 } 
 

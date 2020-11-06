@@ -14,6 +14,7 @@ import Error from '../../Common/404/Error'
 export default function EventDetailedPage({match}) {
 
     const { loading ,error } = useSelector(state => state.async)
+    const { currentUser } = useSelector(state => state.auth)
     const dispatch = useDispatch()
    
     const events = useSelector(state => state.event.events.find(event =>
@@ -26,19 +27,22 @@ export default function EventDetailedPage({match}) {
         deps:[match.params.id, dispatch]
     })
     
+    const isHost = events?.hostUid === currentUser.uid;
+    const isGoing = events?.attendees.some(user => user.id === currentUser.uid)
+
     if (loading || (!events && !error)) return <Loading >Loading Event .....</Loading>
     if (error) return <Error />
     return (
         <div className='event_detail_page'>
             <div style={{flex: '0.15'}}/>
             <div className='main'>
-                <EventHeader events={events}/>
+                <EventHeader events={events} isHost={isHost} isGoing={isGoing}/>
                 <EventInfo events={events} />
                 <EventChat />
             </div>
             <div  style={{flex: '0.05'}}></div>
             <div className='sidebar'>
-                <EventSidebar />
+                <EventSidebar event={events} />
             </div>
         </div>
     )

@@ -1,39 +1,43 @@
 import React from "react";
-import { Segment, Item } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Segment, Item, Label } from "semantic-ui-react";
 
-const EventSidebar = () => (
-  <div style={{ }}>
-
-    <Segment
-      textAlign="center"
-      style={{ border: "none", width: '340px',  }}
-      attached="top"
-      secondary
-      inverted
-      color="teal"
-    >
-      2 People Going
-    </Segment>
-    <Segment attached>
-      <Item.Group relaxed divided>
-        <Item style={{ position: "relative" }}>
-          <Item.Image size="tiny" circular src='https://randomuser.me/api/portraits/men/27.jpg' />
-          <Item.Content verticalAlign="middle">
-            <Item.Header as="h3">
-              <span>Tom</span>
-            </Item.Header>
-          </Item.Content>
-        </Item>
-        <Item style={{ position: "relative" }}>
-          <Item.Image size="tiny" circular src='https://randomuser.me/api/portraits/men/22.jpg'/>
-          <Item.Content verticalAlign="middle">
-            <Item.Header as="h3">
-              <span>Bob</span>
-            </Item.Header>
-          </Item.Content>
-        </Item>
+const EventSidebar = ({event}) =>{ 
+    return(
+      <div>
+        <Segment
+          textAlign="center"
+          style={{ border: "none", width: '340px',  }}
+          attached="top"
+          secondary
+          inverted
+          color="teal"
+        >
+          {event.attendees.length} {event.attendees.length > 1 ? 'People are' : 'Person is'}   Going
+        </Segment>
+        <Segment attached>
+        <Item.Group relaxed divided>
+        {event.attendees.map((attendee) => (
+          <Item  key={attendee.id} style={{ position: "relative" }}>
+            {
+              event.hostUid === attendee.id &&(
+                <Label style={{position: 'absolute'}} color='orange' ribbon='right' content='Host' />
+              )
+            }
+            <Item.Image
+              circular
+              size="tiny"
+              src={attendee.photoURL || "/assets/user.png"}
+            />
+            <Item.Content verticalAlign="middle">
+              <Item.Header as={Link} to={`/profile/${attendee.id}`}>
+                <span>{attendee.displayName}</span>
+              </Item.Header>
+            </Item.Content>
+          </Item>
+        ))}
       </Item.Group>
-    </Segment>
-  </div>
-);
+        </Segment>
+      </div>
+);}
 export default EventSidebar;

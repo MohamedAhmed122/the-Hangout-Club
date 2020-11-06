@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deletePhotoFromCollection = exports.setPhotoToMain = exports.getUserPhotos = exports.updateUserProfilePhoto = exports.updateProfile = exports.getUserProfile = exports.setUserProfileData = exports.cancelEvent = exports.deleteEventFromFirestore = exports.updateEventToFirestore = exports.addEventToFirestore = exports.listenToEventFromFirestore = exports.listenToEventsFromFirestore = exports.dataFromSnapshot = void 0;
 
-var _cuid = _interopRequireDefault(require("cuid"));
-
 var _firebase = _interopRequireDefault(require("./firebase.config"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -51,14 +49,18 @@ var listenToEventFromFirestore = function listenToEventFromFirestore(eventId) {
 exports.listenToEventFromFirestore = listenToEventFromFirestore;
 
 var addEventToFirestore = function addEventToFirestore(event) {
+  var user = _firebase["default"].auth().currentUser;
+
   return db.collection('events').add(_objectSpread({}, event, {
-    hostedBy: 'Sasha',
-    hostPhotoURL: 'https://randomuser.me/api/portraits/women/21.jpg',
+    hostUid: user.uid,
+    hostedBy: user.displayName,
+    hostPhotoURL: user.photoURL || null,
     attendees: _firebase["default"].firestore.FieldValue.arrayUnion({
-      id: (0, _cuid["default"])(),
-      displayName: 'Sasha',
-      photoURL: 'https://randomuser.me/api/portraits/women/21.jpg'
-    })
+      id: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL || null
+    }),
+    attendeeId: _firebase["default"].firestore.FieldValue.arrayUnion(user.uid)
   }));
 };
 

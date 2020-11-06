@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Button, Segment } from 'semantic-ui-react'
 import './Style.css'
 
-export default function EventHeader({events}) {
+export default function EventHeader({events, isGoing, isHost}) {
     return (
         <Fragment>
             <div className='event_header'
@@ -16,13 +16,16 @@ export default function EventHeader({events}) {
                     <p className='host const'>Hosted by <span> {events.hostedBy}</span></p>
                 </div>
             </div>
-            <Segment attached="bottom" style={{marginTop: 10}}>
-                <Button>Cancel My Place</Button>
-                <Button color="teal">JOIN THIS EVENT</Button>
+            <Segment clearing attached="bottom" style={{marginTop: 10}}>
 
-                <Button color="orange" floated="right" as={Link} to={`/manage/${events.id}`}>
+                {!isHost && <Fragment>
+                    { isGoing? <Button>Cancel My Place</Button>:
+                    <Button color="teal">JOIN THIS EVENT</Button>}
+                </Fragment>}
+
+               {isHost && <Button color="orange" floated="right" as={Link} to={`/manage/${events.id}`}>
                 Manage Event
-                </Button>
+                </Button>}
             </Segment>
 
         </Fragment>
