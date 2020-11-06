@@ -53,11 +53,15 @@
 .user_detail{
     margin: 15px;
 }
-.user_detail h6{
+.link{
     font-weight:500 ;
-    color: royalblue;
+    color: #4183c4;
     font-size: large;
 }
+.link:hover{
+    color: #0059b3;
+}
+
 .user_detail span{
     font-weight:300 ;
     color: black;

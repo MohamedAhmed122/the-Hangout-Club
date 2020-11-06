@@ -1,10 +1,38 @@
 import { format } from 'date-fns'
 import React, { Fragment } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { Button, Segment } from 'semantic-ui-react'
+import { CancelUserPlace, userJoinEvent } from '../../firebase/FirestoreServices'
 import './Style.css'
 
-export default function EventHeader({events, isGoing, isHost}) {
+export default function EventHeader({events, isGoing, currentUser, isHost}) {
+
+    
+    const [loading, setLoading] = useState(false)
+
+    const handleJoinEvent = async()=>{
+        setLoading(true)
+        try {
+            await userJoinEvent(events)
+        } catch (error) {
+            toast.error(error.message)
+        }finally{
+            setLoading(false)
+        }
+    }
+
+    const handleCancelUserPlace= async()=>{
+        setLoading(true)
+        try {
+            await CancelUserPlace(events)
+        } catch (error) {
+            toast.error(error.message)
+        }finally{
+            setLoading(false)
+        }
+    }
     return (
         <Fragment>
             <div className='event_header'
@@ -13,14 +41,26 @@ export default function EventHeader({events, isGoing, isHost}) {
                 <div className='container'>
                     <p className='title const'>{events.title}</p>
                     <p className='date const'>{format(events.date, 'MMMM d, yyyy h:mm a')}</p>
-                    <p className='host const'>Hosted by <span> {events.hostedBy}</span></p>
+                    <p className='host const'>Hosted by 
+                        <span>
+                            <Link className='link' to={`/profile/${currentUser.uid}`}> {events.hostedBy}</Link>
+                        </span>
+                    </p>
                 </div>
             </div>
             <Segment clearing attached="bottom" style={{marginTop: 10}}>
 
                 {!isHost && <Fragment>
-                    { isGoing? <Button>Cancel My Place</Button>:
-                    <Button color="teal">JOIN THIS EVENT</Button>}
+                    { isGoing? 
+                    <Button  loading={loading}  onClick={handleCancelUserPlace}>Cancel My Place</Button>
+                    :
+                    <Button 
+                    loading={loading} 
+                    onClick={handleJoinEvent} 
+                    color="teal"
+                    >
+                        JOIN THIS EVENT
+                    </Button>}
                 </Fragment>}
 
                {isHost && <Button color="orange" floated="right" as={Link} to={`/manage/${events.id}`}>

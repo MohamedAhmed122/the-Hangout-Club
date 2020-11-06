@@ -36,7 +36,12 @@ export default function EventDetailedPage({match}) {
         <div className='event_detail_page'>
             <div style={{flex: '0.15'}}/>
             <div className='main'>
-                <EventHeader events={events} isHost={isHost} isGoing={isGoing}/>
+                <EventHeader 
+                currentUser={currentUser} 
+                events={events} 
+                isHost={isHost} 
+                isGoing={isGoing}
+                />
                 <EventInfo events={events} />
                 <EventChat />
             </div>

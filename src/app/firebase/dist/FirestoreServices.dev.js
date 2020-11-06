@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deletePhotoFromCollection = exports.setPhotoToMain = exports.getUserPhotos = exports.updateUserProfilePhoto = exports.updateProfile = exports.getUserProfile = exports.setUserProfileData = exports.cancelEvent = exports.deleteEventFromFirestore = exports.updateEventToFirestore = exports.addEventToFirestore = exports.listenToEventFromFirestore = exports.listenToEventsFromFirestore = exports.dataFromSnapshot = void 0;
+exports.CancelUserPlace = exports.userJoinEvent = exports.deletePhotoFromCollection = exports.setPhotoToMain = exports.getUserPhotos = exports.updateUserProfilePhoto = exports.updateProfile = exports.getUserProfile = exports.setUserProfileData = exports.cancelEvent = exports.deleteEventFromFirestore = exports.updateEventToFirestore = exports.addEventToFirestore = exports.listenToEventFromFirestore = exports.listenToEventsFromFirestore = exports.dataFromSnapshot = void 0;
 
 var _firebase = _interopRequireDefault(require("./firebase.config"));
 
@@ -249,3 +249,53 @@ var deletePhotoFromCollection = function deletePhotoFromCollection(photoId) {
 };
 
 exports.deletePhotoFromCollection = deletePhotoFromCollection;
+
+var userJoinEvent = function userJoinEvent(event) {
+  var user = _firebase["default"].auth().currentUser;
+
+  return db.collection('events').doc(event.id).update({
+    attendees: _firebase["default"].firestore.FieldValue.arrayUnion({
+      id: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL || null
+    }),
+    attendeeId: _firebase["default"].firestore.FieldValue.arrayUnion(user.uid)
+  });
+};
+
+exports.userJoinEvent = userJoinEvent;
+
+var CancelUserPlace = function CancelUserPlace(event) {
+  var user, eventDoc;
+  return regeneratorRuntime.async(function CancelUserPlace$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          user = _firebase["default"].auth().currentUser;
+          _context4.prev = 1;
+          _context4.next = 4;
+          return regeneratorRuntime.awrap(db.collection('events').doc(event.id).get());
+
+        case 4:
+          eventDoc = _context4.sent;
+          return _context4.abrupt("return", db.collection('events').doc(event.id).update({
+            attendeeId: _firebase["default"].firestore.FieldValue.arrayRemove(user.uid),
+            attendees: eventDoc.data().attendees.filter(function (attendee) {
+              return attendee.id !== user.uid;
+            })
+          }));
+
+        case 8:
+          _context4.prev = 8;
+          _context4.t0 = _context4["catch"](1);
+          throw _context4.t0;
+
+        case 11:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  }, null, null, [[1, 8]]);
+};
+
+exports.CancelUserPlace = CancelUserPlace;

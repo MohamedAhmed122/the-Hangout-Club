@@ -31,10 +31,10 @@ export default function Sidebar() {
     const handleRouting = (router) =>{
         if(isAuthenticated){
             if(router === 'setting'){
-                history.push(`/settings/${currentUserProfile.id}`)
+                history.push(`/settings/${currentUserProfile?.id}`)
             }
             if(router === 'profile'){
-                history.push(`/profile/${currentUserProfile.id}`)
+                history.push(`/profile/${currentUserProfile?.id}`)
             }
            
         }else return;
@@ -43,8 +43,8 @@ export default function Sidebar() {
         <div className='sidebar_main'>
             {isAuthenticated &&
                 <div className='sidebar_header'>
-                    <img src={currentUserProfile.photoURL ||'/assets/user.png'}alt=' ' />
-                    <h3>{currentUserProfile.displayName ||currentUserProfile.email }</h3>
+                    <img src={currentUserProfile?.photoURL ||'/assets/user.png'}alt=' ' />
+                    <h3>{currentUserProfile?.displayName ||currentUserProfile?.email }</h3>
                 </div>
             }
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
