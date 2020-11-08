@@ -34,7 +34,7 @@ export default function EventDetailedPage({match}) {
     if (error) return <Error />
     return (
         <div className='event_detail_page'>
-            <div style={{flex: '0.15'}}/>
+            {/* <div style={{flex: '0.15'}}/> */}
             <div className='main'>
                 <EventHeader 
                 currentUser={currentUser} 
@@ -45,7 +45,7 @@ export default function EventDetailedPage({match}) {
                 <EventInfo events={events} />
                 <EventChat />
             </div>
-            <div  style={{flex: '0.05'}}></div>
+            <div  style={{flex: '0.1'}}></div>
             <div className='sidebar'>
                 <EventSidebar event={events} />
             </div>

@@ -61,3 +61,15 @@ export const deleteFromFirbaseStorage =(fileName)=>{
     const storageRef = firebase.storage().ref();
     return storageRef.child(`${userUid}/user_images/${fileName}`).delete()
 }
+
+export const addNewComment = (eventId, comment) =>{
+    const user = firebase.auth().currentUser;
+    const newComment ={
+        displayName: user.displayName,
+        uid: user.uid,
+        photoURL: user.photoURL,
+        date: Date.now(),
+        comment,
+    }
+    return firebase.database().ref(`chat/${eventId}`).push(newComment);
+}

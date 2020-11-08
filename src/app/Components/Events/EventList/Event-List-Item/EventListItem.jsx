@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux'
 
 export default function EventListItem({event }) {
     const history = useHistory()
-    const { currentUser } = useSelector(state => state.auth)
+    // const { currentUser } = useSelector(state => state.auth)
     return (
         <div className='wrapper'>
             <div className='background'
@@ -40,7 +40,7 @@ export default function EventListItem({event }) {
                 </div>
                 <div className='user_detail'>
                     <h6><span>hosted by </span>
-                    <Link className='link' to={`/profile/${currentUser.uid}`}>{event.hostedBy}</Link>
+                    <Link className='link' to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link>
                     </h6>
                     <p style={{marginTop:10}}><Icon name="clock" /> {format(event.date, 'MMMM d, yyyy h:mm a')}</p>
                     <p className='title'>{event.title}</p>

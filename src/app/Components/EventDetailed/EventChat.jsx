@@ -75,7 +75,7 @@ const EventChat = () => (
         </Comment>
 
         <Form reply>
-          <Form.TextArea rows={2}/>
+          <Form.TextArea rows={1}/>
           <Button
             content="Add Reply"
             labelPosition="left"

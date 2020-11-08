@@ -1,15 +1,17 @@
 .event_detail_page{
     display: flex;
+     /* align-items: center;  */
+    justify-content: center; 
     background-color: #eaeaea;
     overflow: hidden;
 }
 .event_detail_page .main{
-    margin-top: 5rem;
+    margin-top: 6rem;
     flex: 0.6;
     overflow: hidden;
 }
 .event_detail_page .sidebar{
     margin-top: 8rem;
-    flex: 0. 35;
+    flex: 0. 3;
     overflow: hidden;
 }
