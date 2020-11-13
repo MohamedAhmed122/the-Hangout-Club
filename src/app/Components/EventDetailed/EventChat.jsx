@@ -1,40 +1,60 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Comment, Header, Segment } from "semantic-ui-react";
+import { ConvertToArray, getEventChatRef } from "../../firebase/firebaseService";
+import  { getEventComment } from '../../redux/event/eventAction'
+import {formatDistance} from 'date-fns'
 import CommentForm from "./CommentForm";
 
-const EventChat = ({eventId}) => (
-  <Fragment>
-    <Segment
-      textAlign="center"
-      attached="top"
-      inverted
-      color="teal"
-      style={{ border: "none" }}
-    >
-      <Header>Chat about this event</Header>
-    </Segment>
+const EventChat = ({eventId}) => {
 
-    <Segment attached>
-      <Comment.Group>
-        <Comment>
-          <Comment.Avatar  src="/assets/user.png" />
-          <Comment.Content>
-            <Comment.Author as="a">Matt</Comment.Author>
-            <Comment.Metadata>
-              <div>Today at 5:42PM</div>
-            </Comment.Metadata>
-            <Comment.Text>How artistic!</Comment.Text>
-            <Comment.Actions>
-              <Comment.Action>Reply</Comment.Action>
-            </Comment.Actions>
-          </Comment.Content>
-        </Comment>
+  const dispatch = useDispatch();
 
-       
-        <CommentForm eventId={eventId}/>
+  const { comments } = useSelector(state => state.event)
 
-      </Comment.Group>
-    </Segment>
-  </Fragment>
-);
+  useEffect(()=>{
+    getEventChatRef(eventId).on('value', snapshot =>{
+      if(!snapshot.exists()) return;
+      dispatch(getEventComment(ConvertToArray(
+        snapshot.val()
+      )))
+    })
+  },[eventId])
+  return(
+      <Fragment>
+        <Segment
+          textAlign="center"
+          attached="top"
+          inverted
+          color="teal"
+          style={{ border: "none" }}
+        >
+          <Header>Chat about this event</Header>
+        </Segment>
+
+        <Segment attached>
+          <Comment.Group>
+            {
+              comments.map(comment =>(
+                  <Comment key={comment.id}>
+                    <Comment.Avatar  src={comment?.photoURL || "/assets/user.png"} />
+                    <Comment.Content>
+                      <Comment.Author as={Link} to={`/profile/${comment.uid}`}>{comment?.displayName}</Comment.Author>
+                      <Comment.Metadata>
+                          <div>{formatDistance(comment.date , Date.now())}</div>
+                      </Comment.Metadata>
+                      <Comment.Text>{comment?.comment}</Comment.Text>
+                    </Comment.Content>
+                    <br/>
+                  </Comment>
+              ))
+            }
+           
+          </Comment.Group>
+          <CommentForm eventId={eventId}/>
+      </Segment>
+      </Fragment>
+  )
+}
 export default EventChat;

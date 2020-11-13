@@ -21,7 +21,7 @@ const EventSidebar = ({event}) =>{
           <Item  key={attendee.id} style={{ position: "relative" }}>
             {
               event.hostUid === attendee.id &&(
-                <Label style={{position: 'absolute'}} color='orange' ribbon='right' content='Host' />
+                <Label style={{position: 'absolute'}} color='teal' ribbon='right' content='Host' />
               )
             }
             <Item.Image
