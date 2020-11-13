@@ -1,9 +1,16 @@
-import { CREATE_EVENT, UPDATE_EVENT, DELETE_EVENT, FETCH_EVENTS } from  "./eventType";
+import { 
+    CREATE_EVENT, 
+    UPDATE_EVENT,
+     DELETE_EVENT,
+    FETCH_EVENTS,
+    GET_EVENT_COMMENT 
+} from  "./eventType";
 
 
 
 const initialState = {
-    events : []
+    events : [],
+    comments : []
 }
 
 const EventReducer = (state =initialState , {type, payload}) =>{
@@ -30,6 +37,11 @@ const EventReducer = (state =initialState , {type, payload}) =>{
             return{
                 ...state,
                 events: payload
+            }
+        case GET_EVENT_COMMENT:
+            return{
+                ...state,
+                comments: payload
             }
         default:{
             return state;

@@ -2,7 +2,8 @@ import {
     CREATE_EVENT, 
     UPDATE_EVENT,
      DELETE_EVENT,
-    FETCH_EVENTS 
+    FETCH_EVENTS,
+    GET_EVENT_COMMENT 
 } from  "./eventType";
 
 import fetchSampleData from '../../API/delayAPI'
@@ -40,3 +41,8 @@ export const deleteEvent = (event) =>({
     type: DELETE_EVENT,
     payload: event
 })
+
+export const getEventComment = comment =>({
+    type: GET_EVENT_COMMENT,
+    payload: comment
+}) 

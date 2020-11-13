@@ -4,6 +4,13 @@ import { setUserProfileData } from './FirestoreServices';
 const auth = firebase.auth()
 // const dispatch = useDispatch()
 
+// Convert from object To Array
+export const ConvertToArray =(array)=>{
+    if(array){
+        return Object.entries(array).map(e => Object.assign({}, e[1],{id: e[0]}))
+    }
+}
+
 export const signInWithEmail =  (user) =>
    auth.signInWithEmailAndPassword(user.email , user.password)
 
@@ -72,4 +79,8 @@ export const addNewComment = (eventId, comment) =>{
         comment,
     }
     return firebase.database().ref(`chat/${eventId}`).push(newComment);
+}
+
+export const getEventChatRef =(eventId)=>{
+    return firebase.database().ref(`chat/${eventId}`).orderByKey()
 }
