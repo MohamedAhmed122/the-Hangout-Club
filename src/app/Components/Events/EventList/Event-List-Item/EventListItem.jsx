@@ -13,10 +13,13 @@ import { handleColor } from '../../../../Common/utils/utils'
 import { useSelector } from 'react-redux'
 
 export default function EventListItem({event }) {
+    
     const history = useHistory()
-    // const { currentUser } = useSelector(state => state.auth)
+    const { currentUser, isAuthenticated } = useSelector(state => state.auth)
+    const isHost = isAuthenticated&& currentUser.uid === event.hostUid ;
+
     return (
-        <div className='wrapper'>
+        <div className='wrapper' onClick={()=>history.push(`/event/${event.id}`)}>
             <div className='background'
             style=
             {{backgroundImage: `linear-gradient( rgba(0, 01, 0, 0.4), rgba(0, 0, 0, 0.4) )
@@ -65,7 +68,12 @@ export default function EventListItem({event }) {
                         content="view" 
                         onClick={() => history.push(`/event/${event.id}`)}
                      />
-                    <Button color="red" floated="right" content="Delete" onClick={()=> deleteEventFromFirestore(event)} />
+                     {
+                         isAuthenticated &&
+                         isHost &&
+                         <Button color="red" floated="right" content="Delete" onClick={()=> deleteEventFromFirestore(event)} />
+                     }
+                   
                 </div>
             </div>
         </div>

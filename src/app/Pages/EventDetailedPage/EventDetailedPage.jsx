@@ -34,7 +34,6 @@ export default function EventDetailedPage({match}) {
     if (error) return <Error />
     return (
         <div className='event_detail_page'>
-            {/* <div style={{flex: '0.15'}}/> */}
             <div className='main'>
                 <EventHeader 
                 currentUser={currentUser} 
@@ -43,7 +42,7 @@ export default function EventDetailedPage({match}) {
                 isGoing={isGoing}
                 />
                 <EventInfo events={events} />
-                <EventChat />
+                <EventChat eventId={events.id}/>
             </div>
             <div  style={{flex: '0.1'}}></div>
             <div className='sidebar'>
