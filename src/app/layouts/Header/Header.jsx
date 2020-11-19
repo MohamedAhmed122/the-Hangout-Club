@@ -27,7 +27,7 @@ const Navbar = () => {
                 style={{ marginRight: "0.7em" }}
                 src={"assets/logo.png"}
                 /> */}
-                the Hangout Club
+                 Hangout Club
             </MenuItem>
             <MenuItem as={NavLink} exact to ='/event' name="Events" />
             <MenuItem  as={NavLink} exact to ='/community' name="Community" />

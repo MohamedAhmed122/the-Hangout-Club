@@ -8,7 +8,7 @@ import { deletePhotoFromCollection } from '../../../firebase/FirestoreServices'
 import { setPhotoToMain } from '../../../firebase/FirestoreServices'
 import './StyleProfilePhoto.css'
 
-export default function ProfilePhoto({loading, photos}) {
+export default function ProfilePhoto({loading, photos, isCurrentUser}) {
     
     const { currentUserProfile } = useSelector(state => state.profile)
     const handleSetPhotoToMain = async photo =>{
@@ -42,25 +42,28 @@ export default function ProfilePhoto({loading, photos}) {
                         <Fragment key={img.id}  >
                             <div className='photo_top'>
                                 <img src={img.url} alt='ii' />
-                                <div className='btn_group'>
-
-                                    <button 
-                                    disabled={img.url ===currentUserProfile.photoURL } 
-                                    onClick={()=>handleDeletePhoto(img)} 
-                                    className='photo_btn delete'
-                                    >
-                                        <Icon  name='trash' 
-                                        size='large' style ={{color: 'white',}} />
-                                    </button>
-                                    <button 
-                                    disabled={img.url ===currentUserProfile.photoURL }
-                                     onClick={()=>handleSetPhotoToMain(img)} 
-                                     className='main-btn photo_btn'
-                                     >
-                                        <Icon name='check'
-                                        size='large' style ={{color: 'white'}} />
-                                    </button>
-                                </div>
+                                {
+                                    isCurrentUser &&
+                                        <div className='btn_group'>
+                                            <button 
+                                            disabled={img.url ===currentUserProfile.photoURL } 
+                                            onClick={()=>handleDeletePhoto(img)} 
+                                            className='photo_btn delete'
+                                            >
+                                                <Icon  name='trash' 
+                                                size='large' style ={{color: 'white',}} />
+                                            </button>
+                                            <button 
+                                            disabled={img.url ===currentUserProfile.photoURL }
+                                            onClick={()=>handleSetPhotoToMain(img)} 
+                                            className='main-btn photo_btn'
+                                            >
+                                                <Icon name='check'
+                                                size='large' style ={{color: 'white'}} />
+                                            </button>
+                                        </div>
+                                }
+                                
                             </div>      
                             
                         </Fragment>

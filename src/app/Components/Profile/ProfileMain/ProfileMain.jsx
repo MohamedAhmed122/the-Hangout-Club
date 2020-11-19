@@ -7,12 +7,12 @@ import './StyleProfile.css'
 export default function ProfileHeader({isCurrentUser}) {
     const [, setActiveTab] = useState(0)
     const panes = [
-      { menuItem: "Profile ", render: () =><ProfileContent  />},
+      { menuItem: "Profile ", render: () =><ProfileContent isCurrentUser={isCurrentUser} />},
       { menuItem:  "Profile Settings" , render: () =>isCurrentUser ? <ProfileSettings isCurrent={isCurrentUser} />: null},
       
     ];
     const panes2 = [
-        { menuItem: "Profile ", render: () =><ProfileContent  />},
+        { menuItem: "Profile ", render: () =><ProfileContent isCurrentUser={isCurrentUser} />},
       
       ];
   

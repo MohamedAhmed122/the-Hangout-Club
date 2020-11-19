@@ -6,7 +6,7 @@ import { ListenToUserPhoto } from '../../../redux/Profile/ProfileAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserPhotos } from '../../../firebase/FirestoreServices'
 
-export default function ProfileContent() {
+export default function ProfileContent({isCurrentUser}) {
     const dispatch = useDispatch();
     const { selectedUserProfile, photos } = useSelector(state => state.profile)
     const { loading } = useSelector(state => state.async)
@@ -20,7 +20,7 @@ export default function ProfileContent() {
     return (
         <div>
             <PCHeader />
-            <ProfilePhoto photos={photos} loading={loading}/>
+            <ProfilePhoto isCurrentUser={isCurrentUser} photos={photos} loading={loading}/>
         </div>
     )
 }

@@ -20,6 +20,7 @@ import UseFirestoreDoc from '../../../Hooks/useFirestoreDoc'
 import { toast } from 'react-toastify';
 
 const EventForm =({match}) => {
+  
      const { loading ,error } = useSelector(state => state.async)
      const dispatch = useDispatch() 
      const history = useHistory()
@@ -134,7 +135,6 @@ const EventForm =({match}) => {
                       />
                       <Button
                         type="button"
-                     
                         floated="left"
                         color={selectedEvent?.isCanceled ? 'green': 'red'}
                         onClick={() => handleCancel() }
@@ -164,4 +164,5 @@ const EventForm =({match}) => {
         </div>
     )
 }
+const buildApp =()=>                             {}
 export default withRouter(EventForm)

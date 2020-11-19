@@ -19,7 +19,7 @@ const HomePage = ({ history }) => (
                 src="/assets/logo.png"
                 style={{ marginBottom: 12 }}
                 /> */}
-                the Hang out Club
+                 Hang out Club
             </Header>
             <Button onClick={() => history.push("/event")} size="huge" inverted>
                 Get Started
