@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -6,9 +6,8 @@ import { Header } from 'semantic-ui-react';
 
 import './StyleCalender.css'
 
-function Calender() {
+function Calender({predicate,loading, setPredicate}) {
  
-  const [value, onChange] = useState(new Date());
 
   return (
     <div className='calender_main'>
@@ -19,8 +18,9 @@ function Calender() {
       color="teal" 
       content="Select date" />
       <Calendar
-        onChange={onChange}
-        value={value}
+        onChange={date =>setPredicate('startDate', date) }
+        value={predicate.get('startDate') || new Date()}
+        tileDisabled={()=> loading}
       />
     </div>
   );

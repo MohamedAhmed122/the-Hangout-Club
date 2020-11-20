@@ -164,5 +164,4 @@ const EventForm =({match}) => {
         </div>
     )
 }
-const buildApp =()=>                             {}
 export default withRouter(EventForm)

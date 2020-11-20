@@ -20,8 +20,23 @@ export const dataFromSnapshot = Snapshot =>{
     }
 }
 
-export const listenToEventsFromFirestore = () =>{
-   return db.collection('events');
+export const listenToEventsFromFirestore = (predicate) =>{
+    const user = firebase.auth().currentUser;
+   let eventRef = db.collection('events');
+   switch(predicate.get('filter')){
+       case 'isGoing':{
+          return eventRef
+           .where('attendeeId','array-contains', user.uid)
+           .where('date','>=', predicate.get('startDate'))
+       }
+       case 'isHost':{
+           return eventRef
+           .where('hostUid', user.uid)
+           .where('date', '>=', predicate.get('startDate'))
+       }
+       default:
+           return eventRef.where('date', '>=', predicate.get('startDate'))
+   }
 } 
 export const listenToEventFromFirestore = eventId =>{
     return db.collection('events').doc(eventId) 

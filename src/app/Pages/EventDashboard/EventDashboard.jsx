@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {  listenToEventsFromFirestore } from '../../firebase/FirestoreServices'
 import { listenToEvents } from '../../redux/event/eventAction'
 import UseFirestoreCollection from '../../Hooks/UseFirestoreCollection'
+import { useState } from 'react'
 
 
 export default function EventDashboard() {
@@ -20,12 +21,20 @@ export default function EventDashboard() {
   const { isOpen } = useSelector(state => state.calender)
   const { loading } = useSelector(state => state.async)
   const { currentUserProfile } = useSelector(state => state.profile)
+  const [predicate, setPredicate] = useState(new Map([
+      ['startDate', new Date()],
+      ['filter', 'all']
+  ]))
   
+    const handelSetPredicate =( key, value)=>{
+        setPredicate(new Map(predicate.set(key,value)))
+    }
+
 
     UseFirestoreCollection({
-        query: listenToEventsFromFirestore,
+        query: () => listenToEventsFromFirestore(predicate),
         data: event => dispatch(listenToEvents(event)),
-        deps: [dispatch]
+        deps: [dispatch, predicate]
     })
     console.log(currentUserProfile);
     if (loading )
@@ -33,13 +42,15 @@ export default function EventDashboard() {
  
     return (
         <div className={isOpen ?'event-dashboard' : 'event-dashboard2'}>
-            <div className='sidebar-left'><Sidebar/></div>
+            <div className='sidebar-left'>
+                <Sidebar predicate={predicate} setPredicate={handelSetPredicate}/>
+            </div>
             <div className='main'>
                 <EventList  events={events}/>
             </div>
             <div className='sidebar-right'>
                 {
-                    isOpen && <Calendar />
+                    isOpen && <Calendar loading={loading} predicate={predicate} setPredicate={handelSetPredicate}/>
                 }
             </div>
         </div>

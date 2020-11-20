@@ -20,7 +20,7 @@ const EventChat = ({eventId}) => {
         snapshot.val()
       )))
     })
-  },[eventId])
+  },[eventId, dispatch])
   return(
       <Fragment>
         <Segment

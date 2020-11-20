@@ -19,7 +19,7 @@ export default function EventListItem({event }) {
     const isHost = isAuthenticated&& currentUser.uid === event.hostUid ;
 
     return (
-        <div className='wrapper' onClick={()=>history.push(`/event/${event.id}`)}>
+        <div className='wrapper'  >
             <div className='background'
             style=
             {{backgroundImage: `linear-gradient( rgba(0, 01, 0, 0.4), rgba(0, 0, 0, 0.4) )
@@ -79,3 +79,6 @@ export default function EventListItem({event }) {
         </div>
     )
 }
+
+
+//onClick={()=>history.push(`/event/${event.id}`)}
