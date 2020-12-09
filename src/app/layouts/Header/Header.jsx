@@ -7,7 +7,7 @@ import { openCalender } from "../../redux/calender/calenderReducer";
 import MenuSignedIn from "./Menu/MenuSignedIn";
 import SignedOutMenu from "./Menu/MenuSignedOut";
 import './StyleHeader.css'
-const Navbar = () => {
+const Navbar = ({inverted}) => {
     
     const { isAuthenticated } = useSelector(state => state.auth)
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const Navbar = () => {
    
 
     return(
-    <nav className='main'>
+    <nav className={ inverted ? "main-none" : "main"}>
         <Menu inverted fixed="top">
             <Container>
             <MenuItem as={NavLink} exact to ='/' header>

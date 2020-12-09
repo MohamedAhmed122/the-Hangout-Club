@@ -1,9 +1,23 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import CommunityChat from '../../Components/CommunityChat/CommunityChat'
+import CommunitySidebar from '../../Components/CommunitySidebar/CommunitySidebar'
 
-export default function CommunityPage() {
+import './styleCommunityPage.css'
+
+export default function CommunityPage({history}) {
+    const { currentUser } = useSelector(state => state.auth)
+
+    useEffect(()=>{
+        if(!currentUser){
+            history.push('/')
+        }
+    },[history, currentUser])
     return (
-        <div style={{marginTop: '5rem'}}>
-            <h1>Hello From Community</h1>
+        <div className='community'>
+           <CommunitySidebar />
+           <CommunityChat />
         </div>
     )
 }

@@ -22,6 +22,9 @@ import Loading from './app/Common/Loading/Loading';
 function App() {
 
   const { key } = useLocation();
+  const location = useLocation()
+  const inverted = location.pathname === '/community' && true
+  
   const {initialized} = useSelector(state => state.async)
 
   if ( !initialized) return <Loading/>
@@ -30,11 +33,12 @@ function App() {
       <ModalManger />
       <ToastContainer position='bottom-right' />
       <Route exact path='/' component={HomePage} />
+      <Route exact path='/community' component={CommunityPage} />
       <Route
         path={"/(.+)"}
         render={() => (
           <Fragment>
-            <Navbar />
+            <Navbar inverted={inverted}/>
               <Switch>
                   <Route exact path="/event"  component ={EventDashboard} />
                   <Route
@@ -43,7 +47,6 @@ function App() {
                   key={key}
                 />
                   <Route path="/event/:id" component={EventDetailedPage} />
-                  <Route path='/community' component={CommunityPage} />
                   <Route path='/error' component={Error} />
                   <Route path='/settings/:id' component={SettingsPage} />
                   <Route path='/profile/:id' component={ProfilePage} />

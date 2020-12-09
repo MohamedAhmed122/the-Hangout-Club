@@ -8,12 +8,15 @@ import { signOutUser } from '../../firebase/firebaseService'
 import { useHistory } from 'react-router-dom'
 import { openModal } from '../../redux/Modal/ModalAction'
 import { toast } from 'react-toastify'
+import EventFilter from './EventFilter'
+import { useState } from 'react'
  
-export default function Sidebar() {
+export default function Sidebar({predicate, setPredicate, loading}) {
     const history = useHistory()
     const dispatch = useDispatch()
     const { isAuthenticated } = useSelector(state => state.auth)
     const { currentUserProfile } = useSelector(state => state.profile)
+    const [displayFilter, setDisplayFilter] = useState(false)
 
     const handleSignOut = async() =>{
         if (isAuthenticated){
@@ -48,7 +51,8 @@ export default function Sidebar() {
                 </div>
             }
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
-             <SidebarRow icon='filter' title='Filter Events'/>
+             <SidebarRow icon='filter' title='Filter Events' onClick={()=>setDisplayFilter(!displayFilter)}/>
+             {displayFilter && <EventFilter predicate={predicate} setPredicate={setPredicate} loading={loading} />}
              <SidebarRow icon='user' title='My Profile' onClick={()=> handleRouting('profile')}/>
              <SidebarRow icon='rocketchat' title='Join Community' link='/community'/>
              <SidebarRow icon='users' title='My Friends'/>

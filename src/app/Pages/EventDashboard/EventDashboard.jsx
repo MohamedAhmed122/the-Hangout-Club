@@ -22,12 +22,13 @@ export default function EventDashboard() {
   const { loading } = useSelector(state => state.async)
   const { currentUserProfile } = useSelector(state => state.profile)
   const [predicate, setPredicate] = useState(new Map([
-      ['startDate', new Date()],
-      ['filter', 'all']
-  ]))
+      ["startDate", new Date()],
+      ["filter", "all"],
+    ])
+  );
   
     const handelSetPredicate =( key, value)=>{
-        setPredicate(new Map(predicate.set(key,value)))
+        setPredicate(new Map(predicate.set(key, value)));
     }
 
 
@@ -43,7 +44,7 @@ export default function EventDashboard() {
     return (
         <div className={isOpen ?'event-dashboard' : 'event-dashboard2'}>
             <div className='sidebar-left'>
-                <Sidebar predicate={predicate} setPredicate={handelSetPredicate}/>
+                <Sidebar loading={loading} predicate={predicate} setPredicate={handelSetPredicate}/>
             </div>
             <div className='main'>
                 <EventList  events={events}/>

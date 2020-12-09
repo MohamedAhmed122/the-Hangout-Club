@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 
 import thunk from "redux-thunk";
 
-import logger from "redux-logger";
+// import logger from "redux-logger";
 
 import {composeWithDevTools} from 'redux-devtools-extension'
 
@@ -10,7 +10,7 @@ import RootReducer from "./root-reducer";
 
 import { verifyAuth } from './Auth/AuthAction'
 
-const middleWare = [logger, thunk];
+const middleWare = [thunk];
 
 export const Store =()=>{
 

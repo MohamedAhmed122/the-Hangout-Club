@@ -37,23 +37,20 @@ var dataFromSnapshot = function dataFromSnapshot(Snapshot) {
 exports.dataFromSnapshot = dataFromSnapshot;
 
 var listenToEventsFromFirestore = function listenToEventsFromFirestore(predicate) {
-  var user = _firebase["default"].auth().currentUser;
+  var user = _firebase["default"].auth().currentUser; // to listen  data from the db
 
-  var eventRef = db.collection('events');
 
-  switch (predicate.get('filter')) {
-    case 'isGoing':
-      {
-        return eventRef.where('attendeeId', 'array-contains', user.uid).where('date', '>=', predicate.get('startDate'));
-      }
+  var eventRef = db.collection("events").orderBy("date");
 
-    case 'isHost':
-      {
-        return eventRef.where('hostUid', user.uid).where('date', '>=', predicate.get('startDate'));
-      }
+  switch (predicate.get("filter")) {
+    case "isGoing":
+      return eventRef.where("attendeeId", "array-contains", user.uid).where("date", ">=", predicate.get("startDate"));
+
+    case "isHost":
+      return eventRef.where("hostUId", "==", user.uid).where("date", ">=", predicate.get("startDate"));
 
     default:
-      return eventRef.where('date', '>=', predicate.get('startDate'));
+      return eventRef.where("date", ">=", predicate.get("startDate"));
   }
 };
 

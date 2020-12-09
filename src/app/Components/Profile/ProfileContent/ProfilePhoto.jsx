@@ -44,24 +44,24 @@ export default function ProfilePhoto({loading, photos, isCurrentUser}) {
                                 <img src={img.url} alt='ii' />
                                 {
                                     isCurrentUser &&
-                                        <div className='btn_group'>
-                                            <button 
-                                            disabled={img.url ===currentUserProfile.photoURL } 
-                                            onClick={()=>handleDeletePhoto(img)} 
-                                            className='photo_btn delete'
-                                            >
-                                                <Icon  name='trash' 
-                                                size='large' style ={{color: 'white',}} />
-                                            </button>
-                                            <button 
-                                            disabled={img.url ===currentUserProfile.photoURL }
-                                            onClick={()=>handleSetPhotoToMain(img)} 
-                                            className='main-btn photo_btn'
-                                            >
-                                                <Icon name='check'
-                                                size='large' style ={{color: 'white'}} />
-                                            </button>
-                                        </div>
+                                    <div className='btn_group'>
+                                        <button 
+                                        disabled={img.url ===currentUserProfile.photoURL } 
+                                        onClick={()=>handleDeletePhoto(img)} 
+                                        className='photo_btn delete'
+                                        >
+                                            <Icon  name='trash' 
+                                            size='large' style ={{color: 'white',}} />
+                                        </button>
+                                        <button 
+                                        disabled={img.url ===currentUserProfile.photoURL }
+                                        onClick={()=>handleSetPhotoToMain(img)} 
+                                        className='main-btn photo_btn'
+                                        >
+                                            <Icon name='check'
+                                            size='large' style ={{color: 'white'}} />
+                                        </button>
+                                    </div>
                                 }
                                 
                             </div>      

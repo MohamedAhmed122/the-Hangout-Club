@@ -66,7 +66,7 @@ const EventForm =({match}) => {
       });
 
 
-      UseFirestoreDoc({
+      UseFirestoreDoc({ 
         shouldExecute: !!match.params.id,
         query: ()=>listenToEventFromFirestore(match.params.id),
         data: event => dispatch(listenToEvents([event])),

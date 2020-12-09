@@ -1,4 +1,6 @@
-
+.main-none{
+  display: none;
+}
 .main .ui.fixed.menu {
     background-image: linear-gradient(
         135deg,
