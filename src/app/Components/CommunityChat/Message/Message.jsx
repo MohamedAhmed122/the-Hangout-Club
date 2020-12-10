@@ -1,15 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import './styleMessage.css'
 
-export default function Message() {
-    const image ='https://i.pinimg.com/originals/4d/e7/34/4de734a4f0baef3fd6a74c338c287601.jpg'
+export default function Message({message}) {
+   const { currentUser } = useSelector(state => state.auth)
     return (
             <div className='chat'>
-                <div className={`message_body`}>
-                    <img src={image} alt=' ' />
+                <div 
+                className={`message_body ${ currentUser.uid === message.userUid && 'message_body_receiver'} `}
+
+                >
+                    <img src={message.photoURL} alt=' ' />
                     <div className={`message_container`}>
-                        <p className={`messages`}>
-                            hello everyone
+                        <p className={`messages ${ currentUser.uid === message.userUid && 'message_receiver'} `}>
+                           {message.message}
                         </p>
                         {/* <p className='time_stamp '>date</p> */}
                     </div>
