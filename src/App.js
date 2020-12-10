@@ -16,6 +16,7 @@ import SettingsPage from './app/Pages/SettingsPage/SettingsPage';
 import ProfilePage from './app/Pages/ProfilePage/ProfilePage';
 import { useSelector } from 'react-redux';
 import Loading from './app/Common/Loading/Loading';
+import ChannelPage from './app/Pages/ChannelPage/ChannelPage'
 
 
 
@@ -23,7 +24,7 @@ function App() {
 
   const { key } = useLocation();
   const location = useLocation()
-  const inverted = location.pathname === '/community' && true
+  const inverted = (location.pathname === '/community' || '/community/:id') && true
   
   const {initialized} = useSelector(state => state.async)
 
@@ -34,6 +35,7 @@ function App() {
       <ToastContainer position='bottom-right' />
       <Route exact path='/' component={HomePage} />
       <Route exact path='/community' component={CommunityPage} />
+      <Route exact path='/community/:id' component={ChannelPage} />
       <Route
         path={"/(.+)"}
         render={() => (

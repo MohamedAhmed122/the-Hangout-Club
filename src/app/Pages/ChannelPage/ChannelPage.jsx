@@ -1,13 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
 import CommunityChat from '../../Components/CommunityChat/CommunityChat'
 import CommunitySidebar from '../../Components/CommunitySidebar/CommunitySidebar'
 
-import './styleCommunityPage.css'
 
-export default function CommunityPage({history}) {
+export default function ChannelPage({history}) {
     const { currentUser } = useSelector(state => state.auth)
 
     useEffect(()=>{
@@ -18,6 +16,7 @@ export default function CommunityPage({history}) {
     return (
         <div className='community'>
             <CommunitySidebar />
+            <CommunityChat />
         </div>
     )
 }
