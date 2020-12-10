@@ -1,3 +1,23 @@
 .CommunitySidebar{
     flex: 0.3;
+    height: 100vh;
+    border-right: 1px solid rgba(190, 190, 190, 0.1) ;
+    color: white;
 }
+.CommunitySidebar_info{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(190, 190, 190, 0.1) ;
+}
+.CommunitySidebar_info img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin-top: 25px;
+    object-fit: contain;
+}
+.CommunitySidebar_info h2{  margin-bottom: 20px;}

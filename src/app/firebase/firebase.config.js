@@ -22,12 +22,4 @@ firebase.initializeApp(firebaseConfig);
 firebase.firestore()
 
 export default firebase;
-
-// UseFirestoreDoc({
-//   query: () => getUserProfile(match.params.id),
-//   data: (profile) => dispatch(ListenToUserProfile(profile)),
-//   deps: [dispatch, match.params.id],
-// });
-
-// if ((loading && !currentUserProfile) || (!currentUserProfile && !error))
-//   return <Loading >Loading Profile...</Loading>
+export  const db = firebase.firestore();

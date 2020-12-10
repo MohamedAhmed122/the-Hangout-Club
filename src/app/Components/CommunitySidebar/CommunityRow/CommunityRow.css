@@ -1,0 +1,23 @@
+.row{
+    border-bottom: 1px solid rgba(190, 190, 190, 0.1) ;
+    cursor: pointer;
+}
+.row .row_header{
+    margin:  25px !important;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.row_header .icon{
+    color: white !important;
+   
+}
+.row_header .title{
+    color: white !important;
+}
+.row_header_sub{
+    margin:  20px !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+}
