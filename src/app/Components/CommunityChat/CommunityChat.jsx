@@ -1,9 +1,13 @@
 import React from 'react'
+import ChatHeader from './ChatHeader/ChatHeader'
+import './StyleChat.css'
+
 
 export default function CommunityChat() {
     return (
         <div className='CommunityChat'>
-            <h1> hello from the Community Chat</h1>
+          <ChatHeader />
+
         </div>
     )
 }
