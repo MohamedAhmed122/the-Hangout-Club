@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import { db } from '../../firebase/firebase.config'
 import CommunityRow from './CommunityRow/CommunityRow'
@@ -11,6 +11,7 @@ export default function CommunitySidebar() {
     const [channel,setChannel] = useState([])
     const { currentUser } = useSelector(state => state.auth)
     const history = useHistory()
+    const location = useLocation()
 
 
     useEffect(()=>{
@@ -36,8 +37,8 @@ export default function CommunitySidebar() {
          })
         }
         
-     }
-
+    }
+   
     return (
         <div className='CommunitySidebar'> 
             <div className='CommunitySidebar_info'>
@@ -53,7 +54,7 @@ export default function CommunitySidebar() {
             <CommunityRow title="Add New Channel" icon='plus' onClick={handleAddNewChannel} />
             
             { channel.map(channel=>(
-                <CommunityRow key={channel.id} id={channel.id} title={channel.data.name}  />
+                <CommunityRow key={channel.id} id={channel.id}  title={channel.data.name}  />
 
             ))}
          
