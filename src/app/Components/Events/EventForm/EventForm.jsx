@@ -18,6 +18,7 @@ import Loading from '../../../Common/Loading/Loading'
 import {addEventToFirestore, cancelEvent, listenToEventFromFirestore, updateEventToFirestore} from '../../../firebase/FirestoreServices'
 import UseFirestoreDoc from '../../../Hooks/useFirestoreDoc'
 import { toast } from 'react-toastify';
+import Navbar from '../../../layouts/Header/Header';
 
 const EventForm =({match}) => {
   
@@ -76,6 +77,8 @@ const EventForm =({match}) => {
     if (loading) return <Loading >Loading Event .....</Loading>
     if (error) return <Error/>
     return (
+      <>
+        <Navbar />
         <div className='event-form'>
             <div className='form-main'>
               <Segment clearing>
@@ -162,6 +165,7 @@ const EventForm =({match}) => {
               </Segment>
             </div>
         </div>
+      </>
     )
 }
 export default withRouter(EventForm)

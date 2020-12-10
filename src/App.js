@@ -1,11 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-
-import './App.css';
 import ModalManger from './app/Common/Modal/ModalManger';
-
 import EventForm from './app/Components/Events/EventForm/EventForm';
-import Navbar from './app/layouts/Header/Header';
 import EventDashboard from './app/Pages/EventDashboard/EventDashboard';
 import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
 import HomePage from './app/Pages/HomePage/HomePage';
@@ -18,14 +14,14 @@ import { useSelector } from 'react-redux';
 import Loading from './app/Common/Loading/Loading';
 import ChannelPage from './app/Pages/ChannelPage/ChannelPage'
 
+import './App.css';
+
 
 
 function App() {
 
   const { key } = useLocation();
-  const location = useLocation()
-  const inverted = (location.pathname === '/community' || '/community/:id') && true
-  
+
   const {initialized} = useSelector(state => state.async)
 
   if ( !initialized) return <Loading/>
@@ -40,7 +36,7 @@ function App() {
         path={"/(.+)"}
         render={() => (
           <Fragment>
-            <Navbar inverted={inverted}/>
+            {/* <Navbar inverted={inverted}/> */}
               <Switch>
                   <Route exact path="/event"  component ={EventDashboard} />
                   <Route

@@ -10,6 +10,7 @@ import UseFirestoreDoc from '../../Hooks/useFirestoreDoc'
 import { listenToEvents } from '../../redux/event/eventAction'
 import './StyleEventDetailedPage.css'
 import Error from '../../Common/404/Error'
+import Navbar from '../../layouts/Header/Header'
 
 export default function EventDetailedPage({match}) {
 
@@ -33,21 +34,24 @@ export default function EventDetailedPage({match}) {
     if (loading || (!events && !error)) return <Loading >Loading Event .....</Loading>
     if (error) return <Error />
     return (
-        <div className='event_detail_page'>
-            <div className='main'>
-                <EventHeader 
-                currentUser={currentUser} 
-                events={events} 
-                isHost={isHost} 
-                isGoing={isGoing}
-                />
-                <EventInfo events={events} />
-                <EventChat eventId={events.id}/>
+        <>
+            <Navbar />
+            <div className='event_detail_page'>
+                <div className='main'>
+                    <EventHeader 
+                    currentUser={currentUser} 
+                    events={events} 
+                    isHost={isHost} 
+                    isGoing={isGoing}
+                    />
+                    <EventInfo events={events} />
+                    <EventChat eventId={events.id}/>
+                </div>
+                <div  style={{flex: '0.1'}}></div>
+                <div className='sidebar'>
+                    <EventSidebar event={events} />
+                </div>
             </div>
-            <div  style={{flex: '0.1'}}></div>
-            <div className='sidebar'>
-                <EventSidebar event={events} />
-            </div>
-        </div>
+        </>
     )
 }

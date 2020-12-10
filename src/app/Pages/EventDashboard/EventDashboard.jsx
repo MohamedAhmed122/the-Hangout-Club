@@ -12,6 +12,7 @@ import {  listenToEventsFromFirestore } from '../../firebase/FirestoreServices'
 import { listenToEvents } from '../../redux/event/eventAction'
 import UseFirestoreCollection from '../../Hooks/UseFirestoreCollection'
 import { useState } from 'react'
+import Navbar from '../../layouts/Header/Header'
 
 
 export default function EventDashboard() {
@@ -42,18 +43,22 @@ export default function EventDashboard() {
      return <PlaceholderLoading />
  
     return (
-        <div className={isOpen ?'event-dashboard' : 'event-dashboard2'}>
-            <div className='sidebar-left'>
-                <Sidebar loading={loading} predicate={predicate} setPredicate={handelSetPredicate}/>
-            </div>
-            <div className='main'>
-                <EventList  events={events}/>
-            </div>
-            <div className='sidebar-right'>
-                {
-                    isOpen && <Calendar loading={loading} predicate={predicate} setPredicate={handelSetPredicate}/>
-                }
-            </div>
-        </div>
+        <>
+             <Navbar />
+                <div className={isOpen ?'event-dashboard' : 'event-dashboard2'}>
+                    
+                    <div className='sidebar-left'>
+                        <Sidebar loading={loading} predicate={predicate} setPredicate={handelSetPredicate}/>
+                    </div>
+                    <div className='main'>
+                        <EventList  events={events}/>
+                    </div>
+                    <div className='sidebar-right'>
+                        {
+                            isOpen && <Calendar loading={loading} predicate={predicate} setPredicate={handelSetPredicate}/>
+                        }
+                    </div>
+                </div>
+        </>
     )
 }

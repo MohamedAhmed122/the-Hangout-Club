@@ -7,6 +7,7 @@ import SettingFacebook from '../../Components/Settings/SettingFacebook'
 import { useSelector } from 'react-redux'
 import Loading from '../../Common/Loading/Loading'
 import './StyleSettings.css'
+import Navbar from '../../layouts/Header/Header'
 
 
 export default function SettingsPage() {
@@ -19,19 +20,22 @@ export default function SettingsPage() {
     }
 
     return (
-        <div className='settings_style'>
-            <Segment style={{width: '90vw', marginTop: '10rem'}}>
-                <Header 
-                style={{marginTop: 20}}
-                content='Account Settings' 
-                color='teal' 
-                size='large' 
-                />
-                {currentUser.providerId === 'password' &&    <SettingEmail />}
-                {currentUser.providerId === 'google.com' &&    <SettingGoogle />}
-                {currentUser.providerId === 'facebook.com' &&    <SettingFacebook />}
-            </Segment>
-        </div>
+        <>
+            <Navbar />
+            <div className='settings_style'>
+                <Segment style={{width: '90vw', marginTop: '10rem'}}>
+                    <Header 
+                    style={{marginTop: 20}}
+                    content='Account Settings' 
+                    color='teal' 
+                    size='large' 
+                    />
+                    {currentUser.providerId === 'password' &&    <SettingEmail />}
+                    {currentUser.providerId === 'google.com' &&    <SettingGoogle />}
+                    {currentUser.providerId === 'facebook.com' &&    <SettingFacebook />}
+                </Segment>
+            </div>
+        </>
         
     )
 }

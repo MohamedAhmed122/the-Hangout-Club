@@ -5,6 +5,7 @@ import Loading from '../../Common/Loading/Loading'
 import UseFirestoreDoc from '../../Hooks/useFirestoreDoc'
 import {ListenToSelectedUserProfile} from '../../redux/Profile/ProfileAction'
 import { getUserProfile } from '../../firebase/FirestoreServices'
+import Navbar from '../../layouts/Header/Header'
 
 
 export default function ProfilePage({match}) {
@@ -26,8 +27,9 @@ export default function ProfilePage({match}) {
           return <Loading />;
  
     return (
-        <div>
+        <>
+            <Navbar />
             <ProfileMain  isCurrentUser={currentUser.uid === selectedUserProfile.id}/>
-        </div>
+        </>
     )
 }
