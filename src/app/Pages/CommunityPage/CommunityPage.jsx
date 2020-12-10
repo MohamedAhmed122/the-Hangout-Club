@@ -1,8 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
-import CommunityChat from '../../Components/CommunityChat/CommunityChat'
 import CommunitySidebar from '../../Components/CommunitySidebar/CommunitySidebar'
 
 import './styleCommunityPage.css'

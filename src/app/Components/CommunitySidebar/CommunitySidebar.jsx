@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory, useLocation } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import { db } from '../../firebase/firebase.config'
 import CommunityRow from './CommunityRow/CommunityRow'
@@ -10,8 +9,7 @@ export default function CommunitySidebar() {
 
     const [channel,setChannel] = useState([])
     const { currentUser } = useSelector(state => state.auth)
-    const history = useHistory()
-    const location = useLocation()
+
 
 
     useEffect(()=>{
