@@ -26,7 +26,18 @@ export default function CommunitySidebar() {
         unsubscribe()
      }
      },[channel])
-     
+
+
+     const handleAddNewChannel =() =>{
+        const newChannel = prompt('Enter a Channel Name');
+        if(newChannel){
+         db.collection('channels').add({
+            name: newChannel
+         })
+        }
+        
+     }
+
     return (
         <div className='CommunitySidebar'> 
             <div className='CommunitySidebar_info'>
@@ -39,7 +50,8 @@ export default function CommunitySidebar() {
             title="Dashboard" 
             icon='th large' 
             onClick={() =>history.push('/event')} />
-            <CommunityRow title="Add New Channel" icon='plus' />
+            <CommunityRow title="Add New Channel" icon='plus' onClick={handleAddNewChannel} />
+            
             { channel.map(channel=>(
                 <CommunityRow key={channel.id} id={channel.id} title={channel.data.name}  />
 
