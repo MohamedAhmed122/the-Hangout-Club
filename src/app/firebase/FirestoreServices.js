@@ -177,3 +177,4 @@ export const CancelUserPlace = async event =>{
         throw error;
     }
 }
+

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 
 import ChatHeader from './ChatHeader/ChatHeader'
 import Message from './Message/Message'
@@ -32,19 +32,23 @@ export default function CommunityChat() {
 
       // this how to get data from  firebase
     useEffect(()=>{
-      if(id){
-          db.collection('channels').doc(id).collection('messages')
+         const unsubscribe = db.collection('channels').doc(id).collection('messages')
           .orderBy('timestamp', 'asc')
           .onSnapshot(snapshot =>{
             setMessage(
               snapshot.docs.map(doc => doc.data())
             )
           })
-      }
+      
+     return ()=>{
+       unsubscribe()
+     }
 
-    },[id, message])
+    },[id])
+    console.log(message);
 
 
+console.log(message);
     return (
         <div className='CommunityChat'>
           <ChatHeader />
@@ -55,7 +59,7 @@ export default function CommunityChat() {
               ))
             }
           </div>
-          <MessageSender input={input} setInput={setInput}  handleSubmitForm={handleSubmitForm}/>
+          <MessageSender   input={input} setInput={setInput}  handleSubmitForm={handleSubmitForm}/>
         </div>
     )
 }

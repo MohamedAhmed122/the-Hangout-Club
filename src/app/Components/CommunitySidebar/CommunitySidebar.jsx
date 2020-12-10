@@ -9,7 +9,7 @@ export default function CommunitySidebar() {
 
     const [channel,setChannel] = useState([])
     const { currentUser } = useSelector(state => state.auth)
-
+    // const location = useLocation()
 
 
     useEffect(()=>{
@@ -26,6 +26,10 @@ export default function CommunitySidebar() {
      }
      },[channel])
 
+     const refreshPage =()=>{
+
+         window.location.reload();
+      }
 
      const handleAddNewChannel =() =>{
         const newChannel = prompt('Enter a Channel Name');
@@ -44,15 +48,11 @@ export default function CommunitySidebar() {
                 <h2>{currentUser.displayName}</h2>
                 <Button content='View Profile'></Button>
             </div>
-          
-            {/* <CommunityRow 
-            title="Dashboard" 
-            icon='th large' 
-            onClick={() =>history.push('/event')} /> */}
+
             <CommunityRow title="Add New Channel" icon='plus' onClick={handleAddNewChannel} />
             
             { channel.map(channel=>(
-                <CommunityRow key={channel.id} id={channel.id}  title={channel.data.name}  />
+                <CommunityRow onClick={refreshPage} key={channel.id} id={channel.id}  title={channel.data.name}  />
 
             ))}
          

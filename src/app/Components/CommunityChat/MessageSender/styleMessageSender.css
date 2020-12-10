@@ -9,6 +9,27 @@
     border-top: 1px solid rgba(190, 190, 190, 0.1) ;
     background-color: #2d4671;
 }
+.emoji{
+    display: flex;
+    flex-direction: column-reverse;
+    position: -ms-page;
+}
+/* .emoji .emoji_picker{
+    position: absolute;
+    margin-right: 100px;
+} */
+.emoji-mart .emoji-mart-dark{
+    position: absolute;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+}
+.emoji-mart-dark{
+  position: absolute !important;
+
+  
+}
 .messageSender .form{
     flex: 0.95;
     background-color: white;

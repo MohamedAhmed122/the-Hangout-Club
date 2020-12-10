@@ -15,6 +15,7 @@ import Loading from './app/Common/Loading/Loading';
 import ChannelPage from './app/Pages/ChannelPage/ChannelPage'
 
 import './App.css';
+import Emoji from './app/Components/CommunityChat/Emoji/Emoji';
 
 
 
@@ -48,6 +49,7 @@ function App() {
                   <Route path='/error' component={Error} />
                   <Route path='/settings/:id' component={SettingsPage} />
                   <Route path='/profile/:id' component={ProfilePage} />
+                  <Route path='/emoji' component={Emoji} />
               </Switch>
           </Fragment>
         )}
