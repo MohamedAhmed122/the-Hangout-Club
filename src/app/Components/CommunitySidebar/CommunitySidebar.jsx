@@ -46,10 +46,10 @@ export default function CommunitySidebar() {
                 <Button content='View Profile'></Button>
             </div>
           
-            <CommunityRow 
+            {/* <CommunityRow 
             title="Dashboard" 
             icon='th large' 
-            onClick={() =>history.push('/event')} />
+            onClick={() =>history.push('/event')} /> */}
             <CommunityRow title="Add New Channel" icon='plus' onClick={handleAddNewChannel} />
             
             { channel.map(channel=>(
