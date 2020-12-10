@@ -3,10 +3,11 @@
     position: fixed;
     display: flex;
     align-items: center;
-    margin: 20px 0px;
+    /* margin: 20px 0px; */
     width: 75vw;
     padding-top: 20px;
     border-top: 1px solid rgba(190, 190, 190, 0.1) ;
+    background-color: #2d4671;
 }
 .messageSender .form{
     flex: 0.95;
