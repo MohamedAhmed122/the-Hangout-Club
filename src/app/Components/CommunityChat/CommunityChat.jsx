@@ -7,6 +7,7 @@ import MessageSender from './MessageSender/MessageSender'
 import firebase, { db } from '../../firebase/firebase.config'
 import './StyleChat.css'
 import { useSelector } from 'react-redux'
+import cuid from 'cuid'
 
 
 export default function CommunityChat() {
@@ -25,6 +26,7 @@ export default function CommunityChat() {
         displayName : currentUser.displayName,
         message: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        messageId: cuid()
 
       })
       setInput('')
@@ -39,23 +41,19 @@ export default function CommunityChat() {
               snapshot.docs.map(doc => doc.data())
             )
           })
-      
-     return ()=>{
-       unsubscribe()
-     }
-
+        return ()=>{
+          unsubscribe()
+        }
     },[id])
     console.log(message);
 
-
-console.log(message);
     return (
         <div className='CommunityChat'>
           <ChatHeader />
           <div className='message_main'>
             {
               message.map(msg =>(
-                <Message key={msg.message} message={msg} />
+                <Message key={msg.messageId || msg.message} message={msg} />
               ))
             }
           </div>
