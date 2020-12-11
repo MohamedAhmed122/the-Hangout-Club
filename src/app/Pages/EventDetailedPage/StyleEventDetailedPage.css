@@ -15,3 +15,34 @@
     flex: 0. 3;
     overflow: hidden;
 }
+
+@media(max-width: 1000px){
+    .event_detail_page{
+        display: flex;
+       flex-direction: column;
+       justify-content: center; 
+       align-items: center;
+    }
+    .event_detail_page .main{
+       width: 80%;
+    }
+    .event_detail_page .sidebar{
+        width: 60%;
+    }
+}
+
+
+@media(max-width: 500px){
+    .event_detail_page{
+        display: flex;
+       flex-direction: column;
+       justify-content: center; 
+       align-items: center;
+    }
+    .event_detail_page .main{
+       width: 90%;
+    }
+    .event_detail_page .sidebar{
+        width: 65%;
+    }
+}

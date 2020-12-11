@@ -95,3 +95,15 @@
 .btn-group{
     display: flex;
 }
+
+@media(max-width: 750px){
+    .wrapper{
+        min-width: 400px;
+    }
+}
+
+@media(max-width: 380px){
+    .wrapper{
+        min-width: 350px;
+    }
+}

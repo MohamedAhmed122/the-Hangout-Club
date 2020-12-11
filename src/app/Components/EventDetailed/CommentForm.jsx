@@ -8,8 +8,8 @@ import './Style.css'
 export default function CommentForm({eventId}) {
     function validateUsername(value) {
         let error;
-        if (value ===( 'shit' || "fuck")) {
-          error = "Pleas don't write bad words !";
+        if (value === 'shit' ||value === "fuck") {
+          error = "Please, don't write bad words !";
         }
         return error;
       }
