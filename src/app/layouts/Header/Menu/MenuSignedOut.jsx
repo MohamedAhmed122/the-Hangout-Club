@@ -5,7 +5,7 @@ import { openModal } from "../../../redux/Modal/ModalAction";
 const SignedOutMenu = () =>{ 
     const dispatch = useDispatch()
     return(
-        <>
+        <div className='hide'>
             <Button 
             onClick={() => dispatch(openModal({modalType: 'LoginForm'}))} 
             basic 
@@ -19,6 +19,6 @@ const SignedOutMenu = () =>{
             content="Register" 
             style={{ marginLeft: "0.6em" }} 
             />
-        </>
+        </div>
 )}
 export default SignedOutMenu;

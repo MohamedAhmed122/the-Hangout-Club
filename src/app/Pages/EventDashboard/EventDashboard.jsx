@@ -15,6 +15,7 @@ import { useState } from 'react'
 import Navbar from '../../layouts/Header/Header'
 
 
+
 export default function EventDashboard() {
   
   const dispatch = useDispatch()
@@ -44,6 +45,7 @@ export default function EventDashboard() {
  
     return (
         <>
+      
              <Navbar />
                 <div className={isOpen ?'event-dashboard' : 'event-dashboard2'}>
                     

@@ -98,6 +98,17 @@
 
 @media(max-width: 750px){
     .wrapper{
+        min-width: 600px;
+    }
+}
+
+@media(max-width: 650px){
+    .wrapper{
+        min-width: 500px;
+    }
+}
+@media(max-width: 450px){
+    .wrapper{
         min-width: 400px;
     }
 }

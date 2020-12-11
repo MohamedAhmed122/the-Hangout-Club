@@ -14,3 +14,18 @@
   .main .ui.main.container {
     margin-top: 7em;
   }
+  .main .item_nav{
+    display: block;
+  }
+  .main .item_menu_nav{
+    display: none !important;
+  }
+
+  @media(max-width: 700px){
+    .main .item_nav{
+      display: none !important;
+    }
+    .main .item_menu_nav{
+      display: block !important;
+    }
+  }
