@@ -8,8 +8,8 @@ import { signOutUser } from '../../firebase/firebaseService'
 import { useHistory } from 'react-router-dom'
 import { openModal } from '../../redux/Modal/ModalAction'
 import { toast } from 'react-toastify'
-import EventFilter from './EventFilter'
 import { useState } from 'react'
+import EventFilters from './EventFilters'
  
 export default function Sidebar({predicate, setPredicate, loading}) {
     const history = useHistory()
@@ -51,12 +51,16 @@ export default function Sidebar({predicate, setPredicate, loading}) {
                 </div>
             }
              <SidebarRow icon='plus circle' title='Create Event' link='/createEvent' />
+             <a target="_blank" rel="noopener noreferrer" href='https://covid1-9.web.app'>
+                <SidebarRow icon='info circle' title='Covid-19 Information'  />
+             </a>
              <SidebarRow icon='filter' title='Filter Events' onClick={()=>setDisplayFilter(!displayFilter)}/>
-             {displayFilter && <EventFilter predicate={predicate} setPredicate={setPredicate} loading={loading} />}
+             {displayFilter && <EventFilters predicate={predicate} setPredicate={setPredicate} loading={loading} />}
              <SidebarRow icon='user' title='My Profile' onClick={()=> handleRouting('profile')}/>
              <SidebarRow icon='rocketchat' title='Join Community' link='/community'/>
              <SidebarRow icon='users' title='My Friends'/>
              <SidebarRow icon='cogs' title='settings' onClick={()=> handleRouting('setting')}/>
+             <SidebarRow icon='edit outline' title='Report' link='/report'/>
              <SidebarRow 
              onClick={()=>handleSignOut()} 
              icon='sign out alternate' 

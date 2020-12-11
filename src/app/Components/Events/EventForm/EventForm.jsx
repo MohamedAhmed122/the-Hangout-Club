@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button,Header, Segment } from 'semantic-ui-react'
 import './StyleEventForm.css'
 import {  listenToEvents } from '../../../redux/event/eventAction'
-import { categoryData } from '../../../API/categoryOption'
+import { categoryData, options } from '../../../API/categoryOption'
 import * as Yup from 'yup'
 import { Formik ,Form } from 'formik';
 import FormInput from '../../Form/FormInput'
@@ -34,6 +34,8 @@ const EventForm =({match}) => {
     title: "",
     category: "",
     description: "",
+    invites: "",
+    status: 'Offline',
     city: {
       address: "",
       latLng: null,
@@ -57,6 +59,7 @@ const EventForm =({match}) => {
       title: Yup.string().required("You must provide a title"),
       category: Yup.string().required("You must provide a category"),
       description: Yup.string().required(),
+      invites: Yup.number().required(),
       city: Yup.object().shape({
         address: Yup.string().required("City is required"),
       }),
@@ -81,7 +84,7 @@ const EventForm =({match}) => {
         <Navbar />
         <div className='event-form'>
             <div className='form-main'>
-              <Segment clearing>
+              <Segment clearing style={{marginTop: '3rem'}}>
                 <Formik
                   onSubmit={async(values , {setSubmitting}) => {
                     try {
@@ -104,18 +107,22 @@ const EventForm =({match}) => {
                   {({ isSubmitting, dirty, isValid, values }) => (
                     <Form className="ui form" autoComplete="off">
                       <Header content="Event Details" color="teal" sub />
+
                       <FormInput name="title" placeholder="Event Title" />
                       <FormSelect
                         name="category"
                         placeholder="Category"
                         options={categoryData}
                       />
+                     
                       <FormArea
                         name="description"
                         placeholder="Event Description"
                         rows={3}
                       />
+                      
                       <Header content="Event Location" color="teal" sub />
+
                       <FormPlace name="city" placeholder="City" />
                       <FormPlace 
                         autoComplete="of"
@@ -136,6 +143,18 @@ const EventForm =({match}) => {
                         timeCaption="time"
                         dateFormat="MMMM d, yyyy h:m a"
                       />
+
+                        <Header content="Event required details" color="teal" sub />
+                        <FormInput 
+                        type='number' 
+                        name="invites" 
+                        placeholder="How many people would you like to invites? (WRITE ONLY NUMBERS) " />
+                        <FormSelect
+                        name="status"
+                        placeholder="Offline OR Online"
+                        options={options}
+                      />
+
                       <Button
                         type="button"
                         floated="left"

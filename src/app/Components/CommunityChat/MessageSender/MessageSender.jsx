@@ -4,7 +4,7 @@ import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import './styleMessageSender.css'
 
-export default function MessageSender({input, setInput, handleSubmitForm}) {
+export default function MessageSender({input, setInput,channelName, handleSubmitForm}) {
     const [emojiPickerState, SetEmojiPicker] = useState(false);
     const handleSelect = (emoji) =>{
         SetEmojiPicker(false)
@@ -36,7 +36,7 @@ export default function MessageSender({input, setInput, handleSubmitForm}) {
             <form onSubmit={(e) =>handleSubmitForm(e)} className='form'>
                 <input 
                 className='messageSender_input' 
-                placeholder='Type your message here'
+                placeholder={` Message #${channelName.name}`}
                 value={input}
                 onChange={(e) => setInput(e.target.value)} />
                 <button type='submit'  />

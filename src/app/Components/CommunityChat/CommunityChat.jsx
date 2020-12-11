@@ -16,8 +16,10 @@ export default function CommunityChat() {
   const [input, setInput ] = useState('')
   const [ message, setMessage ] = useState([])
   const { currentUser } = useSelector(state => state.auth)
+  const [channelName, setChannelName] = useState('')
 
-  // this how to add to firebase
+
+  //  how to add data to firebase
     const handleSubmitForm = (e) =>{
       e.preventDefault()
       db.collection('channels').doc(id).collection('messages').add({
@@ -45,11 +47,23 @@ export default function CommunityChat() {
           unsubscribe()
         }
     },[id])
-    console.log(message);
+    // console.log(message);
+
+
+
+    useEffect(()=>{
+        const unsubscribe = db.collection('channels').doc(id)
+        .onSnapshot(
+            snapshot => 
+                (setChannelName(snapshot.data())))
+      return () =>{
+          unsubscribe()
+      }
+    },[id])
 
     return (
         <div className='CommunityChat'>
-          <ChatHeader />
+          <ChatHeader channelName={channelName}  message={message}/>
           <div className='message_main'>
             {
               message.map(msg =>(
@@ -57,7 +71,11 @@ export default function CommunityChat() {
               ))
             }
           </div>
-          <MessageSender   input={input} setInput={setInput}  handleSubmitForm={handleSubmitForm}/>
+          <MessageSender 
+          channelName={channelName} 
+          input={input} 
+          setInput={setInput}  
+          handleSubmitForm={handleSubmitForm}/>
         </div>
     )
 }

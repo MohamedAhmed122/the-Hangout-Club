@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { Button, Segment } from 'semantic-ui-react'
+import { Button, Label, Segment } from 'semantic-ui-react'
 import { CancelUserPlace, userJoinEvent } from '../../firebase/FirestoreServices'
 import './Style.css'
 
@@ -38,6 +38,14 @@ export default function EventHeader({events, isGoing, currentUser, isHost}) {
             <div className='event_header'
             style={{ backgroundImage: ` linear-gradient( rgba(0, 01, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(/assets/categoryImages/${events.category}.jpg)`,}}
             >
+                {
+                events.status === "Online" &&
+                <Label
+                ribbon='right'
+                style={{top: '50px',width:'150px', paddingRight:40}}
+                color="green"
+                content={`ONLINE EVENT `} />
+                }
                 <div className='container'>
                     <p className='title const'>{events.title}</p>
                     <p className='date const'>{format(events.date, 'MMMM d, yyyy h:mm a')}</p>
@@ -54,13 +62,19 @@ export default function EventHeader({events, isGoing, currentUser, isHost}) {
                     { isGoing? 
                     <Button  loading={loading}  onClick={handleCancelUserPlace}>Cancel My Place</Button>
                     :
+                    // !events.invites 
+                    (events.invites > events.attendees.length) ?
                     <Button 
                     loading={loading} 
                     onClick={handleJoinEvent} 
                     color="teal"
                     >
                         JOIN THIS EVENT
-                    </Button>}
+                    </Button>
+                    :
+                    <Button color='red'> Event is Completed</Button>
+                    
+                }
                 </Fragment>}
 
                {isHost && <Button color="orange" floated="right" as={Link} to={`/manage/${events.id}`}>

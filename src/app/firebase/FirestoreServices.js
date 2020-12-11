@@ -33,7 +33,7 @@ export const listenToEventsFromFirestore = (predicate) =>{
   
       case "isHost":
         return eventRef
-          .where("hostUId", "==", user.uid)
+          .where("hostUid", "==", user.uid)
           .where("date", ">=", predicate.get("startDate"));
       default:
         return eventRef.where("date", ">=", predicate.get("startDate"));

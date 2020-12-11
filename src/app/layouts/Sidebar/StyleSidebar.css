@@ -4,7 +4,17 @@
     /* background-color: #e3e4e9; */
     height: 100vh;
     min-width:280px ;
+    overflow-y: scroll;
 }
+.sidebar_main::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .sidebar_main {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 .sidebar_header{
     width: 100%;
     display: flex;
@@ -27,12 +37,15 @@
 }
 .event__filter{
     margin-left: 30px;
+    box-shadow: none;
 
 }
 .event__filter .ui.menu{
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    box-shadow: none;
+
    
 }
 .event__filter .ui.menu .item{

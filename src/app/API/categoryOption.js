@@ -7,3 +7,9 @@ export const categoryData = [
     {key: 'travel', text: 'Travel', value: 'travel'},
     {key: 'education', text: 'Education', value: 'education'},
 ];
+
+export const options = [
+    {key: 'Offline', text: 'Offline', value: 'Offline'},
+    {key: 'Online', text: 'Online', value: 'Online'},
+    
+];

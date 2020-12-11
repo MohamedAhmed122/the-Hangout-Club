@@ -3,7 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Segment } from 'semantic-ui-react'
 import Navbar from '../../layouts/Header/Header'
-import './Style.error.css'
 
 export default function ErrorComponent() {
 

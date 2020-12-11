@@ -36,6 +36,14 @@ export default function EventListItem({event }) {
             color={handleColor(event.category)}
             content={`${event.category.toUpperCase()} EVENT `} />
             }
+            {
+                event.status === "Online" &&
+                <Label
+                ribbon='right'
+                style={{marginTop: '50px',width:'270px', paddingRight:40}}
+                color="green"
+                content={`ONLINE EVENT `} />
+            }
             </div>
             <div style={{display: 'flex'}}>
                 <div className='user-image'>
