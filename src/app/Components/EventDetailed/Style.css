@@ -33,3 +33,11 @@
 .event_header .container span{ 
     color: royalblue;
 }
+
+.error{
+    border: 1px solid red;
+    color: red;
+    padding: 10px;
+    margin: 10px;
+    color: red;
+}

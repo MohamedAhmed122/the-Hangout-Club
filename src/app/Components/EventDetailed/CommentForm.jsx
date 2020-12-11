@@ -1,11 +1,19 @@
-import { Formik,Form } from 'formik'
+import { Formik,Form, Field } from 'formik'
 import { addNewComment } from '../../firebase/firebaseService'
-import FormArea from '../Form/FormArea'
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 import { toast } from 'react-toastify'
+import './Style.css'
 
 export default function CommentForm({eventId}) {
+    function validateUsername(value) {
+        let error;
+        if (value ===( 'shit' || "fuck")) {
+          error = "Pleas don't write bad words !";
+        }
+        return error;
+      }
+     
     return (
         <Formik
             initialValues={{comment: ''}}
@@ -21,10 +29,12 @@ export default function CommentForm({eventId}) {
                 }
             }}
         >
-            {({isSubmitting})=>(
+            {({isSubmitting,errors, touched})=>(
                 <Form className='ui form'>
-                    <FormArea name='comment' placeholder='enter your comment' rows={2} />
+                    <Field  name='comment' placeholder='enter your comment' row={3} validate={validateUsername} />
+                    {errors.comment && touched.comment && <div className='error'>{errors.comment}</div>}
                     <Button
+                    style={{marginTop: 20}}
                     content="Add Reply"
                     labelPosition="left"
                     icon="edit"
