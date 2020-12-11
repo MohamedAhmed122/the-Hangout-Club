@@ -9,7 +9,7 @@
         rgb(32, 167, 172) 89%
     );
     height: 100vh;
-    z-index: 100;
+    z-index: 1000;
     overflow-y: scroll;
     cursor: pointer;
     display: flex;
@@ -58,7 +58,7 @@
 
 @media(max-width: 400px){
     .responsive_navbar{
-        margin-top: 7px;
+        margin-top: 2px;
     }
     .responsive_navbar .item{
         margin-bottom: 20px;

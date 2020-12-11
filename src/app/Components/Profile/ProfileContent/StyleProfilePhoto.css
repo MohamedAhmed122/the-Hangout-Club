@@ -54,3 +54,12 @@
 .main-btn:hover{
     background-color: #388E3C;
 }
+
+@media(max-width: 400px){
+    .profile_photo img{
+        height: 250px;
+        width: 200px;
+        margin: 2rem 0.3rem;
+
+    }
+}
