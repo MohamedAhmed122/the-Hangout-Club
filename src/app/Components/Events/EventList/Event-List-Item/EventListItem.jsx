@@ -40,7 +40,7 @@ export default function EventListItem({event }) {
                 event.status === "Online" &&
                 <Label
                 ribbon='right'
-                style={{marginTop: '50px',width:'270px', paddingRight:40}}
+                style={{marginTop: '50px',width:'300px', paddingRight:40}}
                 color="green"
                 content={`ONLINE EVENT `} />
             }

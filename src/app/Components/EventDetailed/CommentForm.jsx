@@ -32,7 +32,7 @@ export default function CommentForm({eventId}) {
             {({isSubmitting,errors, touched})=>(
                 <Form className='ui form'>
                     <Field  name='comment' placeholder='enter your comment' row={3} validate={validateUsername} />
-                    {errors.comment && touched.comment && <div className='error'>{errors.comment}</div>}
+                    {errors.comment && touched.comment && <div className='errorHandle'>{errors.comment}</div>}
                     <Button
                     style={{marginTop: 20}}
                     content="Add Reply"

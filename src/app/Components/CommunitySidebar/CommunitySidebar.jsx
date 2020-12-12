@@ -25,7 +25,7 @@ export default function CommunitySidebar() {
      },[channel])
 
 
-     const refreshPage =()=> window.location.reload();
+    //  const refreshPage =()=> window.location.reload();
 
 
      const handleAddNewChannel =() =>{
@@ -49,7 +49,7 @@ export default function CommunitySidebar() {
             <CommunityRow title="Add New Channel" icon='plus' onClick={handleAddNewChannel} />
             { channel.map(channel=>(
                 <CommunityRow 
-                onClick={refreshPage} 
+                // onClick={refreshPage} 
                 key={channel.id} 
                 id={channel.id}  
                 title={channel.data.name}  />
