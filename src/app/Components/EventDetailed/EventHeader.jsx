@@ -54,7 +54,7 @@ export default function EventHeader({events, isGoing, isAuthenticated, isHost}) 
                     <p className='date const'>{format(events.date, 'MMMM d, yyyy h:mm a')}</p>
                     <p className='host const'>Hosted by 
                         <span>
-                            <Link className='link' > {events.hostedBy}</Link>
+                           {events.hostedBy}
                         </span>
                     </p>
                 </div>

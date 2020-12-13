@@ -30,6 +30,7 @@
 }
 .event-dashboard2 .sidebar-left{
     flex: 0.22;
+    margin-left: 4rem;
 }
 .event-dashboard2 .sidebar-right{
     flex: 0;

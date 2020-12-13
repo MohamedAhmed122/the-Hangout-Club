@@ -4,8 +4,9 @@
     cursor: pointer;
     top: 0;
     position: fixed;
-    /* background-color: #2d4671; */
     z-index: 1000;
+    background-color: #2d4671;
+
    
 
 }

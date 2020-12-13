@@ -43,7 +43,7 @@ export default function CommunitySidebar() {
             <div className='CommunitySidebar_info'>
                 <img src={currentUser.photoURL} alt='' />
                 <h2>{currentUser.displayName}</h2>
-                <Button content='View Profile'></Button>
+                <Button color='teal' content='View Profile'></Button>
             </div>
 
             <CommunityRow title="Add New Channel" icon='plus' onClick={handleAddNewChannel} />
