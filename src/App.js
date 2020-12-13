@@ -16,6 +16,7 @@ import ChannelPage from './app/Pages/ChannelPage/ChannelPage'
 import ReportPage from './app/Pages/ReportPage/ReportPage';
 
 import './App.css';
+import PrivateRoute from './app/Common/PrivateRoute/PrivateRoute';
 
 
 
@@ -31,8 +32,8 @@ function App() {
       <ModalManger />
       <ToastContainer position='bottom-right' />
       <Route exact path='/' component={HomePage} />
-      <Route exact path='/community' component={CommunityPage} />
-      <Route exact path='/community/:id' component={ChannelPage} />
+      <PrivateRoute exact path='/community' component={CommunityPage} />
+      <PrivateRoute exact path='/community/:id' component={ChannelPage} />
       <Route
         path={"/(.+)"}
         render={() => (
@@ -40,15 +41,15 @@ function App() {
             {/* <Navbar inverted={inverted}/> */}
               <Switch>
                   <Route exact path="/event"  component ={EventDashboard} />
-                  <Route
+                  <PrivateRoute
                   path={["/createEvent", "/manage/:id"]}
                   component={EventForm}
                   key={key}
                 />
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path='/error' component={Error} />
-                  <Route path='/settings/:id' component={SettingsPage} />
-                  <Route path='/profile/:id' component={ProfilePage} />
+                  <PrivateRoute path='/settings/:id' component={SettingsPage} />
+                  <PrivateRoute path='/profile/:id' component={ProfilePage} />
                   <Route path='/report' component={ReportPage} />
               </Switch>
           </Fragment>
