@@ -12,6 +12,7 @@ const EventChat = ({eventId}) => {
   const dispatch = useDispatch();
 
   const { comments } = useSelector(state => state.event)
+  const { isAuthenticated } = useSelector(state => state.auth)
 
   useEffect(()=>{
     getEventChatRef(eventId).on('value', snapshot =>{
@@ -28,32 +29,33 @@ const EventChat = ({eventId}) => {
           attached="top"
           inverted
           color="teal"
-          style={{ border: "none" }}
+          style={{ border: "none", marginTop: '2rem', marginBottom:'2rem' }}
         >
-          <Header>Chat about this event</Header>
+          <Header>{isAuthenticated? 'Chat about this event' : "You need to sign in order to chat"}</Header>
         </Segment>
 
-        <Segment attached>
-          <Comment.Group>
-            {
-              comments.map(comment =>(
-                  <Comment key={comment.id}>
-                    <Comment.Avatar  src={comment?.photoURL || "/assets/user.png"} />
-                    <Comment.Content>
-                      <Comment.Author as={Link} to={`/profile/${comment.uid}`}>{comment?.displayName}</Comment.Author>
-                      <Comment.Metadata>
-                          <div>{formatDistance(comment.date , Date.now())}</div>
-                      </Comment.Metadata>
-                      <Comment.Text>{comment?.comment}</Comment.Text>
-                    </Comment.Content>
-                    <br/>
-                  </Comment>
-              ))
-            }
-           
-          </Comment.Group>
-          <CommentForm eventId={eventId}/>
-      </Segment>
+          {isAuthenticated &&
+           <Segment attached  style={{ marginBottom:'2rem' }}>
+            <Comment.Group>
+              {
+                comments.map(comment =>(
+                    <Comment key={comment.id}>
+                      <Comment.Avatar  src={comment?.photoURL || "/assets/user.png"} />
+                      <Comment.Content>
+                        <Comment.Author as={Link} to={`/profile/${comment.uid}`}>{comment?.displayName}</Comment.Author>
+                        <Comment.Metadata>
+                            <div>{formatDistance(comment.date , Date.now())}</div>
+                        </Comment.Metadata>
+                        <Comment.Text>{comment?.comment}</Comment.Text>
+                      </Comment.Content>
+                      <br/>
+                    </Comment>
+                ))
+              }
+            
+            </Comment.Group>
+            <CommentForm eventId={eventId}/>
+        </Segment>}
       </Fragment>
   )
 }

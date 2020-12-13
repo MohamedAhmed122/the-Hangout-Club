@@ -1,16 +1,19 @@
 import { format } from 'date-fns'
 import React, { Fragment } from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { openModal } from '../../redux/Modal/ModalAction'
 import { Button, Label, Segment } from 'semantic-ui-react'
 import { CancelUserPlace, userJoinEvent } from '../../firebase/FirestoreServices'
 import './Style.css'
 
-export default function EventHeader({events, isGoing, currentUser, isHost}) {
+export default function EventHeader({events, isGoing, isAuthenticated, isHost}) {
 
     
     const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch()
 
     const handleJoinEvent = async()=>{
         setLoading(true)
@@ -51,31 +54,35 @@ export default function EventHeader({events, isGoing, currentUser, isHost}) {
                     <p className='date const'>{format(events.date, 'MMMM d, yyyy h:mm a')}</p>
                     <p className='host const'>Hosted by 
                         <span>
-                            <Link className='link' to={`/profile/${currentUser.uid}`}> {events.hostedBy}</Link>
+                            <Link className='link' > {events.hostedBy}</Link>
                         </span>
                     </p>
                 </div>
             </div>
             <Segment clearing attached="bottom" style={{marginTop: 10}}>
 
-                {!isHost && <Fragment>
-                    { isGoing? 
-                    <Button  loading={loading}  onClick={handleCancelUserPlace}>Cancel My Place</Button>
-                    :
-                    // !events.invites 
-                    (events.invites > events.attendees.length) ?
-                    <Button 
-                    loading={loading} 
-                    onClick={handleJoinEvent} 
-                    color="teal"
-                    >
+              { isAuthenticated ?
+                <>
+                    {!isHost && 
+                    <Fragment>
+                        { isGoing? 
+                            <Button  loading={loading}  onClick={handleCancelUserPlace}>Cancel My Place</Button>
+                            :
+                            (events.invites > events.attendees.length) ?
+                            <Button  loading={loading}   onClick={handleJoinEvent}  color="teal">
+                                JOIN THIS EVENT
+                            </Button>
+                            :
+                            <Button color='red'> Event is Completed</Button>
+                        }
+                    </Fragment> }
+                </> :
+                <> 
+                    <Button   onClick={() => dispatch(openModal({modalType: 'LoginForm'}))}   color="green">
                         JOIN THIS EVENT
                     </Button>
-                    :
-                    <Button color='red'> Event is Completed</Button>
-                    
-                }
-                </Fragment>}
+                </>
+              }
 
                {isHost && <Button color="orange" floated="right" as={Link} to={`/manage/${events.id}`}>
                 Manage Event

@@ -6,14 +6,7 @@
     position: fixed;
     /* background-color: #2d4671; */
     z-index: 1000;
-    /* background-image: linear-gradient(
-        135deg,
-        rgb(29, 50, 134) 0%,
-        rgb(33, 138, 174) 69%,
-        rgb(32, 167, 172) 89%
-      
-    ); */
-
+   
 
 }
 .chatHeader{

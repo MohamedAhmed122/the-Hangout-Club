@@ -15,7 +15,7 @@ import Navbar from '../../layouts/Header/Header'
 export default function EventDetailedPage({match}) {
 
     const { loading ,error } = useSelector(state => state.async)
-    const { currentUser } = useSelector(state => state.auth)
+    const { currentUser, isAuthenticated } = useSelector(state => state.auth)
     const dispatch = useDispatch()
    
     const events = useSelector(state => state.event.events.find(event =>
@@ -28,8 +28,8 @@ export default function EventDetailedPage({match}) {
         deps:[match.params.id, dispatch]
     })
     
-    const isHost = events?.hostUid === currentUser.uid;
-    const isGoing = events?.attendees.some(user => user.id === currentUser.uid)
+    const isHost = events?.hostUid === currentUser?.uid;
+    const isGoing = events?.attendees.some(user => user.id === currentUser?.uid)
 
     if (loading || (!events && !error)) return <Loading >Loading Event .....</Loading>
     if (error) return <Error />
@@ -39,6 +39,7 @@ export default function EventDetailedPage({match}) {
             <div className='event_detail_page'>
                 <div className='main'>
                     <EventHeader 
+                    isAuthenticated={isAuthenticated}
                     currentUser={currentUser} 
                     events={events} 
                     isHost={isHost} 
