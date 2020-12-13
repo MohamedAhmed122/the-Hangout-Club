@@ -38,7 +38,7 @@
 
 
 
-@media(max-width:1000px){
+@media(max-width:1100px){
     .event-dashboard .sidebar-left{
         flex: 0.3;
     }

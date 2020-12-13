@@ -117,4 +117,7 @@
     .wrapper{
         min-width: 350px;
     }
+    .online_label{
+        width: 100px;
+    }
 }

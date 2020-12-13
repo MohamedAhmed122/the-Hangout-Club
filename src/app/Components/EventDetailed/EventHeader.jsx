@@ -1,8 +1,10 @@
 import { format } from 'date-fns'
 import React, { Fragment } from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { openModal } from '../../redux/Modal/ModalAction'
 import { Button, Label, Segment } from 'semantic-ui-react'
 import { CancelUserPlace, userJoinEvent } from '../../firebase/FirestoreServices'
 import './Style.css'
@@ -11,6 +13,7 @@ export default function EventHeader({events, isGoing, isAuthenticated, isHost}) 
 
     
     const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch()
 
     const handleJoinEvent = async()=>{
         setLoading(true)
@@ -75,7 +78,7 @@ export default function EventHeader({events, isGoing, isAuthenticated, isHost}) 
                     </Fragment> }
                 </> :
                 <> 
-                    <Button  color="green">
+                    <Button  onClick={() => dispatch(openModal({modalType: 'LoginForm'}))}   color="green">
                         JOIN THIS EVENT
                     </Button>
                 </>
