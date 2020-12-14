@@ -8,6 +8,8 @@ import { useHistory } from 'react-router-dom';
 
 export default function CommunityBlock() {
     const history = useHistory()
+    var w = window.innerWidth;
+
     return (
         <div className='hero community'>
             <div>
@@ -32,7 +34,7 @@ export default function CommunityBlock() {
                 </div>
             </div>
             <div className='hero_right'>
-                <LotiteView inverted animation={animation} width={700} height={700}/>
+                <LotiteView inverted animation={animation} width={w <=700? 300: 700} height={w <=700? 300: 700}/>
             </div>
         </div>
     )

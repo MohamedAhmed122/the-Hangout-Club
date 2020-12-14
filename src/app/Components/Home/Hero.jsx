@@ -8,6 +8,8 @@ import { useHistory } from 'react-router-dom';
 
 export default function Hero() {
     const history = useHistory()
+    var w = window.innerWidth;
+    console.log(w)
     return (
         <div className='hero'>
             <div>
@@ -41,7 +43,7 @@ export default function Hero() {
             </div>
             
             <div className='hero_right'>
-                <LotiteView inverted animation={animation} width={600} height={600}/>
+                <LotiteView inverted animation={animation} width={w <=700? 300: 600} height={w <=700? 300: 600} />
             </div>
         </div>
     )

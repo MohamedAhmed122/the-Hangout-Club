@@ -9,10 +9,12 @@ import { useHistory } from 'react-router-dom'
 
 export default function EventBlock() {
     const history = useHistory()
+    var w = window.innerWidth;
+
     return (
         <div className='event'>
             <div className='event_right'>
-                <LotiteView inverted animation={animation} width={600} height={600}/>
+                <LotiteView animation={animation} inverted width={600} height={600}/>
             </div>
             <div className='event_right'>
                 <Typical

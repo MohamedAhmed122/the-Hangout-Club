@@ -10,11 +10,12 @@ import { useHistory } from 'react-router-dom'
 
 export default function HangoutBlock() {
     const history = useHistory()
+    var w = window.innerWidth;
 
     return (
         <div className='event'>
             <div className='event_right'>
-                <LotiteView  animation={animation} width={600} height={600}/>
+                <LotiteView  animation={animation} width={w <=700? 300: 600} height={w <=700? 300: 600} />
             </div>
             <div className='type'>
                 <Typical
