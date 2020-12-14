@@ -4,8 +4,10 @@ import { Wave} from 'react-animated-text';
 import animation from './LotiteView/Animation/animation.json'
 import './StyleHome.css'
 import { Button } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
 
 export default function Hero() {
+    const history = useHistory()
     return (
         <div className='hero'>
             <div>
@@ -34,7 +36,7 @@ export default function Hero() {
                     </p>
                 </div>
                 <div className='hero_btn'>
-                    <Button  color='teal' content=' Join The Club ' />
+                    <Button onClick={()=>history.push('/event')} color='teal' content=' Join The Club ' />
                 </div>
             </div>
             

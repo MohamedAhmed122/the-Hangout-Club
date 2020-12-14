@@ -1,26 +1,28 @@
 import React from 'react'
 import LotiteView from './LotiteView/LotiteView'
-import animation from './LotiteView/Animation/animation2.json'
+import animation from './LotiteView/Animation/connect.json'
 import Typical from 'react-typical'
 import { Button } from 'semantic-ui-react'
+import'./StyleHome.css'
 import { useHistory } from 'react-router-dom'
 
 
 
-export default function EventBlock() {
+export default function HangoutBlock() {
     const history = useHistory()
+
     return (
         <div className='event'>
             <div className='event_right'>
-                <LotiteView inverted animation={animation} width={600} height={600}/>
+                <LotiteView  animation={animation} width={600} height={600}/>
             </div>
-            <div className='event_right'>
+            <div className='type'>
                 <Typical
-                    steps={['Hang Out Events', 700, 'Join Hang Out Events !', 400]}
+                    steps={['Welcome To the Family', 700, 'Hang Out Family', 400]}
                     loop={Infinity}
                     wrapper="h1"
                 />
-                <div className='event_text'>
+                <div className='event_text hang'>
                     <p>
                         Hang Out Club provides the best of event In Tomsk State,
                         We provide culture, music, education, food, travel, film, 
@@ -35,8 +37,8 @@ export default function EventBlock() {
                     </p>
                 </div>
 
-                <div className='hero_btn'>
-                    <Button  onClick={()=>history.push('/event')} color='blue' content='Join The Event' />
+                <div  className='hero_btn'>
+                    <Button onClick={()=>history.push('/event')} style={{ backgroundColor: '#14a2f4', color: 'white'}} content='Join The Club' />
                 </div>
             </div>
         </div>

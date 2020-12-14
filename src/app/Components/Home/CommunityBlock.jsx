@@ -4,8 +4,10 @@ import { Wave} from 'react-animated-text';
 import animation from './LotiteView/Animation/community.json'
 import './StyleHome.css'
 import { Button } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
 
 export default function CommunityBlock() {
+    const history = useHistory()
     return (
         <div className='hero community'>
             <div>
@@ -26,7 +28,7 @@ export default function CommunityBlock() {
                     </p>
                 </div>
                 <div className='hero_btn'>
-                    <Button style={{backgroundColor:'#7672F2', color:'white'}} content='Join The Community' />
+                    <Button onClick={()=>history.push('/event')} style={{backgroundColor:'#7672F2', color:'white'}} content='Join The Community' />
                 </div>
             </div>
             <div className='hero_right'>

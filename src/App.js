@@ -32,7 +32,7 @@ function App() {
     <div className="App">
       <ModalManger />
       <ToastContainer position='bottom-right' />
-      <Route exact path='/' component={HomePage} />
+      <Route exact path='/' component={Home} />
       <PrivateRoute exact path='/community' component={CommunityPage} />
       <PrivateRoute exact path='/community/:id' component={ChannelPage} />
       <Route
