@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-around;
     height: 100vh;
-    background-color: lightcyan;
+    background-color: rgb(237, 253, 253);
 }
 .hero_left{
     margin-left: 5rem;
@@ -35,4 +35,36 @@
   margin-top: 40px;
   color: #00b5ad;
 
+}
+.hero_btn{
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* //////////////////////////////////////////////////////////////////////// */
+.event{
+  display: flex;
+  background-color: rgb(225, 237, 252);
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+.event_right{
+  margin-right: 8rem;
+}
+.event_left{
+  margin-left: 8rem;
+}
+.event h1{
+  font-size: 55px;
+  text-align: center;
+  color: #034aa6;
+}
+.event_text{
+  font-size: 18px;
+  color: #1b72bf;
+  margin: 1rem 2rem;
+  margin-top: 4rem;
 }

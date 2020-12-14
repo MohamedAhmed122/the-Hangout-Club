@@ -17,7 +17,7 @@ import ReportPage from './app/Pages/ReportPage/ReportPage';
 
 import './App.css';
 import PrivateRoute from './app/Common/PrivateRoute/PrivateRoute';
-import Hero from './app/Components/Home/Hero';
+import Home from './app/Pages/HomePage/Home'
 
 
 
@@ -52,7 +52,7 @@ function App() {
                   <PrivateRoute path='/settings/:id' component={SettingsPage} />
                   <PrivateRoute path='/profile/:id' component={ProfilePage} />
                   <Route path='/report' component={ReportPage} />
-                  <Route path='/home' component={Hero} />
+                  <Route path='/home' component={Home} />
               </Switch>
           </Fragment>
         )}

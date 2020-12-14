@@ -1,13 +1,14 @@
 import React from 'react'
 import LotiteView from './LotiteView/LotiteView'
 import { Wave} from 'react-animated-text';
+import animation from './LotiteView/Animation/animation.json'
 import './StyleHome.css'
+import { Button } from 'semantic-ui-react';
 
 export default function Hero() {
     return (
         <div className='hero'>
             <div>
-
                 <div className='hero_text'> 
                     <p className='wave_big_text' >
                         <Wave text="Hang " effect="stretch" effectChange={1.5} />
@@ -21,7 +22,7 @@ export default function Hero() {
                         <Wave text="Out " effect="stretch" effectChange={1.5} autoPlay={false} />
                     </p>
                     <p className='wave_small_text'>
-                        <Wave  text="Of you Mind" effect="stretch" effectChange={2.0} />
+                        <Wave  text="Of Your Mind" effect="stretch" effectChange={2.0} />
                     </p>
                 </div>
                 <div className='hero_text' > 
@@ -32,10 +33,13 @@ export default function Hero() {
                         <Wave  text="Club" effect="stretch" effectChange={1.5} />
                     </p>
                 </div>
+                <div className='hero_btn'>
+                    <Button  color='teal' content=' Join The Club ' />
+                </div>
             </div>
             
             <div className='hero_right'>
-                <LotiteView />
+                <LotiteView inverted animation={animation} width={600} height={600}/>
             </div>
         </div>
     )
