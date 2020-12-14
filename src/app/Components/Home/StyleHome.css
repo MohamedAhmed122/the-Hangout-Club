@@ -1,0 +1,38 @@
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    background-color: lightcyan;
+}
+.hero_left{
+    margin-left: 5rem;
+
+    
+}
+.hero_text{
+  display: flex;
+  align-items: center;
+  margin-bottom: -60px;
+}
+.hero_text .wave_big_text{
+  font-size: 80px;
+  margin-left: 10px;
+  color: #00b5ad;
+}
+.hero_text .wave_small_text{
+  font-size: 20px;
+  margin-left: -30px;
+  color: #4CAF50;
+}
+.hero_text .wave_small_texts{
+  margin-left: 30px;
+  color: #4CAF50;
+}
+.hero_text .wave_big_texts{
+  font-size: 80px;
+  margin-left: 10px;
+  margin-top: 40px;
+  color: #00b5ad;
+
+}
