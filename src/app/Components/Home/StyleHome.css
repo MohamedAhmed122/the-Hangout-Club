@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-around;
     height: 100vh;
-    background-color: rgb(237, 253, 253);
+    background-color: rgb(242, 255, 255);
 }
 .hero_left{
     margin-left: 5rem;
@@ -67,4 +67,22 @@
   color: #1b72bf;
   margin: 1rem 2rem;
   margin-top: 4rem;
+  
+}
+.community{
+  background-color: #d7d7f3;
+}
+/* background-color: #d9fffe; */
+/* //////////////////////////////////////////////////////////////////////// */
+.wave_big_text_community{
+  font-size: 55px;
+  margin-left: 5rem;
+  color: #6066ce;
+}
+.community_text{
+  font-size: 18px;
+  margin-top: 8rem;
+  margin-left: 5rem;
+  margin-right: 4rem;
+  color: #7672F2;
 }

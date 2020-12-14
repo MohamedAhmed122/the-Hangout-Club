@@ -34,7 +34,7 @@ export default function EventBlock() {
                 </div>
 
                 <div className='hero_btn'>
-                    <Button  color='blue' content=' Join Our Events ' />
+                    <Button  color='blue' content='Join The Event' />
                 </div>
             </div>
         </div>
