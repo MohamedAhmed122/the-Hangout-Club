@@ -4,7 +4,7 @@ import ModalManger from './app/Common/Modal/ModalManger';
 import EventForm from './app/Components/Events/EventForm/EventForm';
 import EventDashboard from './app/Pages/EventDashboard/EventDashboard';
 import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
-import HomePage from './app/Pages/HomePage/HomePage';
+// import HomePage from './app/Pages/HomePage/HomePage';
 import { ToastContainer } from 'react-toastify';
 import CommunityPage from './app/Pages/CommunityPage/CommunityPage';
 import Error from './app/Common/404/Error';

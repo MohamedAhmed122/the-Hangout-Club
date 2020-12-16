@@ -10,26 +10,25 @@ import { useHistory } from 'react-router-dom'
 
 export default function HangoutBlock() {
     const history = useHistory()
-    var w = window.innerWidth;
 
     return (
-        <div className='event'>
-            <div className='event_right'>
-                <LotiteView  animation={animation} width={w <=700? 300: 600} height={w <=700? 300: 600} />
+        <div className='event_hero'>
+            <div className='event_hero_left'>
+                <LotiteView  animation={animation}  />
             </div>
-            <div className='type'>
+            <div className='event_hero_left type'>
                 <Typical
                     steps={['Welcome To the Family', 700, 'Hang Out Family', 400]}
                     loop={Infinity}
                     wrapper="h1"
                 />
-                <div className='event_text hang'>
+                <div className='event_hero_text hang'>
                     <p>
                         Hang Out Club provides the best of event In Tomsk State,
                         We provide culture, music, education, food, travel, film, 
                         music and online events
                     </p>
-                    <p>
+                    <p className='hidden-sm'>
                         All of the Tomsk State University events we provides 
                         and We have of our own programs, 
                         <span>

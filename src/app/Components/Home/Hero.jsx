@@ -8,11 +8,11 @@ import { useHistory } from 'react-router-dom';
 
 export default function Hero() {
     const history = useHistory()
-    var w = window.innerWidth;
-    console.log(w)
+
     return (
         <div className='hero'>
             <div>
+                <div className='appear' />
                 <div className='hero_text'> 
                     <p className='wave_big_text' >
                         <Wave text="Hang " effect="stretch" effectChange={1.5} />
@@ -43,7 +43,7 @@ export default function Hero() {
             </div>
             
             <div className='hero_right'>
-                <LotiteView inverted animation={animation} width={w <=700? 300: 600} height={w <=700? 300: 600} />
+                <LotiteView inverted animation={animation} />
             </div>
         </div>
     )

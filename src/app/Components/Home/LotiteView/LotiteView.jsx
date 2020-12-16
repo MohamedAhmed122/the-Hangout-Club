@@ -1,7 +1,9 @@
 import Lottie from 'react-lottie';
 import React from 'react'
+import { handleWidthAndHeight } from '../../../Common/utils/utils';
 
-export default function LotiteView({animation,inverted, width, height, ...props}) {
+export default function LotiteView({animation,inverted,  ...props}) {
+    var w = window.innerWidth;
     const defaultOptions = {
         loop: true,
         autoplay: true, 
@@ -10,16 +12,16 @@ export default function LotiteView({animation,inverted, width, height, ...props}
     return (
         <> {inverted ?
             <Lottie options={defaultOptions}
-                height={height}
-                width={width}
+                height={handleWidthAndHeight(w)}
+                width={handleWidthAndHeight(w)}
                 inverted 
                 style={{
                 transform: 'scaleX(-1)' 
                 }} 
                 />:
                 <Lottie options={defaultOptions}
-                height={height}
-                width={width}
+                height={handleWidthAndHeight(w)}
+                width={handleWidthAndHeight(w)}
                 inverted 
                
                 />

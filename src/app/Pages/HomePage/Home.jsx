@@ -3,12 +3,12 @@ import Hero from '../../Components/Home/Hero'
 import EventBlock from '../../Components/Home/EventBlock'
 import CommunityBlock from '../../Components/Home/CommunityBlock'
 import HangoutBlock from '../../Components/Home/HangoutBlock'
-// import Navbar from '../../layouts/Header/Header'
+import Navbar from '../../layouts/Header/Header'
 
 export default function Home() {
     return (
         <>
-            {/* <Navbar /> */}
+            <Navbar />
             <Hero />
             <EventBlock />
             <CommunityBlock />
