@@ -29,17 +29,18 @@ export const RegisterInFirebase = async cred =>{
     }
 }
 
+
 export const SocialLogin = async selectedProvider =>{
-    let provider;
+    let p;
 
     if (selectedProvider === 'facebook'){
-        provider = new firebase.auth.FacebookAuthProvider()
+        p = new firebase.auth.FacebookAuthProvider()
     }
     if (selectedProvider === 'google'){
-        provider = new firebase.auth.GoogleAuthProvider();
+        p = new firebase.auth.GoogleAuthProvider();
     }
     try {
-        const result = await auth.signInWithPopup(provider);
+        const result = await auth.signInWithPopup(p);
         console.log(result);
         if(result.additionalUserInfo.isNewUser){
             setUserProfileData(result.user);
@@ -48,6 +49,7 @@ export const SocialLogin = async selectedProvider =>{
         toast.error('Oops, Something Went Wrong With Social Logins')
     }
 } 
+
 
 export const updatePassword = password =>{
 

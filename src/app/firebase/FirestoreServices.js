@@ -22,23 +22,25 @@ export const dataFromSnapshot = Snapshot =>{
 
 export const listenToEventsFromFirestore = (predicate) =>{
     const user = firebase.auth().currentUser;
-    // to listen  data from the db
-    let eventRef = db.collection("events").orderBy("date");
+    // to set  data from the db
+    let event = db.collection("events").orderBy("date");
   
     switch (predicate.get("filter")) {
       case "isGoing":
-        return eventRef
+        return event
           .where("attendeeId", "array-contains", user.uid)
           .where("date", ">=", predicate.get("startDate"));
   
       case "isHost":
-        return eventRef
+        return event
           .where("hostUid", "==", user.uid)
           .where("date", ">=", predicate.get("startDate"));
       default:
-        return eventRef.where("date", ">=", predicate.get("startDate"));
+        return event.where("date", ">=", predicate.get("startDate"));
     }
 } 
+
+
 export const listenToEventFromFirestore = eventId =>{
     return db.collection('events').doc(eventId) 
 }
