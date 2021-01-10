@@ -10,6 +10,8 @@ import './StyleSettings.css'
 import Navbar from '../../layouts/Header/Header'
 
 
+
+
 export default function SettingsPage() {
     const {currentUser} = useSelector(state => state.auth);
     const {loading} = useSelector(state => state.async)
@@ -35,6 +37,7 @@ export default function SettingsPage() {
                     {currentUser.providerId === 'facebook.com' &&    <SettingFacebook />}
                 </Segment>
             </div>
+            
         </>
         
     )

@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import ModalManger from './app/Common/Modal/ModalManger';
-import EventForm from './app/Components/Events/EventForm/EventForm';
 import EventDashboard from './app/Pages/EventDashboard/EventDashboard';
 import EventDetailedPage from './app/Pages/EventDetailedPage/EventDetailedPage';
-// import HomePage from './app/Pages/HomePage/HomePage';
 import { ToastContainer } from 'react-toastify';
 import CommunityPage from './app/Pages/CommunityPage/CommunityPage';
 import Error from './app/Common/404/Error';
@@ -18,6 +16,7 @@ import ReportPage from './app/Pages/ReportPage/ReportPage';
 import './App.css';
 import PrivateRoute from './app/Common/PrivateRoute/PrivateRoute';
 import Home from './app/Pages/HomePage/Home'
+import { CreateEventPage } from './app/Pages/CreateEventPage/CreateEventPage';
 
 
 
@@ -39,12 +38,11 @@ function App() {
         path={"/(.+)"}
         render={() => (
           <Fragment>
-            {/* <Navbar inverted={inverted}/> */}
               <Switch>
                   <Route exact path="/event"  component ={EventDashboard} />
                   <PrivateRoute
                   path={["/createEvent", "/manage/:id"]}
-                  component={EventForm}
+                  component={CreateEventPage}
                   key={key}
                 />
                   <Route path="/event/:id" component={EventDetailedPage} />
