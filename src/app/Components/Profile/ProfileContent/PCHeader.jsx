@@ -1,23 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {  Button, Divider, Icon, Reveal, Segment, Statistic } from 'semantic-ui-react'
 import { toast } from 'react-toastify'
 
-import { followUser, unfollowUser } from '../../../firebase/FirestoreServices'
+import { followUser, getFollowingDoc, unfollowUser } from '../../../firebase/FirestoreServices'
 import HeaderRow from '../../../Common/HeaderRow/HeaderRow'
 
 import './PCHeader.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFollowUser, setUnFollowUser } from '../../../redux/Profile/ProfileAction'
 
 export default function PCHeader({isCurrentUser,profile}) {
 
     const [loading, setLoading ] = useState(false)
     const { displayName, bornAt  ,liveAt,bio, photoURL, interests } = profile;
+    const {followingUser } = useSelector(state =>state.profile)
+    const dispatch = useDispatch();
 
-    
+    useEffect(() => {
+        if (isCurrentUser) return;
+        setLoading(true);
+        async function fetchFollowingDoc() {
+          try {
+            const followingDoc = await getFollowingDoc(profile.id);
+            if (followingDoc && followingDoc.exists) {
+              dispatch(setFollowUser())
+            }
+          } catch (error) {
+            toast.error(error.message);
+          }
+        }
+        fetchFollowingDoc().then(() => setLoading(false));
+        // return () => {
+        //   dispatch({type: CLEAR_FOLLOWINGS})
+        // }
+      }, [dispatch, profile.id, isCurrentUser])
     const handleFollowingUser = async () =>{
         setLoading(true)
         try {
             await followUser(profile)
+            dispatch(setFollowUser())
         } catch (error) {
             toast.error(`Oops, ${error} `)
             console.log(error);
@@ -29,6 +51,7 @@ export default function PCHeader({isCurrentUser,profile}) {
         setLoading(true)
         try {
             await unfollowUser(profile)
+            dispatch(setUnFollowUser())
         } catch (error) {
             toast.error(`Oops, ${error} `)
             console.log(error);
@@ -63,28 +86,23 @@ export default function PCHeader({isCurrentUser,profile}) {
                     </Statistic.Group>
                     {!isCurrentUser &&
                     <>
-                    <Divider />
+                     <Divider />
                     <Reveal animated='move'>
-                        <Reveal.Content visible style={{width: '100%'}}>
-                            <Button fluid color='teal' content='Following' />
+                        <Reveal.Content visible style={{ width: '100%' }}>
+                        <Button fluid color='teal' content={followingUser ? 'Following' : 'Not following'} />
                         </Reveal.Content>
-                        <Reveal.Content hidden style={{width: '100%'}}>
-                            <Button 
-                            basic 
-                            onClick={handleFollowingUser} 
-                            fluid 
-                            color='green' 
-                            content='Follow'
-                            loading={loading} />
+                        <Reveal.Content hidden style={{ width: '100%' }}>
+                        <Button
+                            onClick={followingUser ? () => handleUnfollowUser() : () => handleFollowingUser()}
+                            loading={loading}
+                            basic
+                            fluid
+                            color={followingUser ? 'red' : 'green'}
+                            content={followingUser ? 'Unfollow' : 'Follow'}
+                        />
                         </Reveal.Content>
                     </Reveal>
-                    <Button 
-                            basic 
-                            onClick={handleUnfollowUser} 
-                            fluid 
-                            color='red' 
-                            content='UnFollow'
-                            loading={loading} />
+                 
                     </>}
                 </div>
             </Segment>
