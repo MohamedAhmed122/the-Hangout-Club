@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 
 import {  Button, Divider, Icon, Reveal, Segment, Statistic } from 'semantic-ui-react'
 import { toast } from 'react-toastify'
@@ -9,11 +8,9 @@ import HeaderRow from '../../../Common/HeaderRow/HeaderRow'
 
 import './PCHeader.css'
 
-export default function PCHeader({isCurrentUser}) {
+export default function PCHeader({isCurrentUser,profile}) {
 
     const [loading, setLoading ] = useState(false)
-
-    const { selectedUserProfile : profile } = useSelector(state => state.profile)
     const { displayName, bornAt  ,liveAt,bio, photoURL, interests } = profile;
 
     
