@@ -183,65 +183,59 @@ export const CancelUserPlace = async event =>{
 
 
 export async function followUser(profile) {
+  const user = firebase.auth().currentUser;
+  const batch = db.batch();
+  try {
+    batch.set(db.collection('following').doc(user.uid).collection('userFollowing').doc(profile.id),{
+      displayName: profile.displayName,
+      photoURL: profile.photoURL,
+      uid: profile.id
+    });
+    batch.update(db.collection('users').doc(user.uid), {
+      followingCount: firebase.firestore.FieldValue.increment(1)
+    })
+    return await batch.commit();
+  } catch (error) {
+    throw error;
+  }
+  }
+
+  // export const unfollowUser = async (profile) =>{
+  //   const user = firebase.auth().currentUser;
+  //   try {
+  //       await db.collection('following').doc(user.uid).collection('userFollowing').doc(profile.id)
+  //       .delete()
+
+  //       await db.collection('following').doc(profile.id).collection('userFollowers').doc(user.uid)
+  //       .delete()
+
+  //       await db.collection('users').doc(user.uid).update({
+  //           followingCount: firebase.firestore.FieldValue.increment(-1)
+  //       })
+  //       return await db.collection('users').doc(profile.id).update({
+  //           followerCount: firebase.firestore.FieldValue.increment(-1)
+  //       })
+
+  //   } catch (error) {
+  //       throw error
+  //   }
+  // }
+  
+  export async function unfollowUser(profile) {
     const user = firebase.auth().currentUser;
+    const batch = db.batch();
     try {
-        await db.collection('following').doc(user.uid).collection('userFollowing').doc(profile.id).set({
-            displayName: profile.displayName,
-            photoURL: profile.photoURL,
-            uid: profile.id
-        })
-        await db.collection('following').doc(profile.id).collection('userFollowers').doc(user.uid).set({
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            uid: user.uid
-        })
-        await db.collection('users').doc(user.uid).update({
-            followingCount: firebase.firestore.FieldValue.increment(1)
-        })
-        return await db.collection('users').doc(profile.id).update({
-            followerCount: firebase.firestore.FieldValue.increment(1)
-        })
+      batch.delete(db.collection('following').doc(user.uid).collection('userFollowing').doc(profile.id));
+      
+      batch.update(db.collection('users').doc(user.uid), {
+        followingCount: firebase.firestore.FieldValue.increment(-1)
+      })
+  
+      return await batch.commit();
     } catch (error) {
       throw error;
     }
   }
-
-  export const unfollowUser = async (profile) =>{
-    const user = firebase.auth().currentUser;
-    try {
-        await db.collection('following').doc(user.uid).collection('userFollowing').doc(profile.id)
-        .delete()
-
-        await db.collection('following').doc(profile.id).collection('userFollowers').doc(user.uid)
-        .delete()
-
-        await db.collection('users').doc(user.uid).update({
-            followingCount: firebase.firestore.FieldValue.increment(-1)
-        })
-        return await db.collection('users').doc(profile.id).update({
-            followerCount: firebase.firestore.FieldValue.increment(-1)
-        })
-
-    } catch (error) {
-        throw error
-    }
-  }
-  
-//   export async function unfollowUser(profile) {
-//     const user = firebase.auth().currentUser;
-//     const batch = db.batch();
-//     try {
-//       batch.delete(db.collection('following').doc(user.uid).collection('userFollowing').doc(profile.id));
-      
-//       batch.update(db.collection('users').doc(user.uid), {
-//         followingCount: firebase.firestore.FieldValue.increment(-1)
-//       })
-  
-//       return await batch.commit();
-//     } catch (error) {
-//       throw error;
-//     }
-//   }
   
   export function getFollowersCollection(profileId) {
     return db.collection('following').doc(profileId).collection('userFollowers')
