@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import {  Icon, Segment } from 'semantic-ui-react'
+
+import {  Button, Divider, Icon, Reveal, Segment, Statistic } from 'semantic-ui-react'
+import { toast } from 'react-toastify'
+
+import { followUser, unfollowUser } from '../../../firebase/FirestoreServices'
 import HeaderRow from '../../../Common/HeaderRow/HeaderRow'
+
 import './PCHeader.css'
 
-export default function PCHeader() {
+export default function PCHeader({isCurrentUser}) {
 
-    const { selectedUserProfile } = useSelector(state => state.profile)
-    const { displayName, bornAt  ,liveAt,bio, photoURL, interests } = selectedUserProfile;
+    const [loading, setLoading ] = useState(false)
+
+    const { selectedUserProfile : profile } = useSelector(state => state.profile)
+    const { displayName, bornAt  ,liveAt,bio, photoURL, interests } = profile;
+
+    
+    const handleFollowingUser = async () =>{
+        setLoading(true)
+        try {
+            await followUser(profile)
+        } catch (error) {
+            toast.error(`Oops, ${error} `)
+            console.log(error);
+        }finally{
+            setLoading(false)
+        }
+    }
+    const handleUnfollowUser = async () =>{
+        setLoading(true)
+        try {
+            await unfollowUser(profile)
+        } catch (error) {
+            toast.error(`Oops, ${error} `)
+            console.log(error);
+        }finally{
+            setLoading(false)
+        }
+    }
+
     return (
         <div className='PC_header_main'>
             <div className='wrapper_header'
@@ -17,7 +49,7 @@ export default function PCHeader() {
                       
                     </div>
             </div>
-            <Segment style={{marginTop: '7rem', marginBottom: '3rem'}}>
+            <Segment  className='person_segment' >
                 <div className='person_info'>
                    {displayName && <HeaderRow name='user'>About {displayName}</HeaderRow>}
                     {bornAt && <HeaderRow name='birthday cake'> I am {bornAt } years old</HeaderRow>}
@@ -26,6 +58,37 @@ export default function PCHeader() {
                     }
                     {bio && <HeaderRow name='info'> Bio : {bio }</HeaderRow>}
 
+                </div>
+                <div style={{marginRight :'2rem'}}>
+                <Statistic.Group>
+                        <Statistic label='Followers' value={10} />
+                        <Statistic label='Following' value={5} />
+                    </Statistic.Group>
+                    {!isCurrentUser &&
+                    <>
+                    <Divider />
+                    <Reveal animated='move'>
+                        <Reveal.Content visible style={{width: '100%'}}>
+                            <Button fluid color='teal' content='Following' />
+                        </Reveal.Content>
+                        <Reveal.Content hidden style={{width: '100%'}}>
+                            <Button 
+                            basic 
+                            onClick={handleFollowingUser} 
+                            fluid 
+                            color='green' 
+                            content='Follow'
+                            loading={loading} />
+                        </Reveal.Content>
+                    </Reveal>
+                    <Button 
+                            basic 
+                            onClick={handleUnfollowUser} 
+                            fluid 
+                            color='red' 
+                            content='UnFollow'
+                            loading={loading} />
+                    </>}
                 </div>
             </Segment>
             <Segment style={{marginBottom: '4rem'}}>

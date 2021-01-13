@@ -60,7 +60,7 @@ export default function EventListItem({event }) {
             <div className='attendees'>
             {
                 event.attendees.map(attend =>(
-                    <img  key={attend.id}  alt={attend.displayName} src={attend.photoURL} />
+                    <img  key={attend.id}  alt={attend.displayName} src={attend.photoURL||'/assets/user.png'} />
                 ))
             }
              </div>

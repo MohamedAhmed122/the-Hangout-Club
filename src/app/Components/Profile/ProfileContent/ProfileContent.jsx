@@ -19,7 +19,7 @@ export default function ProfileContent({isCurrentUser}) {
   
     return (
         <div>
-            <PCHeader />
+            <PCHeader isCurrentUser={isCurrentUser}/>
             <ProfilePhoto isCurrentUser={isCurrentUser} photos={photos} loading={loading}/>
         </div>
     )

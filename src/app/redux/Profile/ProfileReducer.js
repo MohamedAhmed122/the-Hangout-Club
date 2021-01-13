@@ -1,9 +1,17 @@
-import {LISTEN_TO_CURRENT_USER_PROFILE,LISTEN_TO_SELECTED_USER_PROFILE, LISTEN_TO_USER_PHOTO } from './ProfileType'
+import {
+    LISTEN_TO_CURRENT_USER_PROFILE,
+    LISTEN_TO_SELECTED_USER_PROFILE, 
+    LISTEN_TO_USER_PHOTO,
+    LISTEN_TO_FOLLOWERS, 
+    LISTEN_TO_FOLLOWINGS
+} from './ProfileType'
 
 const initialState ={
     currentUserProfile: null,
     selectedUserProfile:null,
-    photos: []
+    photos: [],
+    followers: [],
+    followings : []
 }
 
 const ProfileReducer  =(state = initialState, {type, payload}) =>{
@@ -22,6 +30,16 @@ const ProfileReducer  =(state = initialState, {type, payload}) =>{
             return{
                 ...state,
                 photos: payload
+            }
+        case LISTEN_TO_FOLLOWERS:
+            return{
+                ...state,
+                followers: payload
+            }
+        case LISTEN_TO_FOLLOWINGS:
+            return{
+                ...state,
+                followings: payload
             }
         default: return state;
     }

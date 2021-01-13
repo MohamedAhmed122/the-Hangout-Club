@@ -50,3 +50,9 @@
     font-size: 20px;
     margin-left: 15px;
 }
+.PC_header_main > .person_segment{
+    margin-top: 10rem !important;
+    margin-bottom: 3rem !important;
+    display: flex;
+    justify-content: space-between;
+}
