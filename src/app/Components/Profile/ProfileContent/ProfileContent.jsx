@@ -11,6 +11,9 @@ export default function ProfileContent({isCurrentUser}) {
     const dispatch = useDispatch();
     const { selectedUserProfile : profile, photos } = useSelector(state => state.profile)
     const { loading } = useSelector(state => state.async)
+    
+  
+    
 
     UseFirestoreCollection({
         query: ()=>getUserPhotos(profile.id),
@@ -23,7 +26,7 @@ export default function ProfileContent({isCurrentUser}) {
             <PCHeader profile={profile}  isCurrentUser={isCurrentUser}/>
             <ProfilePhoto isCurrentUser={isCurrentUser} photos={photos} loading={loading}/>
             <ProfileFollowers title='Followers' profile={profile} />
-            <ProfileFollowers title='Followings' profile={profile} />
+            <ProfileFollowers title='Following' profile={profile} />
         </div>
     )
 }

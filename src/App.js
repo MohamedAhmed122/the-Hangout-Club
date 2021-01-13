@@ -48,7 +48,7 @@ function App() {
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path='/error' component={Error} />
                   <PrivateRoute path='/settings/:id' component={SettingsPage} />
-                  <PrivateRoute path='/profile/:id' component={ProfilePage} />
+                  <Route exact path='/profile/:id' component={ProfilePage} />
                   <Route path='/report' component={ReportPage} />
                   <Route path='/home' component={Home} />
               </Switch>
