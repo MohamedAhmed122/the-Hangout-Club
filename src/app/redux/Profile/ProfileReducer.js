@@ -5,7 +5,8 @@ import {
     LISTEN_TO_FOLLOWERS, 
     LISTEN_TO_FOLLOWINGS,
     SET_UNFOLLOW_USER,
-    SET_FOLLOW_USER
+    SET_FOLLOW_USER,
+    CLEAR_FOLLOWINGS
 } from './ProfileType'
 
 const initialState ={
@@ -56,6 +57,12 @@ const ProfileReducer  =(state = initialState, {type, payload}) =>{
             return{
                 ...state,
                 followingUser:false
+            }
+        case  CLEAR_FOLLOWINGS:
+            return{
+                ...state,
+                followers:[],
+                followings:[],
             }
         default: return state;
     }

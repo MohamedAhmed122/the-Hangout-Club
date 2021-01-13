@@ -9,6 +9,7 @@ import HeaderRow from '../../../Common/HeaderRow/HeaderRow'
 import './PCHeader.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFollowUser, setUnFollowUser } from '../../../redux/Profile/ProfileAction'
+import { CLEAR_FOLLOWINGS } from '../../../redux/Profile/ProfileType'
 
 export default function PCHeader({isCurrentUser,profile}) {
 
@@ -31,9 +32,9 @@ export default function PCHeader({isCurrentUser,profile}) {
           }
         }
         fetchFollowingDoc().then(() => setLoading(false));
-        // return () => {
-        //   dispatch({type: CLEAR_FOLLOWINGS})
-        // }
+        return () => {
+          dispatch({type: CLEAR_FOLLOWINGS})
+        }
       }, [dispatch, profile.id, isCurrentUser])
     const handleFollowingUser = async () =>{
         setLoading(true)
