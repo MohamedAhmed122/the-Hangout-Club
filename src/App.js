@@ -17,6 +17,7 @@ import './App.css';
 import PrivateRoute from './app/Common/PrivateRoute/PrivateRoute';
 import Home from './app/Pages/HomePage/Home'
 import { CreateEventPage } from './app/Pages/CreateEventPage/CreateEventPage';
+import FriendPage from './app/Pages/FriendPage/FriendPage';
 
 
 
@@ -48,7 +49,8 @@ function App() {
                   <Route path="/event/:id" component={EventDetailedPage} />
                   <Route path='/error' component={Error} />
                   <PrivateRoute path='/settings/:id' component={SettingsPage} />
-                  <Route exact path='/profile/:id' component={ProfilePage} />
+                  <PrivateRoute  path='/profile/:id' component={ProfilePage} />
+                  <PrivateRoute path='/friend/:id' component={FriendPage} />
                   <Route path='/report' component={ReportPage} />
                   <Route path='/home' component={Home} />
               </Switch>

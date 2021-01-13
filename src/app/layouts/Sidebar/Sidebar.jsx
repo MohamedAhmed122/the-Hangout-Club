@@ -39,6 +39,9 @@ export default function Sidebar({predicate, setPredicate, loading}) {
             if(router === 'profile'){
                 history.push(`/profile/${currentUserProfile?.id}`)
             }
+            if(router === 'friend'){
+                history.push(`/friend/${currentUserProfile?.id}`)
+            }
            
         }else return;
     }
@@ -58,7 +61,7 @@ export default function Sidebar({predicate, setPredicate, loading}) {
              {displayFilter && <EventFilters predicate={predicate} setPredicate={setPredicate} loading={loading} />}
              <SidebarRow icon='user' title='My Profile' onClick={()=> handleRouting('profile')}/>
              <SidebarRow icon='rocketchat' title='Join Community' link='/community'/>
-             <SidebarRow icon='users' title='My Friends'/>
+             <SidebarRow icon='users' title='My Friends' onClick={()=> handleRouting('friend')}/>
              <SidebarRow icon='cogs' title='settings' onClick={()=> handleRouting('setting')}/>
              <SidebarRow icon='edit outline' title='Report' link='/report'/>
              <SidebarRow 

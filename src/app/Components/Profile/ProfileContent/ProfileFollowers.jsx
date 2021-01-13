@@ -9,7 +9,7 @@ import ProfileCard from './ProfileCard'
 export default function ProfileFollowers({title, profile}) {
 
     const dispatch = useDispatch()
-    const {followers, followings} = useSelector(state => state.profile)
+    const {followers, followings, loading} = useSelector(state => state.profile)
 
     UseFirestoreCollection({
         query: 
@@ -24,7 +24,7 @@ export default function ProfileFollowers({title, profile}) {
     })
     return (
         <div style={{marginTop: '8rem', marginBottom:'2rem'}}>
-            <Segment>
+            <Segment loading={loading}>
                 <Header content={title} icon='user' />
                 <Card.Group itemsPerRow={4}>
                     {

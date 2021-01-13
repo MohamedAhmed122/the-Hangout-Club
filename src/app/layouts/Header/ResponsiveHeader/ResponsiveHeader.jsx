@@ -40,6 +40,9 @@ const ResponsiveHeader = () =>{
             if(router === 'community'){
                 history.push(`/community`)
             }
+            if(router === 'friend'){
+                history.push(`/friend/${currentUserProfile?.id}`)
+            }
             if(router === 'createEvent'){
                 history.push(`/createEvent`)
             }
@@ -69,7 +72,7 @@ const ResponsiveHeader = () =>{
                 <Icon size='big'  name='user' />
                 <p>My Profile</p>
             </Menu.Item>
-            <Menu.Item as='a'>
+            <Menu.Item onClick={() =>handleRouting('friend')}>
                 <Icon  size='big' name='users' />
                 <p>My Friends</p>
             </Menu.Item>

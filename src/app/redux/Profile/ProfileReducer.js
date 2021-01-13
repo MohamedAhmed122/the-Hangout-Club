@@ -11,7 +11,8 @@ const initialState ={
     selectedUserProfile:null,
     photos: [],
     followers: [],
-    followings : []
+    followings : [],
+    loading: true
 }
 
 const ProfileReducer  =(state = initialState, {type, payload}) =>{
@@ -34,11 +35,13 @@ const ProfileReducer  =(state = initialState, {type, payload}) =>{
         case LISTEN_TO_FOLLOWERS:
             return{
                 ...state,
+                loading: false,
                 followers: payload
             }
         case LISTEN_TO_FOLLOWINGS:
             return{
                 ...state,
+                loading: false,
                 followings: payload
             }
         default: return state;
