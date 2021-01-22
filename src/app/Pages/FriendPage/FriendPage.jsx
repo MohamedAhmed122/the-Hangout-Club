@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Loading from '../../Common/Loading/Loading';
 import ProfileFollowers from '../../Components/Profile/ProfileContent/ProfileFollowers';
 import { getUserProfile } from '../../firebase/FirestoreServices';
@@ -9,10 +10,17 @@ import { ListenToSelectedUserProfile } from '../../redux/Profile/ProfileAction';
 export default function FriendPage({match}) {
     const dispatch = useDispatch();
     const { selectedUserProfile :profile } = useSelector((state) => state.profile);
-  
     const { loading, error } = useSelector((state) => state.async);
-  
-    // window.location.reload()
+    
+    const { currentUser } = useSelector(state => state.auth)
+    const history = useHistory()
+
+    useEffect(()=>{
+        if(!currentUser){
+            history.push('/')
+        }
+    },[history, currentUser])
+
   
     UseFirestoreDoc({
       query: () => getUserProfile(match.params.id),
