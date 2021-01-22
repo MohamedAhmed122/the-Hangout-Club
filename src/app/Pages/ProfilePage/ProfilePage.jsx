@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProfileMain from '../../Components/Profile/ProfileMain/ProfileMain'
 import Loading from '../../Common/Loading/Loading'
@@ -6,26 +6,16 @@ import UseFirestoreDoc from '../../Hooks/useFirestoreDoc'
 import {ListenToSelectedUserProfile} from '../../redux/Profile/ProfileAction'
 import { getUserProfile } from '../../firebase/FirestoreServices'
 import Navbar from '../../layouts/Header/Header'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 
 
 export default function ProfilePage({match}) {
 
-
   const dispatch = useDispatch();
   const { selectedUserProfile } = useSelector((state) => state.profile);
   const { loading, error } = useSelector((state) => state.async);
-
   const { currentUser } = useSelector((state) => state.auth);
-  const history = useHistory()
-
-    useEffect(()=>{
-        if(!currentUser){
-            history.push('/')
-        }
-    },[history, currentUser])
-
+ 
   // window.location.reload()
 
   UseFirestoreDoc({
