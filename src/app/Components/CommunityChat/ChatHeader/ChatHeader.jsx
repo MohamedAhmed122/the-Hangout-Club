@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Icon } from 'semantic-ui-react'
-import { db } from '../../../firebase/firebase.config'
+
 import './stylechatHeader.css'
+import UseGetChannelNames from '../../../Hooks/UseGetChannelName'
+
 
 export default function ChatHeader({message , channelName}) {
 
-    const [channel, setChannel] = useState('')
-
-    useEffect(()=>{
-        const unsubscribe = db.collection('channels').onSnapshot(snapshot => 
-          setChannel(
-                snapshot.docs.map(doc =>({
-                id: doc.id,
-                data: doc.data()
-            })
-         )
-     ))
-     return () =>{
-        unsubscribe()
-     }
-     },[channel])
-
-
+    UseGetChannelNames()
+    
     return (
         <div className='chatH'>
             <div className='chatHeader'>
