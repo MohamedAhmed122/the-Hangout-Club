@@ -12,7 +12,7 @@ export default function Message({message}) {
 
                 >
                     <Link to={`/profile/${message.userUid}`}>
-                        <img src={message.photoURL} alt=' ' />
+                        <img src={message.photoURL ||'/assets/user.png'} alt=' ' />
                     </Link>
                     <div className={`message_container`}>
                         <p className={`messages ${ currentUser.uid === message.userUid && 'message_receiver'} `}>

@@ -36,21 +36,21 @@ const EventInfo = ({ events: { description, date, venue } }) => {
             <Icon name="marker" size="large" color="teal" />
           </Grid.Column>
           <Grid.Column width={11}>
-            <span> {venue.address}</span>
+            {/* <span> {venue?.latLng || venue  || " "}</span> */}
           </Grid.Column>
           <Grid.Column width={4}>
-            <Button 
+            {/* <Button 
             onClick={()=> setShowMap(!showMap)}
             color="teal" 
             size="tiny" 
             content={showMap ? 'Hide Map' : "Show Map"} 
-            />
+            /> */}
           </Grid.Column>
         </Grid>
       </Segment>
-      {
+      {/* {
        showMap && <EventMap latLng={venue.latLng} />
-      }
+      } */}
     </Segment.Group>
 )};
 export default EventInfo;

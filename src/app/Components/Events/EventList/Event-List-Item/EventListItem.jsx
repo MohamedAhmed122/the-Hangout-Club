@@ -47,7 +47,7 @@ export default function EventListItem({event }) {
             </div>
             <div style={{display: 'flex'}}>
                 <div className='user-image'>
-                    <img className='img-profile' src={event.hostPhotoURL} alt='' />
+                    <img className='img-profile' src={event.hostPhotoURL || './assets/user.png'} alt='' />
                 </div>
                 <div className='user_detail'>
                     <h6><span>hosted by </span>
@@ -60,7 +60,7 @@ export default function EventListItem({event }) {
             <div className='attendees'>
             {
                 event.attendees.map(attend =>(
-                    <img  key={attend.id}  alt={attend.displayName} src={attend.photoURL||'/assets/user.png'} />
+                    <img  key={attend.id}  alt={attend.displayName} src={attend.photoURL||'./assets/user.png'} />
                 ))
             }
              </div>

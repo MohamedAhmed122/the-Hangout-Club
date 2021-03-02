@@ -36,14 +36,8 @@ const EventForm =({match}) => {
     description: "",
     invites: "",
     status: 'Offline',
-    city: {
-      address: "",
-      latLng: null,
-    },
-    venue: {
-      address: "",
-      latLng: null,
-    },
+    city: "",
+    venue: "",
     date: "",
   };
    
@@ -60,12 +54,8 @@ const EventForm =({match}) => {
       category: Yup.string().required("You must provide a category"),
       description: Yup.string().required(),
       invites: Yup.number().required(),
-      city: Yup.object().shape({
-        address: Yup.string().required("City is required"),
-      }),
-      venue: Yup.object().shape({
-        address: Yup.string().required("Venue is required"),
-      }),
+      city:  Yup.string().required(),
+      venue:  Yup.string().required(),
       date: Yup.string().required(),
       });
 
@@ -123,8 +113,12 @@ const EventForm =({match}) => {
                       
                       <Header content="Event Location" color="teal" sub />
 
-                      <FormPlace name="city" placeholder="City" />
-                      <FormPlace 
+                      <FormInput name="city" placeholder="City" />
+                      <FormInput name="venue" placeholder="Venue" />
+                      
+                      {/* <FormPlace name="city" placeholder="City" />       */}
+                      
+                      {/* <FormPlace 
                         autoComplete="of"
                         name="venue"
                         disabled={!values.city.latLng}
@@ -134,7 +128,7 @@ const EventForm =({match}) => {
                           radius: 1000,
                           types: ["establishment"],
                         }}
-                      />
+                      /> */}
                       <FormDate
                         name="date"
                         placeholderText="Event Date"
